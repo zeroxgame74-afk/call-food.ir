@@ -468,17 +468,18 @@
             left: 50%;
             transform: translate(-50%, -50%) scale(0.9);
             background: #fffef7;
-            padding: 2rem;
+            padding: 2rem 1.5rem;
             border-radius: 48px;
             box-shadow: 0 40px 60px rgba(0,0,0,0.3);
             z-index: 3000;
             text-align: center;
-            max-width: 400px;
+            max-width: 420px;
             width: 90%;
             opacity: 0;
             visibility: hidden;
             transition: 0.2s;
             border-top: 6px solid #e67e22;
+            font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
         }
         .custom-alert.show {
@@ -490,25 +491,43 @@
             font-size: 3rem;
             color: #e67e22;
             margin-bottom: 1rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        .custom-alert h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            font-weight: 900;
+        }
+        .custom-alert p {
+            margin: 0.5rem 0;
+            font-weight: 700;
         }
         .custom-alert .order-code {
             background: #2e241f;
             color: #ffd966;
-            padding: 10px;
+            padding: 12px;
             border-radius: 60px;
             margin: 15px 0;
-            font-size: 1.6rem;
-            letter-spacing: 3px;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            font-weight: 900;
         }
         .custom-alert button {
             background: #e67e22;
             border: none;
-            padding: 10px 25px;
+            padding: 12px 28px;
             border-radius: 50px;
             color: white;
-            font-weight: bold;
+            font-weight: 800;
+            font-size: 1rem;
             cursor: pointer;
             margin-top: 10px;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: 0.2s;
+        }
+        .custom-alert button:hover {
+            background: #c55a2c;
+            transform: scale(0.96);
         }
         .page-content {
             display: none;
@@ -573,11 +592,11 @@
 <div id="successModal" class="custom-alert">
     <i class="fas fa-check-circle"></i>
     <h3>سفارش شما با موفقیت ثبت شد!</h3>
-    <p>📞 برای خرید با این شماره تماس بگیرید:</p>
-    <p style="direction: ltr; background: #e67e22; display: inline-block; padding: 6px 15px; border-radius: 40px; color: white;">09902684303</p>
+    <p><i class="fas fa-phone-alt"></i> برای خرید با این شماره تماس بگیرید:</p>
+    <p style="direction: ltr; background: #e67e22; display: inline-block; padding: 8px 20px; border-radius: 40px; color: white; font-weight: 800;">09902684303</p>
     <div class="order-code" id="trackingCode">XXXXXX</div>
     <p><i class="fas fa-info-circle"></i> این کد را به فروشنده بدهید</p>
-    <button onclick="closeModal()">متوجه شدم</button>
+    <button onclick="closeModal()"><i class="fas fa-check"></i> متوجه شدم</button>
 </div>
 
 <div class="toast-msg" id="toastMsg"></div>
@@ -585,10 +604,13 @@
 
 <script>
     const foods = [
-        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده. طعمی بی‌نظیر و عالی برای یک وعده سریع و لذیذ! همراه با سس مخصوص و سبزیجات تازه.", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger" },
-        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی! ترکیبی از پپرونی، قارچ، فلفل دلمه و زیتون.", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace" },
-        { id: 3, name: "اچما مرغ قارچ پنیری", desc: "اچمای لذیذ با طعم مرغ قارچ پنیری", longDesc: "اچمای خوشمزه با مرغ تازه، قارچ عطرآگین و پنیر آب شده، ترکیبی بی‌نظیر برای یک عصرانه به یادماندنی! همراه با سس مخصوص و سبزیجات معطر.", img: "https://cdn.imgurl.ir/uploads/h6527_IMG_20260611_230627.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace" }
+        { id: 3, name: "اچما مرغ قارچ پنیری", desc: "اچمای لذیذ با طعم مرغ قارچ پنیری", longDesc: "اچمای خوشمزه با مرغ تازه، قارچ عطرآگین و پنیر آب شده، ترکیبی بی‌نظیر برای یک عصرانه به یادماندنی! همراه با سس مخصوص و سبزیجات معطر.", img: "https://cdn.imgurl.ir/uploads/h6527_IMG_20260611_230627.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", createdAt: new Date(2025, 5, 11) },
+        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی! ترکیبی از پپرونی، قارچ، فلفل دلمه و زیتون.", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", createdAt: new Date(2025, 5, 10) },
+        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده. طعمی بی‌نظیر و عالی برای یک وعده سریع و لذیذ! همراه با سس مخصوص و سبزیجات تازه.", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger", createdAt: new Date(2025, 5, 5) }
     ];
+
+    // Sort by newest first (higher createdAt first)
+    foods.sort((a, b) => b.createdAt - a.createdAt);
 
     let cart = [];
     const cartSidebar = document.getElementById('cartSidebar');
@@ -639,6 +661,19 @@
     function changeQty(id, delta) { let idx = cart.findIndex(i => i.id === id); if(idx !== -1) { let newQty = cart[idx].quantity + delta; if(newQty <= 0) cart.splice(idx,1); else cart[idx].quantity = newQty; renderCart(); showToast("سبد بروز شد"); } }
     function addToCart(product) { let existing = cart.find(i => i.id === product.id); if(existing) { existing.quantity++; showToast(`${product.name} +۱ شد`); } else { cart.push({ id: product.id, name: product.name, quantity: 1 }); showToast(`${product.name} به سبد اضافه شد 🎉`); } renderCart(); }
 
+    function attachCardEvents(cardElement, food) {
+        const addBtn = cardElement.querySelector('.add-to-cart');
+        if(addBtn) addBtn.addEventListener('click', () => addToCart(food));
+        const detailBtn = cardElement.querySelector('.detail-btn');
+        const detailBox = cardElement.querySelector('.detail-box');
+        if(detailBtn && detailBox) {
+            detailBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                detailBox.classList.toggle('show');
+            });
+        }
+    }
+
     function createFoodCard(food) {
         const card = document.createElement('div');
         card.className = 'food-card';
@@ -657,14 +692,7 @@
                 <div class="detail-box" id="detail-${food.id}"><i class="fas fa-align-right"></i> ${food.longDesc}</div>
             </div>
         `;
-        const addBtn = card.querySelector('.add-to-cart');
-        addBtn.addEventListener('click', () => addToCart(food));
-        const detailBtn = card.querySelector('.detail-btn');
-        const detailBox = card.querySelector(`.detail-box`);
-        detailBtn.addEventListener('click', (e) => { 
-            e.preventDefault();
-            detailBox.classList.toggle('show'); 
-        });
+        attachCardEvents(card, food);
         return card;
     }
 
@@ -672,18 +700,26 @@
         const homeGrid = document.getElementById('foodGridHome');
         const fastGrid = document.getElementById('fastfoodGrid');
         const fingerGrid = document.getElementById('fingerGrid');
-        homeGrid.innerHTML = '';
-        fastGrid.innerHTML = '';
-        fingerGrid.innerHTML = '';
+        if(homeGrid) homeGrid.innerHTML = '';
+        if(fastGrid) fastGrid.innerHTML = '';
+        if(fingerGrid) fingerGrid.innerHTML = '';
         
         foods.forEach(food => {
             const card = createFoodCard(food);
             if(food.tag === 'فست فود') {
-                fastGrid.appendChild(card.cloneNode(true));
-                homeGrid.appendChild(createFoodCard(food));
+                if(fastGrid) fastGrid.appendChild(card.cloneNode(true));
+                if(homeGrid) homeGrid.appendChild(createFoodCard(food));
             } else if(food.tag === 'فینگر فود') {
-                fingerGrid.appendChild(card.cloneNode(true));
-                homeGrid.appendChild(createFoodCard(food));
+                if(fingerGrid) fingerGrid.appendChild(card.cloneNode(true));
+                if(homeGrid) homeGrid.appendChild(createFoodCard(food));
+            }
+        });
+        
+        document.querySelectorAll('#fastfoodGrid .food-card, #fingerGrid .food-card').forEach(cardEl => {
+            const nameEl = cardEl.querySelector('h3');
+            if(nameEl) {
+                const foodItem = foods.find(f => nameEl.innerText.includes(f.name));
+                if(foodItem) attachCardEvents(cardEl, foodItem);
             }
         });
     }
@@ -722,4 +758,4 @@
     loadCart();
 </script>
 </body>
-            </html>
+                                                                                     </html>
