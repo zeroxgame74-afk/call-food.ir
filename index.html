@@ -263,6 +263,11 @@
             flex: 2;
             cursor: pointer;
             font-family: 'Vazirmatn', sans-serif;
+            transition: 0.2s;
+        }
+        .add-to-cart:hover {
+            background: #e67e22;
+            transform: scale(0.98);
         }
         .detail-btn {
             background: #f0e2d4;
@@ -278,10 +283,17 @@
             flex: 1;
             cursor: pointer;
             transition: 0.2s;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        .detail-btn i {
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
         }
         .detail-btn:hover {
             background: #e67e22;
             color: white;
+        }
+        .detail-btn:hover i {
+            filter: drop-shadow(0 0 2px white);
         }
         .detail-box {
             background: #fff8f0;
@@ -290,9 +302,29 @@
             margin-top: 1rem;
             border-right: 5px solid #e67e22;
             display: none;
+            font-weight: 700;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #3a2a1f;
         }
         .detail-box.show {
             display: block;
+            animation: fadeInUp 0.3s ease;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .detail-box i {
+            margin-left: 8px;
+            color: #e67e22;
         }
 
         .support-section {
@@ -447,6 +479,13 @@
             flex-direction: column;
             gap: 2rem;
         }
+        .temp-message {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 48px;
+            color: #a17248;
+        }
     </style>
 </head>
 <body>
@@ -469,7 +508,6 @@
     </div>
 </div>
 
-<!-- صفحات -->
 <div id="homePage" class="page-content active-page">
     <div class="hero"><div class="hero-overlay"><div class="call-message-box"><p><i class="fas fa-comment-dots"></i> کالفود میگوید: برای خرید با این شماره تماس بگیرید</p><p><i class="fas fa-phone-volume"></i> <span class="phone-number">+98 990 268 4303</span></p></div></div></div>
     <div class="menu-section"><div class="section-title"><i class="fas fa-crown"></i> غذای ویژه امروز</div><div id="foodGridHome"></div></div>
@@ -477,10 +515,10 @@
 
 <div id="fastfoodPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-burger"></i> فست فود</div><div id="fastfoodGrid" class="foods-grid"></div></div></div>
 <div id="fingerPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-hand-peace"></i> فینگر فود</div><div id="fingerGrid" class="foods-grid"></div></div></div>
-<div id="persianPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-utensils"></i> غذای مجلسی</div><div class="temp-message" style="text-align:center;padding:3rem;">به زودی غذاهای مجلسی اضافه می‌شوند...</div></div></div>
-<div id="cakePage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-birthday-cake"></i> کیک</div><div class="temp-message" style="text-align:center;padding:3rem;">به زودی کیک‌های خوشمزه اضافه می‌شوند...</div></div></div>
-<div id="traditionalPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-mosque"></i> غذای سنتی</div><div class="temp-message" style="text-align:center;padding:3rem;">به زودی غذاهای سنتی اضافه می‌شوند...</div></div></div>
-<div id="sweetPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌جات</div><div class="temp-message" style="text-align:center;padding:3rem;">به زودی شیرینی‌های تازه اضافه می‌شوند...</div></div></div>
+<div id="persianPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-utensils"></i> غذای مجلسی</div><div class="temp-message">به زودی غذاهای مجلسی اضافه می‌شوند...</div></div></div>
+<div id="cakePage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-birthday-cake"></i> کیک</div><div class="temp-message">به زودی کیک‌های خوشمزه اضافه می‌شوند...</div></div></div>
+<div id="traditionalPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-mosque"></i> غذای سنتی</div><div class="temp-message">به زودی غذاهای سنتی اضافه می‌شوند...</div></div></div>
+<div id="sweetPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌جات</div><div class="temp-message">به زودی شیرینی‌های تازه اضافه می‌شوند...</div></div></div>
 <div id="supportPage" class="page-content"><div class="support-section"><div class="support-box"><h3><i class="fas fa-headset"></i> پشتیبانی کالفود</h3><div class="support-item"><i class="fas fa-headset"></i> <span>پشتیبانی : <strong>+989157711094</strong></span></div><div class="support-item"><i class="fas fa-laptop-code"></i> <span>سازنده سایت : محمد حسین صنعتی</span></div></div></div></div>
 
 <div class="cart-sidebar" id="cartSidebar">
@@ -494,10 +532,9 @@
 <footer class="footer"><p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p><p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p></footer>
 
 <script>
-    // دیتای غذاها
     const foods = [
-        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده. طعمی بی‌نظیر و عالی برای یک وعده سریع و لذیذ!", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger" },
-        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی!", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace" }
+        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده. طعمی بی‌نظیر و عالی برای یک وعده سریع و لذیذ! همراه با سس مخصوص و سبزیجات تازه.", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger" },
+        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی! ترکیبی از پپرونی، قارچ، فلفل دلمه و زیتون.", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace" }
     ];
 
     let cart = [];
@@ -556,49 +593,33 @@
         addBtn.addEventListener('click', () => addToCart(food));
         const detailBtn = card.querySelector('.detail-btn');
         const detailBox = card.querySelector(`.detail-box`);
-        detailBtn.addEventListener('click', () => { detailBox.classList.toggle('show'); });
+        detailBtn.addEventListener('click', (e) => { 
+            e.preventDefault();
+            detailBox.classList.toggle('show'); 
+        });
         return card;
     }
 
-    // پر کردن صفحات بر اساس تگ
     function renderPages() {
-        document.getElementById('foodGridHome').innerHTML = '';
-        document.getElementById('fastfoodGrid').innerHTML = '';
-        document.getElementById('fingerGrid').innerHTML = '';
+        const homeGrid = document.getElementById('foodGridHome');
+        const fastGrid = document.getElementById('fastfoodGrid');
+        const fingerGrid = document.getElementById('fingerGrid');
+        homeGrid.innerHTML = '';
+        fastGrid.innerHTML = '';
+        fingerGrid.innerHTML = '';
         
         foods.forEach(food => {
             const card = createFoodCard(food);
             if(food.tag === 'فست فود') {
-                document.getElementById('fastfoodGrid').appendChild(card.cloneNode(true));
-                document.getElementById('foodGridHome').appendChild(createFoodCard(food));
+                fastGrid.appendChild(card.cloneNode(true));
+                homeGrid.appendChild(createFoodCard(food));
             } else if(food.tag === 'فینگر فود') {
-                document.getElementById('fingerGrid').appendChild(card.cloneNode(true));
-                document.getElementById('foodGridHome').appendChild(createFoodCard(food));
+                fingerGrid.appendChild(card.cloneNode(true));
+                homeGrid.appendChild(createFoodCard(food));
             }
-        });
-        // ری ادد ایونت برای کارت‌های کلون شده
-        reattachEvents();
-    }
-    
-    function reattachEvents() {
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            const id = parseInt(btn.dataset.id);
-            const food = foods.find(f => f.id === id);
-            if(food) btn.replaceWith(btn.cloneNode(true));
-        });
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            const id = parseInt(btn.dataset.id);
-            const food = foods.find(f => f.id === id);
-            if(food) btn.addEventListener('click', () => addToCart(food));
-        });
-        document.querySelectorAll('.detail-btn').forEach(btn => {
-            const id = parseInt(btn.dataset.id);
-            const detailBox = document.getElementById(`detail-${id}`);
-            if(detailBox) btn.addEventListener('click', () => detailBox.classList.toggle('show'));
         });
     }
 
-    // صفحه بندی
     const pages = {
         home: document.getElementById('homePage'), fastfood: document.getElementById('fastfoodPage'),
         finger: document.getElementById('fingerPage'), persian: document.getElementById('persianPage'),
@@ -633,4 +654,4 @@
     loadCart();
 </script>
 </body>
-</html>
+    </html>
