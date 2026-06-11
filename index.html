@@ -172,9 +172,9 @@
         }
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 900;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             position: relative;
         }
         .section-title:after {
@@ -185,6 +185,17 @@
             display: block;
             margin: 12px auto 0;
             border-radius: 4px;
+        }
+        .sub-section-title {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 2rem 0 1.5rem;
+            color: #c55a2c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .food-card {
@@ -412,10 +423,12 @@
         .cart-total {
             border-top: 2px dashed #e2cfbe;
             padding-top: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 800;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            font-family: 'Vazirmatn', sans-serif;
         }
         .checkout-btn {
             background: #e67e22;
@@ -428,6 +441,7 @@
             font-weight: 900;
             font-size: 1.1rem;
             cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
         }
         .empty-cart {
             text-align: center;
@@ -571,21 +585,33 @@
 
 <div id="homePage" class="page-content active-page">
     <div class="hero"><div class="hero-overlay"><div class="call-message-box"><p><i class="fas fa-comment-dots"></i> کالفود میگوید: برای خرید با این شماره تماس بگیرید</p><p><i class="fas fa-phone-volume"></i> <span class="phone-number">+98 990 268 4303</span></p></div></div></div>
-    <div class="menu-section"><div class="section-title"><i class="fas fa-crown"></i> غذای ویژه امروز</div><div id="foodGridHome"></div></div>
+    
+    <div class="menu-section">
+        <div class="section-title"><i class="fas fa-crown"></i> 🍽️ غذاهای ویژه و پرطرفدار کالفود!</div>
+        <div id="featuredGrid"></div>
+        
+        <div class="sub-section-title">
+            <i class="fas fa-utensils"></i> غذاهای مجلسی
+        </div>
+        <div id="persianHomeGrid"></div>
+    </div>
 </div>
 
 <div id="fastfoodPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-burger"></i> فست فود</div><div id="fastfoodGrid" class="foods-grid"></div></div></div>
 <div id="fingerPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-hand-peace"></i> فینگر فود</div><div id="fingerGrid" class="foods-grid"></div></div></div>
-<div id="persianPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-utensils"></i> غذای مجلسی</div><div class="temp-message">به زودی غذاهای مجلسی اضافه می‌شوند...</div></div></div>
-<div id="cakePage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-birthday-cake"></i> کیک</div><div class="temp-message">به زودی کیک‌های خوشمزه اضافه می‌شوند...</div></div></div>
-<div id="traditionalPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-mosque"></i> غذای سنتی</div><div class="temp-message">به زودی غذاهای سنتی اضافه می‌شوند...</div></div></div>
-<div id="sweetPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌جات</div><div class="temp-message">به زودی شیرینی‌های تازه اضافه می‌شوند...</div></div></div>
-<div id="supportPage" class="page-content"><div class="support-section"><div class="support-box"><h3><i class="fas fa-headset"></i> پشتیبانی کالفود</h3><div class="support-item"><i class="fas fa-headset"></i> <span>پشتیبانی : <strong>+989157711094</strong></span></div><div class="support-item"><i class="fas fa-laptop-code"></i> <span>سازنده سایت : محمد حسین صنعتی</span></div></div></div></div>
+<div id="persianPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-utensils"></i> غذای مجلسی</div><div id="persianGrid" class="foods-grid"></div></div></div>
+<div id="cakePage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-birthday-cake"></i> کیک</div><div id="cakeGrid" class="foods-grid"></div></div></div>
+<div id="traditionalPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-mosque"></i> غذای سنتی</div><div id="traditionalGrid" class="foods-grid"></div></div></div>
+<div id="sweetPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌جات</div><div id="sweetGrid" class="foods-grid"></div></div></div>
+<div id="supportPage" class="page-content"><div class="support-section"><div class="support-box"><h3><i class="fas fa-headset"></i> پشتیبانی کالفود</h3><div class="support-item"><i class="fas fa-headset"></i> <span>پشتیبانی : <strong>علی علیپوره</strong></span></div><div class="support-item"><i class="fas fa-laptop-code"></i> <span>سازنده سایت : محمد حسین صنعتی</span></div></div></div></div>
 
 <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header"><h2><i class="fas fa-basket-shopping"></i> سبد خرید</h2><button class="close-cart" id="closeCartBtn"><i class="fas fa-times-circle"></i></button></div>
     <div class="cart-items" id="cartItemsList"><div class="empty-cart">سبدت خالیه پرش کن! 🍔</div></div>
-    <div class="cart-total"><span><i class="fas fa-wallet"></i> مجموع سفارش:</span><span id="cartTotalPrice">۰ تومان (تماس تلفنی)</span></div>
+    <div class="cart-total" id="cartTotalDisplay">
+        <span><i class="fas fa-clipboard-list"></i> تعداد سفارش:</span>
+        <span id="cartTotalCount">۰ عدد (تماس تلفنی)</span>
+    </div>
     <button class="checkout-btn" id="checkoutBtn"><i class="fas fa-check-circle"></i> پرداخت ثبت نهایی</button>
 </div>
 
@@ -604,12 +630,14 @@
 
 <script>
     const foods = [
-        { id: 3, name: "اچما مرغ قارچ پنیری", desc: "اچمای لذیذ با طعم مرغ قارچ پنیری", longDesc: "اچمای خوشمزه با مرغ تازه، قارچ عطرآگین و پنیر آب شده، ترکیبی بی‌نظیر برای یک عصرانه به یادماندنی! همراه با سس مخصوص و سبزیجات معطر.", img: "https://cdn.imgurl.ir/uploads/h6527_IMG_20260611_230627.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", createdAt: new Date(2025, 5, 11) },
-        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی! ترکیبی از پپرونی، قارچ، فلفل دلمه و زیتون.", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", createdAt: new Date(2025, 5, 10) },
-        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده. طعمی بی‌نظیر و عالی برای یک وعده سریع و لذیذ! همراه با سس مخصوص و سبزیجات تازه.", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger", createdAt: new Date(2025, 5, 5) }
+        { id: 6, name: "کیک هل گلاب", desc: "کیک عطرآگین هل و گلاب، بافت نرم و لطیف", longDesc: "کیک عطرآگین هل و گلاب، بافت نرم و لطیف با طعمی به‌یادماندنی! ترکیب هل معطر با گلاب اصیل، تجربه‌ای دلنشین از شیرینی سنتی ایرانی. همراه با چای عصر، بی‌نظیره. مناسب برای پذیرایی از مهمان‌های خاص.", img: "https://uploadkon.ir/uploads/644711_26IMG-20260612-003514.jpg", tag: "کیک", tagIcon: "fa-birthday-cake", isSpecial: true, createdAt: new Date(2025, 5, 13) },
+        { id: 5, name: "نبات های شیری گردویی", desc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه", longDesc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه! ترکیبی بی‌نظیر از شیرینی لطیف و تردی گردو، مناسب برای عصرانه‌های خاص و مهمانی‌های لوکس. بدون هیچ افزودنی مصنوعی، فقط لذت خالص. ماندگاری بالا و طعم به‌یادماندنی.", img: "https://uploadkon.ir/uploads/212511_26IMG-20260612-003157.jpg", tag: "شیرینی‌جات", tagIcon: "fa-cake-candles", isSpecial: true, createdAt: new Date(2025, 5, 12) },
+        { id: 4, name: "مرغ بریان", desc: "مرغ بریان بدون برنج، طعم اصیل و مجلسی", longDesc: "غذای اصیل مرغ بریان، بدون برنج و با طعمی بی‌نظیر! مرغ بریان با ادویه‌های مخصوص، زعفران و کره، ترد و آبدار. مناسب برای مهمانی‌های خاص و عصرهای به‌یادماندنی. همراه با سبزیجات تازه و نان بریان شده سرو میشود.", img: "https://cdn.imgurl.ir/uploads/d404509_IMG_20260612_000809.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: false, createdAt: new Date(2025, 5, 11) },
+        { id: 3, name: "اچما مرغ قارچ پنیری", desc: "اچمای لذیذ با طعم مرغ قارچ پنیری", longDesc: "اچمای خوشمزه با مرغ تازه، قارچ عطرآگین و پنیر آب شده، ترکیبی بی‌نظیر برای یک عصرانه به یادماندنی! همراه با سس مخصوص و سبزیجات معطر.", img: "https://cdn.imgurl.ir/uploads/h6527_IMG_20260611_230627.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: false, createdAt: new Date(2025, 5, 10) },
+        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی! ترکیبی از پپرونی، قارچ، فلفل دلمه و زیتون.", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: false, createdAt: new Date(2025, 5, 9) },
+        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده. طعمی بی‌نظیر و عالی برای یک وعده سریع و لذیذ! همراه با سس مخصوص و سبزیجات تازه.", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: false, createdAt: new Date(2025, 5, 5) }
     ];
 
-    // Sort by newest first (higher createdAt first)
     foods.sort((a, b) => b.createdAt - a.createdAt);
 
     let cart = [];
@@ -618,6 +646,7 @@
     const closeCartBtn = document.getElementById('closeCartBtn');
     const cartItemsList = document.getElementById('cartItemsList');
     const cartCountSpan = document.getElementById('cartCount');
+    const cartTotalCountSpan = document.getElementById('cartTotalCount');
     const checkoutBtn = document.getElementById('checkoutBtn');
     const toastMsgDiv = document.getElementById('toastMsg');
     const modal = document.getElementById('successModal');
@@ -644,19 +673,31 @@
         modal.classList.remove('show');
     }
 
-    function updateCartBadge() { const total = cart.reduce((a,i)=> a + i.quantity, 0); cartCountSpan.innerText = total; }
+    function updateCartBadge() { 
+        const total = cart.reduce((a,i)=> a + i.quantity, 0); 
+        cartCountSpan.innerText = total;
+        if(cartTotalCountSpan) {
+            cartTotalCountSpan.innerText = `${total} عدد (تماس تلفنی)`;
+        }
+    }
     function saveCart() { localStorage.setItem('callfoodCart', JSON.stringify(cart)); }
     function loadCart() { const saved = localStorage.getItem('callfoodCart'); if(saved) try { cart = JSON.parse(saved); } catch(e){} renderCart(); }
 
     function renderCart() {
-        if(cart.length === 0) { cartItemsList.innerHTML = `<div class="empty-cart">سبدت خالیه پرش کن! 🍔</div>`; updateCartBadge(); saveCart(); return; }
+        if(cart.length === 0) { 
+            cartItemsList.innerHTML = `<div class="empty-cart">سبدت خالیه پرش کن! 🍔</div>`; 
+            updateCartBadge(); 
+            saveCart(); 
+            return; 
+        }
         let html = '';
         cart.forEach(item => { html += `<div class="cart-item"><div><strong><i class="fas fa-utensil-spoon"></i> ${item.name}</strong><br>تعداد: ${item.quantity}</div><div class="cart-item-actions"><button class="cart-inc" data-id="${item.id}">+</button><button class="cart-dec" data-id="${item.id}">-</button><button class="cart-remove" data-id="${item.id}"><i class="fas fa-trash"></i></button></div></div>`; });
         cartItemsList.innerHTML = html;
         document.querySelectorAll('.cart-inc').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); changeQty(id, 1); }));
         document.querySelectorAll('.cart-dec').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); changeQty(id, -1); }));
         document.querySelectorAll('.cart-remove').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); cart = cart.filter(i => i.id !== id); renderCart(); showToast("حذف شد"); }));
-        updateCartBadge(); saveCart();
+        updateCartBadge(); 
+        saveCart();
     }
     function changeQty(id, delta) { let idx = cart.findIndex(i => i.id === id); if(idx !== -1) { let newQty = cart[idx].quantity + delta; if(newQty <= 0) cart.splice(idx,1); else cart[idx].quantity = newQty; renderCart(); showToast("سبد بروز شد"); } }
     function addToCart(product) { let existing = cart.find(i => i.id === product.id); if(existing) { existing.quantity++; showToast(`${product.name} +۱ شد`); } else { cart.push({ id: product.id, name: product.name, quantity: 1 }); showToast(`${product.name} به سبد اضافه شد 🎉`); } renderCart(); }
@@ -697,25 +738,48 @@
     }
 
     function renderPages() {
-        const homeGrid = document.getElementById('foodGridHome');
+        const featuredGrid = document.getElementById('featuredGrid');
+        const persianHomeGrid = document.getElementById('persianHomeGrid');
         const fastGrid = document.getElementById('fastfoodGrid');
         const fingerGrid = document.getElementById('fingerGrid');
-        if(homeGrid) homeGrid.innerHTML = '';
+        const persianGrid = document.getElementById('persianGrid');
+        const cakeGrid = document.getElementById('cakeGrid');
+        const sweetGrid = document.getElementById('sweetGrid');
+        const traditionalGrid = document.getElementById('traditionalGrid');
+        
+        if(featuredGrid) featuredGrid.innerHTML = '';
+        if(persianHomeGrid) persianHomeGrid.innerHTML = '';
         if(fastGrid) fastGrid.innerHTML = '';
         if(fingerGrid) fingerGrid.innerHTML = '';
+        if(persianGrid) persianGrid.innerHTML = '';
+        if(cakeGrid) cakeGrid.innerHTML = '';
+        if(sweetGrid) sweetGrid.innerHTML = '';
+        if(traditionalGrid) traditionalGrid.innerHTML = '';
         
         foods.forEach(food => {
             const card = createFoodCard(food);
-            if(food.tag === 'فست فود') {
+            
+            if(food.isSpecial && featuredGrid) {
+                featuredGrid.appendChild(createFoodCard(food));
+            }
+            
+            if(food.tag === 'غذای مجلسی') {
+                if(persianHomeGrid) persianHomeGrid.appendChild(createFoodCard(food));
+                if(persianGrid) persianGrid.appendChild(createFoodCard(food));
+            } else if(food.tag === 'فست فود') {
                 if(fastGrid) fastGrid.appendChild(card.cloneNode(true));
-                if(homeGrid) homeGrid.appendChild(createFoodCard(food));
             } else if(food.tag === 'فینگر فود') {
                 if(fingerGrid) fingerGrid.appendChild(card.cloneNode(true));
-                if(homeGrid) homeGrid.appendChild(createFoodCard(food));
+            } else if(food.tag === 'کیک') {
+                if(cakeGrid) cakeGrid.appendChild(card.cloneNode(true));
+            } else if(food.tag === 'شیرینی‌جات') {
+                if(sweetGrid) sweetGrid.appendChild(card.cloneNode(true));
+            } else if(food.tag === 'غذای سنتی') {
+                if(traditionalGrid) traditionalGrid.appendChild(card.cloneNode(true));
             }
         });
         
-        document.querySelectorAll('#fastfoodGrid .food-card, #fingerGrid .food-card').forEach(cardEl => {
+        document.querySelectorAll('#fastfoodGrid .food-card, #fingerGrid .food-card, #persianGrid .food-card, #featuredGrid .food-card, #persianHomeGrid .food-card, #cakeGrid .food-card, #sweetGrid .food-card, #traditionalGrid .food-card').forEach(cardEl => {
             const nameEl = cardEl.querySelector('h3');
             if(nameEl) {
                 const foodItem = foods.find(f => nameEl.innerText.includes(f.name));
@@ -758,4 +822,4 @@
     loadCart();
 </script>
 </body>
-                                                                                     </html>
+                                                                                                 </html>
