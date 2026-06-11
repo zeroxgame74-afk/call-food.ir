@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>کالفود | call food.ir</title>
-    <!-- Font Awesome Icons (v6 free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Vazirmatn Bold style -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -63,25 +61,20 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -1px;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 10px;
         }
 
         .logo i {
             background: none;
-            background-clip: unset;
-            -webkit-background-clip: unset;
             color: #d97a3c;
             font-size: 1.9rem;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .nav-links {
             display: flex;
-            gap: 1.2rem;
+            gap: 1rem;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -91,7 +84,7 @@
             font-weight: 800;
             color: #4b3b2f;
             transition: 0.2s;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -107,10 +100,6 @@
             font-size: 1.8rem;
             color: #c25d2b;
             cursor: pointer;
-            transition: transform 0.1s;
-        }
-        .cart-icon i {
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
         }
         .cart-icon:hover {
             transform: scale(1.05);
@@ -130,7 +119,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .hero {
@@ -148,30 +136,25 @@
             background: linear-gradient(120deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
             border-radius: 0 0 48px 48px;
             width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
             padding: 2rem;
+            display: flex;
+            justify-content: center;
         }
         .call-message-box {
             background: rgba(0,0,0,0.75);
             backdrop-filter: blur(10px);
             padding: 1.2rem 2rem;
             border-radius: 60px;
-            border: 1px solid rgba(255,215,170,0.6);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            text-align: center;
         }
         .call-message-box p {
             color: #fff1e0;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
         }
         .call-message-box i {
             color: #ffb347;
             margin-left: 10px;
-            font-size: 1.5rem;
         }
         .phone-number {
             direction: ltr;
@@ -179,13 +162,11 @@
             background: #e67e22;
             padding: 6px 18px;
             border-radius: 40px;
-            margin-right: 12px;
             color: white;
-            font-size: 1.2rem;
         }
 
         .menu-section {
-            max-width: 600px;
+            max-width: 700px;
             margin: 4rem auto;
             padding: 0 1.5rem;
         }
@@ -193,8 +174,8 @@
             text-align: center;
             font-size: 2.2rem;
             font-weight: 900;
-            position: relative;
             margin-bottom: 2.5rem;
+            position: relative;
         }
         .section-title:after {
             content: "";
@@ -212,19 +193,17 @@
             overflow: hidden;
             box-shadow: 0 25px 40px -12px rgba(0,0,0,0.25);
             transition: all 0.3s ease;
-            border: 1px solid rgba(230,126,34,0.3);
+            margin-bottom: 2rem;
         }
         .food-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 45px -12px rgba(0,0,0,0.3);
+            transform: translateY(-6px);
         }
         .card-img {
-            height: 320px;
+            height: 280px;
             background-size: cover;
             background-position: center;
             position: relative;
         }
-        /* تگ غذایی کنار عکس */
         .food-tag {
             position: absolute;
             top: 18px;
@@ -235,7 +214,6 @@
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 800;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
             display: flex;
             align-items: center;
             gap: 6px;
@@ -250,47 +228,71 @@
             padding: 6px 16px;
             border-radius: 50px;
             font-size: 0.75rem;
-            font-weight: 800;
-            box-shadow: 0 3px 8px black;
         }
         .card-info {
             padding: 1.5rem;
         }
         .card-info h3 {
-            font-size: 1.9rem;
+            font-size: 1.7rem;
             font-weight: 900;
             margin-bottom: 0.5rem;
         }
         .desc {
             color: #5e4b3a;
-            font-size: 1rem;
-            font-weight: 700;
-            margin: 0.5rem 0 1.2rem;
+            font-size: 0.95rem;
+            margin: 0.5rem 0 1rem;
             line-height: 1.5;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
         }
         .add-to-cart {
             background: #2e241f;
             color: white;
             border: none;
-            padding: 14px 24px;
+            padding: 12px 20px;
             border-radius: 60px;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            width: 100%;
+            gap: 10px;
+            flex: 2;
             cursor: pointer;
-            transition: 0.25s;
             font-family: 'Vazirmatn', sans-serif;
         }
-        .add-to-cart i {
-            font-size: 1.3rem;
+        .detail-btn {
+            background: #f0e2d4;
+            color: #4b3b2f;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            cursor: pointer;
+            transition: 0.2s;
         }
-        .add-to-cart:hover {
+        .detail-btn:hover {
             background: #e67e22;
-            transform: scale(0.98);
+            color: white;
+        }
+        .detail-box {
+            background: #fff8f0;
+            border-radius: 28px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-right: 5px solid #e67e22;
+            display: none;
+        }
+        .detail-box.show {
+            display: block;
         }
 
         .support-section {
@@ -304,7 +306,6 @@
             padding: 2rem;
             text-align: center;
             box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
-            border: 1px solid #ffd9b5;
         }
         .support-box h3 {
             font-size: 1.8rem;
@@ -320,7 +321,7 @@
             padding: 1rem;
             border-radius: 70px;
             margin: 1rem 0;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
         .support-item i {
             font-size: 1.8rem;
@@ -336,7 +337,7 @@
             background: #fffaf5;
             box-shadow: -8px 0 30px rgba(0,0,0,0.2);
             z-index: 2000;
-            transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: left 0.3s;
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
@@ -352,10 +353,6 @@
             border-bottom: 3px solid #f0e2d4;
             padding-bottom: 1rem;
         }
-        .cart-header h2 {
-            font-size: 1.6rem;
-            font-weight: 900;
-        }
         .close-cart {
             background: none;
             border: none;
@@ -367,9 +364,6 @@
             flex: 1;
             overflow-y: auto;
             margin: 1rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
         }
         .cart-item {
             display: flex;
@@ -377,12 +371,7 @@
             background: white;
             padding: 0.8rem;
             border-radius: 28px;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        .cart-item-info h4 {
-            font-size: 1rem;
-            font-weight: 800;
+            margin-bottom: 0.8rem;
         }
         .cart-item-actions button {
             background: #f0e2d4;
@@ -391,7 +380,6 @@
             height: 32px;
             border-radius: 50%;
             font-weight: bold;
-            font-size: 1.1rem;
             cursor: pointer;
             margin: 0 2px;
         }
@@ -412,30 +400,27 @@
             border-radius: 60px;
             color: white;
             font-weight: 900;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
         }
         .empty-cart {
             text-align: center;
             color: #ad8b70;
-            margin-top: 2rem;
-            font-weight: 700;
+            padding: 2rem;
         }
         .footer {
             background: #2b211c;
             color: #ffe0cd;
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 2rem;
             margin-top: 4rem;
             border-radius: 40px 40px 0 0;
-            font-weight: 800;
         }
-        @media (max-width: 850px) {
+        @media (max-width: 800px) {
             .navbar { flex-direction: column; gap: 15px; }
-            .nav-links { justify-content: center; gap: 1rem; }
+            .nav-links { justify-content: center; }
             .cart-sidebar { width: 100%; left: -100%; }
-            .support-item { font-size: 0.9rem; flex-wrap: wrap; }
+            .btn-group { flex-direction: column; }
         }
         .toast-msg {
             position: fixed;
@@ -443,14 +428,13 @@
             left: 25px;
             background: #2e241f;
             color: #ffefcf;
-            padding: 12px 24px;
+            padding: 14px 25px;
             border-radius: 60px;
-            font-weight: 800;
             z-index: 2100;
-            box-shadow: 0 6px 16px black;
             opacity: 0;
-            transition: 0.2s;
+            transition: 0.3s;
             pointer-events: none;
+            font-weight: 800;
         }
         .page-content {
             display: none;
@@ -458,32 +442,24 @@
         .page-content.active-page {
             display: block;
         }
-        .food-grid-simple {
+        .foods-grid {
             display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .temp-message {
-            text-align: center;
-            padding: 3rem;
-            background: white;
-            border-radius: 48px;
-            color: #a17248;
-            font-size: 1.2rem;
+            flex-direction: column;
+            gap: 2rem;
         }
     </style>
 </head>
 <body>
 
 <div class="navbar">
-    <div class="logo">
-        <i class="fas fa-utensils"></i> کالفود
-    </div>
+    <div class="logo"><i class="fas fa-utensils"></i> کالفود</div>
     <div class="nav-links">
         <a href="#" data-page="home"><i class="fas fa-home"></i> خانه</a>
         <a href="#" data-page="persian"><i class="fas fa-utensils"></i> غذای مجلسی</a>
         <a href="#" data-page="cake"><i class="fas fa-birthday-cake"></i> کیک</a>
         <a href="#" data-page="fastfood"><i class="fas fa-burger"></i> فست فود</a>
+        <a href="#" data-page="finger"><i class="fas fa-hand-peace"></i> فینگر فود</a>
+        <a href="#" data-page="traditional"><i class="fas fa-mosque"></i> غذای سنتی</a>
         <a href="#" data-page="sweet"><i class="fas fa-cake-candles"></i> شیرینی‌جات</a>
         <a href="#" data-page="support"><i class="fas fa-headset"></i> پشتیبانی</a>
         <div class="cart-icon" id="cartIcon">
@@ -493,183 +469,168 @@
     </div>
 </div>
 
-<!-- صفحه خانه (بورک با تگ فست فود) -->
+<!-- صفحات -->
 <div id="homePage" class="page-content active-page">
-    <div class="hero">
-        <div class="hero-overlay">
-            <div class="call-message-box">
-                <p><i class="fas fa-comment-dots"></i> کالفود میگوید: برای خرید با این شماره تماس بگیرید</p>
-                <p><i class="fas fa-phone-volume"></i> <span class="phone-number" dir="ltr">+98 990 268 4303</span></p>
-            </div>
-        </div>
-    </div>
-    <div class="menu-section" id="menu">
-        <div class="section-title"><i class="fas fa-crown"></i> غذای ویژه امروز</div>
-        <div id="foodGrid"></div>
-    </div>
+    <div class="hero"><div class="hero-overlay"><div class="call-message-box"><p><i class="fas fa-comment-dots"></i> کالفود میگوید: برای خرید با این شماره تماس بگیرید</p><p><i class="fas fa-phone-volume"></i> <span class="phone-number">+98 990 268 4303</span></p></div></div></div>
+    <div class="menu-section"><div class="section-title"><i class="fas fa-crown"></i> غذای ویژه امروز</div><div id="foodGridHome"></div></div>
 </div>
 
-<!-- صفحه غذای مجلسی -->
-<div id="persianPage" class="page-content">
-    <div class="menu-section">
-        <div class="section-title"><i class="fas fa-utensils"></i> غذای مجلسی</div>
-        <div class="temp-message">
-            <i class="fas fa-info-circle"></i> به زودی غذاهای مجلسی اضافه می‌شوند...
-        </div>
-    </div>
-</div>
+<div id="fastfoodPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-burger"></i> فست فود</div><div id="fastfoodGrid" class="foods-grid"></div></div></div>
+<div id="fingerPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-hand-peace"></i> فینگر فود</div><div id="fingerGrid" class="foods-grid"></div></div></div>
+<div id="persianPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-utensils"></i> غذای مجلسی</div><div class="temp-message" style="text-align:center;padding:3rem;">به زودی غذاهای مجلسی اضافه می‌شوند...</div></div></div>
+<div id="cakePage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-birthday-cake"></i> کیک</div><div class="temp-message" style="text-align:center;padding:3rem;">به زودی کیک‌های خوشمزه اضافه می‌شوند...</div></div></div>
+<div id="traditionalPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-mosque"></i> غذای سنتی</div><div class="temp-message" style="text-align:center;padding:3rem;">به زودی غذاهای سنتی اضافه می‌شوند...</div></div></div>
+<div id="sweetPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌جات</div><div class="temp-message" style="text-align:center;padding:3rem;">به زودی شیرینی‌های تازه اضافه می‌شوند...</div></div></div>
+<div id="supportPage" class="page-content"><div class="support-section"><div class="support-box"><h3><i class="fas fa-headset"></i> پشتیبانی کالفود</h3><div class="support-item"><i class="fas fa-headset"></i> <span>پشتیبانی : <strong>+989157711094</strong></span></div><div class="support-item"><i class="fas fa-laptop-code"></i> <span>سازنده سایت : محمد حسین صنعتی</span></div></div></div></div>
 
-<!-- صفحه کیک -->
-<div id="cakePage" class="page-content">
-    <div class="menu-section">
-        <div class="section-title"><i class="fas fa-birthday-cake"></i> کیک‌های خاص</div>
-        <div class="temp-message">
-            <i class="fas fa-info-circle"></i> به زودی کیک‌های خوشمزه اضافه می‌شوند...
-        </div>
-    </div>
-</div>
-
-<!-- صفحه فست فود -->
-<div id="fastfoodPage" class="page-content">
-    <div class="menu-section">
-        <div class="section-title"><i class="fas fa-burger"></i> فست فود</div>
-        <div class="temp-message">
-            <i class="fas fa-info-circle"></i> به زودی فست فودهای ویژه اضافه می‌شوند...
-        </div>
-    </div>
-</div>
-
-<!-- صفحه شیرینی‌جات -->
-<div id="sweetPage" class="page-content">
-    <div class="menu-section">
-        <div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌جات</div>
-        <div class="temp-message">
-            <i class="fas fa-info-circle"></i> به زودی شیرینی‌های تازه اضافه می‌شوند...
-        </div>
-    </div>
-</div>
-
-<!-- صفحه پشتیبانی -->
-<div id="supportPage" class="page-content">
-    <div class="support-section">
-        <div class="support-box">
-            <h3><i class="fas fa-headset"></i> پشتیبانی کالفود</h3>
-            <div class="support-item">
-                <i class="fas fa-headset"></i> <span>پشتیبانی : <strong dir="ltr">+989157711094</strong></span>
-            </div>
-            <div class="support-item">
-                <i class="fas fa-laptop-code"></i> <span>سازنده سایت : محمد حسین صنعتی</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- سبد خرید -->
 <div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-        <h2><i class="fas fa-basket-shopping"></i> سبد خرید</h2>
-        <button class="close-cart" id="closeCartBtn"><i class="fas fa-times-circle"></i></button>
-    </div>
-    <div class="cart-items" id="cartItemsList"><div class="empty-cart">سبد خالیه!</div></div>
+    <div class="cart-header"><h2><i class="fas fa-basket-shopping"></i> سبد خرید</h2><button class="close-cart" id="closeCartBtn"><i class="fas fa-times-circle"></i></button></div>
+    <div class="cart-items" id="cartItemsList"><div class="empty-cart">سبدت خالیه پرش کن! 🍔</div></div>
     <div class="cart-total"><span><i class="fas fa-wallet"></i> مجموع سفارش:</span><span id="cartTotalPrice">۰ تومان (تماس تلفنی)</span></div>
     <button class="checkout-btn" id="checkoutBtn"><i class="fas fa-check-circle"></i> پرداخت ثبت نهایی</button>
 </div>
 
-<div class="toast-msg" id="toastMsg"><i class="fas fa-heart"></i> به سبد اضافه شد</div>
-
-<footer class="footer">
-    <p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p>
-    <p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p>
-</footer>
+<div class="toast-msg" id="toastMsg"></div>
+<footer class="footer"><p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p><p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p></footer>
 
 <script>
-    // محصول با تگ فست فود
-    const foodData = [{ 
-        id: 1, 
-        name: "بورک مرغ و ژامبون پنیری", 
-        desc: "مرغ ژامبون و خمیر با کیفیت", 
-        img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg",
-        tag: "فست فود",
-        tagIcon: "fa-burger"
-    }];
-    
+    // دیتای غذاها
+    const foods = [
+        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده. طعمی بی‌نظیر و عالی برای یک وعده سریع و لذیذ!", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger" },
+        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی!", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace" }
+    ];
+
     let cart = [];
-    const foodGrid = document.getElementById('foodGrid');
     const cartSidebar = document.getElementById('cartSidebar');
     const cartIcon = document.getElementById('cartIcon');
     const closeCartBtn = document.getElementById('closeCartBtn');
     const cartItemsList = document.getElementById('cartItemsList');
-    const cartTotalPriceSpan = document.getElementById('cartTotalPrice');
     const cartCountSpan = document.getElementById('cartCount');
     const checkoutBtn = document.getElementById('checkoutBtn');
     const toastMsgDiv = document.getElementById('toastMsg');
     let toastTimeout;
 
-    function showToast(msg) { toastMsgDiv.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`; toastMsgDiv.style.opacity = '1'; if(toastTimeout) clearTimeout(toastTimeout); toastTimeout = setTimeout(() => toastMsgDiv.style.opacity = '0', 2000); }
+    function showToast(msg, isSuccess = true) {
+        toastMsgDiv.innerHTML = `<i class="fas ${isSuccess ? 'fa-check-circle' : 'fa-info-circle'}"></i> ${msg}`;
+        toastMsgDiv.style.opacity = '1';
+        if(toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => toastMsgDiv.style.opacity = '0', 3000);
+    }
+
     function updateCartBadge() { const total = cart.reduce((a,i)=> a + i.quantity, 0); cartCountSpan.innerText = total; }
     function saveCart() { localStorage.setItem('callfoodCart', JSON.stringify(cart)); }
     function loadCart() { const saved = localStorage.getItem('callfoodCart'); if(saved) try { cart = JSON.parse(saved); } catch(e){} renderCart(); }
 
     function renderCart() {
-        if(cart.length === 0) { cartItemsList.innerHTML = `<div class="empty-cart">سبد خرید خالی است! بورک ما رو امتحان کن 🌯</div>`; cartTotalPriceSpan.innerText = "۰ تومان (تماس تلفنی)"; updateCartBadge(); saveCart(); return; }
+        if(cart.length === 0) { cartItemsList.innerHTML = `<div class="empty-cart">سبدت خالیه پرش کن! 🍔</div>`; updateCartBadge(); saveCart(); return; }
         let html = '';
-        cart.forEach(item => { html += `<div class="cart-item" data-id="${item.id}"><div class="cart-item-info"><h4><i class="fas fa-drumstick-bite"></i> ${item.name}</h4><span>تعداد: ${item.quantity}</span></div><div class="cart-item-actions"><button class="cart-inc" data-id="${item.id}">+</button><button class="cart-dec" data-id="${item.id}">-</button><button class="cart-remove" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button></div></div>`; });
-        cartItemsList.innerHTML = html; cartTotalPriceSpan.innerText = "۰ تومان (تماس تلفنی)";
+        cart.forEach(item => { html += `<div class="cart-item"><div><strong><i class="fas fa-utensil-spoon"></i> ${item.name}</strong><br>تعداد: ${item.quantity}</div><div class="cart-item-actions"><button class="cart-inc" data-id="${item.id}">+</button><button class="cart-dec" data-id="${item.id}">-</button><button class="cart-remove" data-id="${item.id}"><i class="fas fa-trash"></i></button></div></div>`; });
+        cartItemsList.innerHTML = html;
         document.querySelectorAll('.cart-inc').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); changeQty(id, 1); }));
         document.querySelectorAll('.cart-dec').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); changeQty(id, -1); }));
         document.querySelectorAll('.cart-remove').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); cart = cart.filter(i => i.id !== id); renderCart(); showToast("حذف شد"); }));
         updateCartBadge(); saveCart();
     }
-    function changeQty(id, delta) { let idx = cart.findIndex(i => i.id === id); if(idx !== -1) { let newQty = cart[idx].quantity + delta; if(newQty <= 0) cart.splice(idx,1); else cart[idx].quantity = newQty; renderCart(); showToast("بروز شد"); } }
-    function addToCart(product) { let existing = cart.find(i => i.id === product.id); if(existing) { existing.quantity++; showToast(`${product.name} +۱`); } else { cart.push({ id: product.id, name: product.name, quantity: 1 }); showToast(`${product.name} به سبد اضافه شد`); } renderCart(); }
+    function changeQty(id, delta) { let idx = cart.findIndex(i => i.id === id); if(idx !== -1) { let newQty = cart[idx].quantity + delta; if(newQty <= 0) cart.splice(idx,1); else cart[idx].quantity = newQty; renderCart(); showToast("سبد بروز شد"); } }
+    function addToCart(product) { let existing = cart.find(i => i.id === product.id); if(existing) { existing.quantity++; showToast(`${product.name} +۱ شد`); } else { cart.push({ id: product.id, name: product.name, quantity: 1 }); showToast(`${product.name} به سبد اضافه شد 🎉`); } renderCart(); }
 
-    // رندر کارت با تگ فست فود
-    function renderSingleCard() {
-        const food = foodData[0];
-        foodGrid.innerHTML = `
-            <div class="food-card">
-                <div class="card-img" style="background-image: url('${food.img}');">
-                    <div class="food-tag"><i class="fas ${food.tagIcon}"></i> ${food.tag}</div>
-                    <div class="badge-special"><i class="fas fa-fire"></i> ویژه کالفود</div>
+    function createFoodCard(food) {
+        const card = document.createElement('div');
+        card.className = 'food-card';
+        card.innerHTML = `
+            <div class="card-img" style="background-image: url('${food.img}');">
+                <div class="food-tag"><i class="fas ${food.tagIcon}"></i> ${food.tag}</div>
+                <div class="badge-special"><i class="fas fa-star"></i> ویژه</div>
+            </div>
+            <div class="card-info">
+                <h3><i class="fas fa-egg"></i> ${food.name}</h3>
+                <div class="desc">${food.desc}</div>
+                <div class="btn-group">
+                    <button class="add-to-cart" data-id="${food.id}"><i class="fas fa-cart-plus"></i> افزودن به سبد</button>
+                    <button class="detail-btn" data-id="${food.id}"><i class="fas fa-info-circle"></i> توضیحات بیشتر</button>
                 </div>
-                <div class="card-info">
-                    <h3><i class="fas fa-egg"></i> ${food.name}</h3>
-                    <div class="desc"><i class="fas fa-info-circle"></i> ${food.desc}</div>
-                    <button class="add-to-cart" data-id="${food.id}"><i class="fas fa-cart-plus"></i> افزودن به سبد خرید</button>
-                </div>
+                <div class="detail-box" id="detail-${food.id}"><i class="fas fa-align-right"></i> ${food.longDesc}</div>
             </div>
         `;
-        document.querySelector('.add-to-cart')?.addEventListener('click', () => addToCart(food));
+        const addBtn = card.querySelector('.add-to-cart');
+        addBtn.addEventListener('click', () => addToCart(food));
+        const detailBtn = card.querySelector('.detail-btn');
+        const detailBox = card.querySelector(`.detail-box`);
+        detailBtn.addEventListener('click', () => { detailBox.classList.toggle('show'); });
+        return card;
+    }
+
+    // پر کردن صفحات بر اساس تگ
+    function renderPages() {
+        document.getElementById('foodGridHome').innerHTML = '';
+        document.getElementById('fastfoodGrid').innerHTML = '';
+        document.getElementById('fingerGrid').innerHTML = '';
+        
+        foods.forEach(food => {
+            const card = createFoodCard(food);
+            if(food.tag === 'فست فود') {
+                document.getElementById('fastfoodGrid').appendChild(card.cloneNode(true));
+                document.getElementById('foodGridHome').appendChild(createFoodCard(food));
+            } else if(food.tag === 'فینگر فود') {
+                document.getElementById('fingerGrid').appendChild(card.cloneNode(true));
+                document.getElementById('foodGridHome').appendChild(createFoodCard(food));
+            }
+        });
+        // ری ادد ایونت برای کارت‌های کلون شده
+        reattachEvents();
     }
     
+    function reattachEvents() {
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            const id = parseInt(btn.dataset.id);
+            const food = foods.find(f => f.id === id);
+            if(food) btn.replaceWith(btn.cloneNode(true));
+        });
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            const id = parseInt(btn.dataset.id);
+            const food = foods.find(f => f.id === id);
+            if(food) btn.addEventListener('click', () => addToCart(food));
+        });
+        document.querySelectorAll('.detail-btn').forEach(btn => {
+            const id = parseInt(btn.dataset.id);
+            const detailBox = document.getElementById(`detail-${id}`);
+            if(detailBox) btn.addEventListener('click', () => detailBox.classList.toggle('show'));
+        });
+    }
+
     // صفحه بندی
     const pages = {
-        home: document.getElementById('homePage'),
-        persian: document.getElementById('persianPage'),
-        cake: document.getElementById('cakePage'),
-        fastfood: document.getElementById('fastfoodPage'),
-        sweet: document.getElementById('sweetPage'),
-        support: document.getElementById('supportPage')
+        home: document.getElementById('homePage'), fastfood: document.getElementById('fastfoodPage'),
+        finger: document.getElementById('fingerPage'), persian: document.getElementById('persianPage'),
+        cake: document.getElementById('cakePage'), traditional: document.getElementById('traditionalPage'),
+        sweet: document.getElementById('sweetPage'), support: document.getElementById('supportPage')
     };
-    document.querySelectorAll('[data-page]').forEach(link => { 
-        link.addEventListener('click', (e) => { 
-            e.preventDefault(); 
-            let page = link.dataset.page; 
-            Object.values(pages).forEach(p => p.classList.remove('active-page')); 
-            if(pages[page]) pages[page].classList.add('active-page'); 
-            window.scrollTo({ top: 0, behavior: 'smooth' }); 
-        }); 
+    document.querySelectorAll('[data-page]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            let page = link.dataset.page;
+            Object.values(pages).forEach(p => p.classList.remove('active-page'));
+            if(pages[page]) pages[page].classList.add('active-page');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     });
-    
+
     function openSidebar() { cartSidebar.classList.add('open'); }
     function closeSidebar() { cartSidebar.classList.remove('open'); }
-    cartIcon.addEventListener('click', openSidebar); 
+    cartIcon.addEventListener('click', openSidebar);
     closeCartBtn.addEventListener('click', closeSidebar);
     document.addEventListener('click', (e) => { if(cartSidebar.classList.contains('open') && !cartSidebar.contains(e.target) && !cartIcon.contains(e.target)) closeSidebar(); });
-    checkoutBtn.addEventListener('click', () => { if(cart.length === 0) { showToast("سبد خالی!"); return; } alert(`سفارش شما ثبت نهایی شد!\nتماس بگیرید: +98 990 268 4303`); cart = []; renderCart(); closeSidebar(); showToast("سفارش ثبت نهایی شد!"); });
     
-    renderSingleCard(); 
+    checkoutBtn.addEventListener('click', () => {
+        if(cart.length === 0) { showToast("سبد خالیه! اول غذا انتخاب کن 😋", false); return; }
+        showToast("سفارش شما با موفقیت ثبت نهایی شد! ✅", true);
+        cart = [];
+        renderCart();
+        closeSidebar();
+    });
+
+    renderPages();
     loadCart();
 </script>
 </body>
-    </html>
+</html>
