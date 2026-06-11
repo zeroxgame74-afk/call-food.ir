@@ -176,6 +176,10 @@
             font-weight: 900;
             margin-bottom: 2rem;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .section-title:after {
             content: "";
@@ -185,6 +189,8 @@
             display: block;
             margin: 12px auto 0;
             border-radius: 4px;
+            position: absolute;
+            bottom: -15px;
         }
         .sub-section-title {
             text-align: center;
@@ -315,8 +321,8 @@
             display: none;
             font-weight: 700;
             font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
+            line-height: 1.7;
             color: #3a2a1f;
         }
         .detail-box.show {
@@ -587,7 +593,7 @@
     <div class="hero"><div class="hero-overlay"><div class="call-message-box"><p><i class="fas fa-comment-dots"></i> کالفود میگوید: برای خرید با این شماره تماس بگیرید</p><p><i class="fas fa-phone-volume"></i> <span class="phone-number">+98 990 268 4303</span></p></div></div></div>
     
     <div class="menu-section">
-        <div class="section-title"><i class="fas fa-crown"></i> 🍽️ غذاهای ویژه و پرطرفدار کالفود!</div>
+        <div class="section-title"><i class="fas fa-crown"></i> غذاهای ویژه و پرطرفدار کالفود!</div>
         <div id="featuredGrid"></div>
         
         <div class="sub-section-title">
@@ -630,17 +636,18 @@
 
 <script>
     const foods = [
-        { id: 6, name: "کیک هل گلاب", desc: "کیک عطرآگین هل و گلاب، بافت نرم و لطیف", longDesc: "کیک عطرآگین هل و گلاب، بافت نرم و لطیف با طعمی به‌یادماندنی! ترکیب هل معطر با گلاب اصیل، تجربه‌ای دلنشین از شیرینی سنتی ایرانی. همراه با چای عصر، بی‌نظیره. مناسب برای پذیرایی از مهمان‌های خاص.", img: "https://uploadkon.ir/uploads/644711_26IMG-20260612-003514.jpg", tag: "کیک", tagIcon: "fa-birthday-cake", isSpecial: true, createdAt: new Date(2025, 5, 13) },
-        { id: 5, name: "نبات های شیری گردویی", desc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه", longDesc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه! ترکیبی بی‌نظیر از شیرینی لطیف و تردی گردو، مناسب برای عصرانه‌های خاص و مهمانی‌های لوکس. بدون هیچ افزودنی مصنوعی، فقط لذت خالص. ماندگاری بالا و طعم به‌یادماندنی.", img: "https://uploadkon.ir/uploads/212511_26IMG-20260612-003157.jpg", tag: "شیرینی‌جات", tagIcon: "fa-cake-candles", isSpecial: true, createdAt: new Date(2025, 5, 12) },
-        { id: 4, name: "مرغ بریان", desc: "مرغ بریان بدون برنج، طعم اصیل و مجلسی", longDesc: "غذای اصیل مرغ بریان، بدون برنج و با طعمی بی‌نظیر! مرغ بریان با ادویه‌های مخصوص، زعفران و کره، ترد و آبدار. مناسب برای مهمانی‌های خاص و عصرهای به‌یادماندنی. همراه با سبزیجات تازه و نان بریان شده سرو میشود.", img: "https://cdn.imgurl.ir/uploads/d404509_IMG_20260612_000809.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: false, createdAt: new Date(2025, 5, 11) },
-        { id: 3, name: "اچما مرغ قارچ پنیری", desc: "اچمای لذیذ با طعم مرغ قارچ پنیری", longDesc: "اچمای خوشمزه با مرغ تازه، قارچ عطرآگین و پنیر آب شده، ترکیبی بی‌نظیر برای یک عصرانه به یادماندنی! همراه با سس مخصوص و سبزیجات معطر.", img: "https://cdn.imgurl.ir/uploads/h6527_IMG_20260611_230627.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: false, createdAt: new Date(2025, 5, 10) },
-        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی! ترکیبی از پپرونی، قارچ، فلفل دلمه و زیتون.", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: false, createdAt: new Date(2025, 5, 9) },
-        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده. طعمی بی‌نظیر و عالی برای یک وعده سریع و لذیذ! همراه با سس مخصوص و سبزیجات تازه.", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: false, createdAt: new Date(2025, 5, 5) }
+        { id: 6, name: "کیک هل گلاب", desc: "کیک عطرآگین هل و گلاب، بافت نرم و لطیف", longDesc: "کیک عطرآگین هل و گلاب، بافت نرم و لطیف با طعمی به‌یادماندنی! ترکیب هل معطر با گلاب اصیل، تجربه‌ای دلنشین از شیرینی سنتی ایرانی. همراه با چای عصر، بی‌نظیره. مناسب برای پذیرایی از مهمان‌های خاص. این کیک بدون هیچ افزودنی مصنوعی تهیه شده و عطر هل و گلاب تا ساعتها در خاطره می‌ماند.", img: "https://uploadkon.ir/uploads/644711_26IMG-20260612-003514.jpg", tag: "کیک", tagIcon: "fa-birthday-cake", isSpecial: true, createdAt: new Date(2025, 5, 13) },
+        { id: 5, name: "نبات های شیری گردویی", desc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه", longDesc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه! ترکیبی بی‌نظیر از شیرینی لطیف و تردی گردو، مناسب برای عصرانه‌های خاص و مهمانی‌های لوکس. بدون هیچ افزودنی مصنوعی، فقط لذت خالص. ماندگاری بالا و طعم به‌یادماندنی. این شیرینی با عشق و به روش کاملاً سنتی تهیه شده و تجربه‌ای متفاوت از شیرینی ایرانی را به شما هدیه میدهد.", img: "https://uploadkon.ir/uploads/212511_26IMG-20260612-003157.jpg", tag: "شیرینی‌جات", tagIcon: "fa-cake-candles", isSpecial: true, createdAt: new Date(2025, 5, 12) },
+        { id: 4, name: "مرغ بریان", desc: "مرغ بریان بدون برنج، طعم اصیل و مجلسی", longDesc: "غذای اصیل مرغ بریان، بدون برنج و با طعمی بی‌نظیر! مرغ بریان با ادویه‌های مخصوص، زعفران و کره، ترد و آبدار. مناسب برای مهمانی‌های خاص و عصرهای به‌یادماندنی. همراه با سبزیجات تازه و نان بریان شده سرو میشود. این غذا یکی از قدیمی‌ترین و اصیل‌ترین غذاهای ایرانی است که طعمی کاملاً متفاوت با سایر غذاهای مرغ دارد.", img: "https://cdn.imgurl.ir/uploads/d404509_IMG_20260612_000809.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: false, createdAt: new Date(2025, 5, 11) },
+        { id: 3, name: "اچما مرغ قارچ پنیری", desc: "اچمای لذیذ با طعم مرغ قارچ پنیری", longDesc: "اچمای خوشمزه با مرغ تازه، قارچ عطرآگین و پنیر آب شده، ترکیبی بی‌نظیر برای یک عصرانه به یادماندنی! همراه با سس مخصوص و سبزیجات معطر. اچما یک فینگر فود محبوب و خوشمزه است که هم برای مهمانی‌ها و هم برای یک عصرانه سریع گزینه‌ای عالی محسوب میشود. ترکیب پنیر و قارچ در کنار مرغ آبدار، طعمی فراموش‌نشدنی می‌سازد.", img: "https://cdn.imgurl.ir/uploads/h6527_IMG_20260611_230627.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: false, createdAt: new Date(2025, 5, 10) },
+        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی! ترکیبی از پپرونی، قارچ، فلفل دلمه و زیتون. این پیتزاهای کوچک و خوشمزه برای مهمانی‌های دوستانه و دورهمی‌های خودمانی انتخابی ایده‌آل هستند. هر لقمه پر از طعم و لذت!", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: false, createdAt: new Date(2025, 5, 9) },
+        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده. طعمی بی‌نظیر و عالی برای یک وعده سریع و لذیذ! همراه با سس مخصوص و سبزیجات تازه. بورک یک غذای محبوب ترکی‌است که در اینجا با مرغ و ژامبون پنیری بازسازی شده تا طعمی متفاوت و لذیذ را تجربه کنید. بافت ترد بیرون و بافت نرم داخل، این بورک را به یک انتخاب عالی تبدیل کرده است.", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: false, createdAt: new Date(2025, 5, 5) }
     ];
 
     foods.sort((a, b) => b.createdAt - a.createdAt);
 
     let cart = [];
+    let processing = false;
     const cartSidebar = document.getElementById('cartSidebar');
     const cartIcon = document.getElementById('cartIcon');
     const closeCartBtn = document.getElementById('closeCartBtn');
@@ -700,16 +707,40 @@
         saveCart();
     }
     function changeQty(id, delta) { let idx = cart.findIndex(i => i.id === id); if(idx !== -1) { let newQty = cart[idx].quantity + delta; if(newQty <= 0) cart.splice(idx,1); else cart[idx].quantity = newQty; renderCart(); showToast("سبد بروز شد"); } }
-    function addToCart(product) { let existing = cart.find(i => i.id === product.id); if(existing) { existing.quantity++; showToast(`${product.name} +۱ شد`); } else { cart.push({ id: product.id, name: product.name, quantity: 1 }); showToast(`${product.name} به سبد اضافه شد 🎉`); } renderCart(); }
+    function addToCart(product) { 
+        if(processing) return;
+        processing = true;
+        let existing = cart.find(i => i.id === product.id); 
+        if(existing) { 
+            existing.quantity++; 
+            showToast(`${product.name} +۱ شد`); 
+        } else { 
+            cart.push({ id: product.id, name: product.name, quantity: 1 }); 
+            showToast(`${product.name} به سبد اضافه شد 🎉`); 
+        } 
+        renderCart(); 
+        setTimeout(() => { processing = false; }, 300);
+    }
 
     function attachCardEvents(cardElement, food) {
         const addBtn = cardElement.querySelector('.add-to-cart');
-        if(addBtn) addBtn.addEventListener('click', () => addToCart(food));
+        if(addBtn) {
+            const newAddBtn = addBtn.cloneNode(true);
+            addBtn.parentNode.replaceChild(newAddBtn, addBtn);
+            newAddBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                addToCart(food);
+            });
+        }
         const detailBtn = cardElement.querySelector('.detail-btn');
         const detailBox = cardElement.querySelector('.detail-box');
         if(detailBtn && detailBox) {
-            detailBtn.addEventListener('click', (e) => {
+            const newDetailBtn = detailBtn.cloneNode(true);
+            detailBtn.parentNode.replaceChild(newDetailBtn, detailBtn);
+            newDetailBtn.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 detailBox.classList.toggle('show');
             });
         }
@@ -757,8 +788,6 @@
         if(traditionalGrid) traditionalGrid.innerHTML = '';
         
         foods.forEach(food => {
-            const card = createFoodCard(food);
-            
             if(food.isSpecial && featuredGrid) {
                 featuredGrid.appendChild(createFoodCard(food));
             }
@@ -767,23 +796,15 @@
                 if(persianHomeGrid) persianHomeGrid.appendChild(createFoodCard(food));
                 if(persianGrid) persianGrid.appendChild(createFoodCard(food));
             } else if(food.tag === 'فست فود') {
-                if(fastGrid) fastGrid.appendChild(card.cloneNode(true));
+                if(fastGrid) fastGrid.appendChild(createFoodCard(food));
             } else if(food.tag === 'فینگر فود') {
-                if(fingerGrid) fingerGrid.appendChild(card.cloneNode(true));
+                if(fingerGrid) fingerGrid.appendChild(createFoodCard(food));
             } else if(food.tag === 'کیک') {
-                if(cakeGrid) cakeGrid.appendChild(card.cloneNode(true));
+                if(cakeGrid) cakeGrid.appendChild(createFoodCard(food));
             } else if(food.tag === 'شیرینی‌جات') {
-                if(sweetGrid) sweetGrid.appendChild(card.cloneNode(true));
+                if(sweetGrid) sweetGrid.appendChild(createFoodCard(food));
             } else if(food.tag === 'غذای سنتی') {
-                if(traditionalGrid) traditionalGrid.appendChild(card.cloneNode(true));
-            }
-        });
-        
-        document.querySelectorAll('#fastfoodGrid .food-card, #fingerGrid .food-card, #persianGrid .food-card, #featuredGrid .food-card, #persianHomeGrid .food-card, #cakeGrid .food-card, #sweetGrid .food-card, #traditionalGrid .food-card').forEach(cardEl => {
-            const nameEl = cardEl.querySelector('h3');
-            if(nameEl) {
-                const foodItem = foods.find(f => nameEl.innerText.includes(f.name));
-                if(foodItem) attachCardEvents(cardEl, foodItem);
+                if(traditionalGrid) traditionalGrid.appendChild(createFoodCard(food));
             }
         });
     }
@@ -822,4 +843,4 @@
     loadCart();
 </script>
 </body>
-                                                                                                 </html>
+    </html>
