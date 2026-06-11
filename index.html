@@ -1,1 +1,453 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call food.ir | یک تماس خوشمزه</title>
+    <!-- فونت وزیرمتن از CDN -->
+    <link rel="stylesheet" href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css">
+    <!-- Font Awesome برای آیکون‌های کاستوم -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background-color: #fdf5e6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        /* هدر اصلی سایت */
+        .main-header {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            padding: 25px 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.4);
+            border-bottom: 5px solid #FFD700;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .site-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #FFD700;
+            text-shadow: 3px 3px 0 #5C2E0B;
+            letter-spacing: 2px;
+            margin: 0;
+            line-height: 1.2;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .site-subtitle {
+            font-size: 1.4rem;
+            color: #FFEFB0;
+            margin-top: 5px;
+            font-weight: 300;
+            font-style: italic;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .domain-badge {
+            display: inline-block;
+            background-color: #FFD700;
+            color: #5C2E0B;
+            padding: 5px 18px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1rem;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .domain-badge i {
+            margin-left: 5px;
+            color: #8B4513;
+        }
+
+        /* کارت محصول */
+        .food-card {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(139, 69, 19, 0.25);
+            transition: transform 0.3s ease;
+            border: 2px solid #D2B48C;
+            position: relative;
+            margin-bottom: 20px;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .food-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(139, 69, 19, 0.4);
+        }
+
+        /* بخش تصویر */
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #FFD700, #FFA500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            width: 90%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            border: 3px solid white;
+            transition: transform 0.5s;
+        }
+
+        .food-card:hover .image-container img {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        /* نشان ویژه روی تصویر */
+        .special-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #8B4513;
+            color: #FFD700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .special-badge i {
+            color: #FFD700;
+        }
+
+        /* بدنه کارت */
+        .card-body {
+            padding: 20px 20px 15px;
+            background: #fffef7;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .food-name {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #5C2E0B;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .food-desc {
+            color: #8B7355;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #D2B48C;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .food-desc i {
+            color: #D2691E;
+            font-size: 0.9rem;
+        }
+
+        /* باکس قیمت */
+        .price-box {
+            background: linear-gradient(120deg, #FFF8DC, #FFEFD5);
+            border: 2px solid #FFD700;
+            border-radius: 20px;
+            padding: 15px 20px;
+            margin: 18px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.3);
+            position: relative;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .price-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #8B4513;
+            font-weight: bold;
+            font-size: 1.1rem;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .custom-price-icon {
+            background-color: #8B4513;
+            color: #FFD700;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 10px rgba(139, 69, 19, 0.4);
+        }
+
+        .price-value {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #5C2E0B;
+            background: #FFD700;
+            padding: 5px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            letter-spacing: 1px;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .price-currency {
+            font-size: 1.2rem;
+            margin-right: 3px;
+            color: #5C2E0B;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        /* بخش توضیحات بیشتر با آیکون کاستوم */
+        .more-info-section {
+            margin: 20px 0 10px;
+            background: #f9f2e7;
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid #E6C280;
+            position: relative;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .more-info-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: #5C3A1E;
+            font-size: 1.1rem;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .custom-more-icon {
+            background-color: #D2691E;
+            color: #FFE5B4;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transform: rotate(5deg);
+            box-shadow: 0 3px 8px rgba(210, 105, 30, 0.5);
+        }
+
+        .more-info-content {
+            color: #5C4033;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            padding-right: 48px;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .more-info-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .more-info-content ul li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .more-info-content ul li i {
+            color: #FF8C00;
+            font-size: 0.8rem;
+        }
+
+        /* دکمه سفارش */
+        .order-btn {
+            width: 100%;
+            background: linear-gradient(to right, #8B4513, #A0522D);
+            color: #FFD700;
+            border: none;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.5);
+            border-bottom: 3px solid #FFD700;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .order-btn i {
+            color: #FFD700;
+            font-size: 1.3rem;
+        }
+
+        .order-btn:hover {
+            background: linear-gradient(to right, #A0522D, #6B3410);
+            color: white;
+            box-shadow: 0 7px 20px rgba(139, 69, 19, 0.7);
+            transform: scale(1.02);
+        }
+
+        .order-btn:hover i {
+            color: white;
+        }
+
+        /* فوتر کوچک */
+        .footer-note {
+            margin-top: 30px;
+            color: #8B7355;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #FFF3E0;
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid #FFD700;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        .footer-note i {
+            color: #D2691E;
+        }
+
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 2.2rem;
+            }
+            .price-value {
+                font-size: 1.8rem;
+                padding: 5px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر سایت با اسم call food -->
+    <header class="main-header">
+        <h1 class="site-title">🍔 call food</h1>
+        <p class="site-subtitle">یک تماس خوشمزه</p>
+        <div class="domain-badge">
+            <i class="fas fa-globe"></i> call food.ir
+        </div>
+    </header>
+
+    <!-- کارت محصول غذا -->
+    <div class="food-card">
+        <!-- بخش تصویر محصول -->
+        <div class="image-container">
+            <!-- آیکون کاستوم برای نشان ویژه -->
+            <div class="special-badge">
+                <i class="fas fa-star"></i> ویژه
+            </div>
+            <!-- تصویر غذا -->
+            <img src="https://img.freepik.com/free-photo/front-view-tasty-meat-burger-with-cheese-salad-dark-background_140725-89597.jpg" 
+                 alt="برگر مخصوص call food" 
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22200%22%20viewBox%3D%220%200%20300%20200%22%3E%3Crect%20width%3D%22300%22%20height%3D%22200%22%20fill%3D%22%23D2691E%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%22110%22%20font-size%3D%2224%22%20fill%3D%22%23FFD700%22%3E%F0%9F%8D%94%20call%20food%3C%2Ftext%3E%3C%2Fsvg%3E';">
+        </div>
+
+        <!-- بدنه کارت -->
+        <div class="card-body">
+            <!-- نام غذا -->
+            <div class="food-name">
+                برگر مخصوص
+                <span style="font-size:1rem; color:#D2691E;"><i class="fas fa-utensils"></i></span>
+            </div>
+            <div class="food-desc">
+                <i class="fas fa-fire"></i> گوشت تازه، پنیر چدار، سس مخصوص
+            </div>
+
+            <!-- باکس قیمت با آیکون کاستوم -->
+            <div class="price-box">
+                <div class="price-label">
+                    <!-- آیکون کاستوم برای قیمت -->
+                    <div class="custom-price-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <span>قیمت:</span>
+                </div>
+                <div class="price-value">
+                    ۱۲۹,۰۰۰ <span class="price-currency">تومان</span>
+                </div>
+            </div>
+
+            <!-- قسمت توضیحات بیشتر با آیکون کاستوم -->
+            <div class="more-info-section">
+                <div class="more-info-header">
+                    <!-- آیکون کاستوم شده برای توضیحات بیشتر -->
+                    <div class="custom-more-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <span>توضیحات بیشتر</span>
+                </div>
+                <div class="more-info-content">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> گوشت ۲۰۰ گرمی آنگوس</li>
+                        <li><i class="fas fa-check-circle"></i> نان بریوش تازه</li>
+                        <li><i class="fas fa-check-circle"></i> پنیر گودا و چدار</li>
+                        <li><i class="fas fa-check-circle"></i> سس مخصوص call food</li>
+                        <li><i class="fas fa-check-circle"></i> به همراه سیب‌زمینی سرخ‌کرده</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- دکمه سفارش -->
+            <button class="order-btn">
+                <i class="fas fa-phone-alt"></i> همین حالا سفارش بده
+            </button>
+        </div>
+    </div>
+
+    <!-- فوتر -->
+    <div class="footer-note">
+        <i class="fas fa-phone"></i> call food.ir | یک تماس خوشمزه | تلفن: ۰۲۱-۱۲۳۴۵۶۷۸
+    </div>
+</body>
+  </html>
