@@ -313,14 +313,8 @@
             animation: fadeInUp 0.3s ease;
         }
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .detail-box i {
             margin-left: 8px;
@@ -468,6 +462,54 @@
             pointer-events: none;
             font-weight: 800;
         }
+        .custom-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: #fffef7;
+            padding: 2rem;
+            border-radius: 48px;
+            box-shadow: 0 40px 60px rgba(0,0,0,0.3);
+            z-index: 3000;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+            border-top: 6px solid #e67e22;
+            font-weight: 800;
+        }
+        .custom-alert.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .custom-alert i {
+            font-size: 3rem;
+            color: #e67e22;
+            margin-bottom: 1rem;
+        }
+        .custom-alert .order-code {
+            background: #2e241f;
+            color: #ffd966;
+            padding: 10px;
+            border-radius: 60px;
+            margin: 15px 0;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+        }
+        .custom-alert button {
+            background: #e67e22;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
         .page-content {
             display: none;
         }
@@ -528,13 +570,24 @@
     <button class="checkout-btn" id="checkoutBtn"><i class="fas fa-check-circle"></i> پرداخت ثبت نهایی</button>
 </div>
 
+<div id="successModal" class="custom-alert">
+    <i class="fas fa-check-circle"></i>
+    <h3>سفارش شما با موفقیت ثبت شد!</h3>
+    <p>📞 برای خرید با این شماره تماس بگیرید:</p>
+    <p style="direction: ltr; background: #e67e22; display: inline-block; padding: 6px 15px; border-radius: 40px; color: white;">09902684303</p>
+    <div class="order-code" id="trackingCode">XXXXXX</div>
+    <p><i class="fas fa-info-circle"></i> این کد را به فروشنده بدهید</p>
+    <button onclick="closeModal()">متوجه شدم</button>
+</div>
+
 <div class="toast-msg" id="toastMsg"></div>
 <footer class="footer"><p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p><p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p></footer>
 
 <script>
     const foods = [
         { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده. طعمی بی‌نظیر و عالی برای یک وعده سریع و لذیذ! همراه با سس مخصوص و سبزیجات تازه.", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger" },
-        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی! ترکیبی از پپرونی، قارچ، فلفل دلمه و زیتون.", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace" }
+        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی! ترکیبی از پپرونی، قارچ، فلفل دلمه و زیتون.", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace" },
+        { id: 3, name: "اچما مرغ قارچ پنیری", desc: "اچمای لذیذ با طعم مرغ قارچ پنیری", longDesc: "اچمای خوشمزه با مرغ تازه، قارچ عطرآگین و پنیر آب شده، ترکیبی بی‌نظیر برای یک عصرانه به یادماندنی! همراه با سس مخصوص و سبزیجات معطر.", img: "https://cdn.imgurl.ir/uploads/h6527_IMG_20260611_230627.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace" }
     ];
 
     let cart = [];
@@ -545,6 +598,7 @@
     const cartCountSpan = document.getElementById('cartCount');
     const checkoutBtn = document.getElementById('checkoutBtn');
     const toastMsgDiv = document.getElementById('toastMsg');
+    const modal = document.getElementById('successModal');
     let toastTimeout;
 
     function showToast(msg, isSuccess = true) {
@@ -552,6 +606,20 @@
         toastMsgDiv.style.opacity = '1';
         if(toastTimeout) clearTimeout(toastTimeout);
         toastTimeout = setTimeout(() => toastMsgDiv.style.opacity = '0', 3000);
+    }
+
+    function generateTrackingCode() {
+        return Math.floor(100000 + Math.random() * 900000).toString();
+    }
+
+    function showOrderSuccessModal() {
+        const code = generateTrackingCode();
+        document.getElementById('trackingCode').innerText = code;
+        modal.classList.add('show');
+    }
+
+    window.closeModal = function() {
+        modal.classList.remove('show');
     }
 
     function updateCartBadge() { const total = cart.reduce((a,i)=> a + i.quantity, 0); cartCountSpan.innerText = total; }
@@ -644,7 +712,7 @@
     
     checkoutBtn.addEventListener('click', () => {
         if(cart.length === 0) { showToast("سبد خالیه! اول غذا انتخاب کن 😋", false); return; }
-        showToast("سفارش شما با موفقیت ثبت نهایی شد! ✅", true);
+        showOrderSuccessModal();
         cart = [];
         renderCart();
         closeSidebar();
@@ -654,4 +722,4 @@
     loadCart();
 </script>
 </body>
-    </html>
+            </html>
