@@ -81,7 +81,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.2rem;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -91,7 +91,7 @@
             font-weight: 800;
             color: #4b3b2f;
             transition: 0.2s;
-            font-size: 1rem;
+            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -224,7 +224,8 @@
             background-position: center;
             position: relative;
         }
-        .badge-special {
+        /* تگ غذایی کنار عکس */
+        .food-tag {
             position: absolute;
             top: 18px;
             right: 18px;
@@ -233,6 +234,22 @@
             padding: 6px 16px;
             border-radius: 50px;
             font-size: 0.8rem;
+            font-weight: 800;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 10;
+        }
+        .badge-special {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: #2e241f;
+            color: #ffd966;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
             font-weight: 800;
             box-shadow: 0 3px 8px black;
         }
@@ -276,7 +293,6 @@
             transform: scale(0.98);
         }
 
-        /* support box */
         .support-section {
             max-width: 700px;
             margin: 3rem auto;
@@ -415,8 +431,9 @@
             border-radius: 40px 40px 0 0;
             font-weight: 800;
         }
-        @media (max-width: 700px) {
+        @media (max-width: 850px) {
             .navbar { flex-direction: column; gap: 15px; }
+            .nav-links { justify-content: center; gap: 1rem; }
             .cart-sidebar { width: 100%; left: -100%; }
             .support-item { font-size: 0.9rem; flex-wrap: wrap; }
         }
@@ -441,6 +458,19 @@
         .page-content.active-page {
             display: block;
         }
+        .food-grid-simple {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .temp-message {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 48px;
+            color: #a17248;
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 <body>
@@ -451,6 +481,9 @@
     </div>
     <div class="nav-links">
         <a href="#" data-page="home"><i class="fas fa-home"></i> خانه</a>
+        <a href="#" data-page="persian"><i class="fas fa-utensils"></i> غذای مجلسی</a>
+        <a href="#" data-page="cake"><i class="fas fa-birthday-cake"></i> کیک</a>
+        <a href="#" data-page="fastfood"><i class="fas fa-burger"></i> فست فود</a>
         <a href="#" data-page="sweet"><i class="fas fa-cake-candles"></i> شیرینی‌جات</a>
         <a href="#" data-page="support"><i class="fas fa-headset"></i> پشتیبانی</a>
         <div class="cart-icon" id="cartIcon">
@@ -460,7 +493,7 @@
     </div>
 </div>
 
-<!-- صفحه اصلی / خانه -->
+<!-- صفحه خانه (بورک با تگ فست فود) -->
 <div id="homePage" class="page-content active-page">
     <div class="hero">
         <div class="hero-overlay">
@@ -476,19 +509,42 @@
     </div>
 </div>
 
-<!-- صفحه شیرینی‌جات (تب جدید) -->
+<!-- صفحه غذای مجلسی -->
+<div id="persianPage" class="page-content">
+    <div class="menu-section">
+        <div class="section-title"><i class="fas fa-utensils"></i> غذای مجلسی</div>
+        <div class="temp-message">
+            <i class="fas fa-info-circle"></i> به زودی غذاهای مجلسی اضافه می‌شوند...
+        </div>
+    </div>
+</div>
+
+<!-- صفحه کیک -->
+<div id="cakePage" class="page-content">
+    <div class="menu-section">
+        <div class="section-title"><i class="fas fa-birthday-cake"></i> کیک‌های خاص</div>
+        <div class="temp-message">
+            <i class="fas fa-info-circle"></i> به زودی کیک‌های خوشمزه اضافه می‌شوند...
+        </div>
+    </div>
+</div>
+
+<!-- صفحه فست فود -->
+<div id="fastfoodPage" class="page-content">
+    <div class="menu-section">
+        <div class="section-title"><i class="fas fa-burger"></i> فست فود</div>
+        <div class="temp-message">
+            <i class="fas fa-info-circle"></i> به زودی فست فودهای ویژه اضافه می‌شوند...
+        </div>
+    </div>
+</div>
+
+<!-- صفحه شیرینی‌جات -->
 <div id="sweetPage" class="page-content">
-    <div class="menu-section" style="max-width: 600px;">
-        <div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌های مخصوص</div>
-        <div class="food-card" style="background: #fff6e8;">
-            <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format'); height: 240px;">
-                <div class="badge-special"><i class="fas fa-star"></i> دسر خانگی</div>
-            </div>
-            <div class="card-info">
-                <h3><i class="fas fa-cookie-bite"></i> شیرینی خشک & کیک</h3>
-                <div class="desc">برای سفارش شیرینی‌های خوشمزه با پشتیبانی تماس بگیرید.</div>
-                <button class="add-to-cart sweet-contact" style="background:#a7582c;"><i class="fas fa-phone-alt"></i> تماس برای سفارش</button>
-            </div>
+    <div class="menu-section">
+        <div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌جات</div>
+        <div class="temp-message">
+            <i class="fas fa-info-circle"></i> به زودی شیرینی‌های تازه اضافه می‌شوند...
         </div>
     </div>
 </div>
@@ -527,7 +583,16 @@
 </footer>
 
 <script>
-    const foodData = [{ id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg" }];
+    // محصول با تگ فست فود
+    const foodData = [{ 
+        id: 1, 
+        name: "بورک مرغ و ژامبون پنیری", 
+        desc: "مرغ ژامبون و خمیر با کیفیت", 
+        img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg",
+        tag: "فست فود",
+        tagIcon: "fa-burger"
+    }];
+    
     let cart = [];
     const foodGrid = document.getElementById('foodGrid');
     const cartSidebar = document.getElementById('cartSidebar');
@@ -558,20 +623,53 @@
     function changeQty(id, delta) { let idx = cart.findIndex(i => i.id === id); if(idx !== -1) { let newQty = cart[idx].quantity + delta; if(newQty <= 0) cart.splice(idx,1); else cart[idx].quantity = newQty; renderCart(); showToast("بروز شد"); } }
     function addToCart(product) { let existing = cart.find(i => i.id === product.id); if(existing) { existing.quantity++; showToast(`${product.name} +۱`); } else { cart.push({ id: product.id, name: product.name, quantity: 1 }); showToast(`${product.name} به سبد اضافه شد`); } renderCart(); }
 
-    function renderSingleCard() { const food = foodData[0]; foodGrid.innerHTML = `<div class="food-card"><div class="card-img" style="background-image: url('${food.img}');"><div class="badge-special"><i class="fas fa-fire"></i> ویژه کالفود</div></div><div class="card-info"><h3><i class="fas fa-egg"></i> ${food.name}</h3><div class="desc"><i class="fas fa-info-circle"></i> ${food.desc}</div><button class="add-to-cart" data-id="${food.id}"><i class="fas fa-cart-plus"></i> افزودن به سبد خرید</button></div></div>`; document.querySelector('.add-to-cart')?.addEventListener('click', () => addToCart(food)); }
+    // رندر کارت با تگ فست فود
+    function renderSingleCard() {
+        const food = foodData[0];
+        foodGrid.innerHTML = `
+            <div class="food-card">
+                <div class="card-img" style="background-image: url('${food.img}');">
+                    <div class="food-tag"><i class="fas ${food.tagIcon}"></i> ${food.tag}</div>
+                    <div class="badge-special"><i class="fas fa-fire"></i> ویژه کالفود</div>
+                </div>
+                <div class="card-info">
+                    <h3><i class="fas fa-egg"></i> ${food.name}</h3>
+                    <div class="desc"><i class="fas fa-info-circle"></i> ${food.desc}</div>
+                    <button class="add-to-cart" data-id="${food.id}"><i class="fas fa-cart-plus"></i> افزودن به سبد خرید</button>
+                </div>
+            </div>
+        `;
+        document.querySelector('.add-to-cart')?.addEventListener('click', () => addToCart(food));
+    }
     
     // صفحه بندی
-    const pages = { home: document.getElementById('homePage'), sweet: document.getElementById('sweetPage'), support: document.getElementById('supportPage') };
-    document.querySelectorAll('[data-page]').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); let page = link.dataset.page; Object.values(pages).forEach(p => p.classList.remove('active-page')); if(pages[page]) pages[page].classList.add('active-page'); window.scrollTo({ top: 0, behavior: 'smooth' }); }); });
+    const pages = {
+        home: document.getElementById('homePage'),
+        persian: document.getElementById('persianPage'),
+        cake: document.getElementById('cakePage'),
+        fastfood: document.getElementById('fastfoodPage'),
+        sweet: document.getElementById('sweetPage'),
+        support: document.getElementById('supportPage')
+    };
+    document.querySelectorAll('[data-page]').forEach(link => { 
+        link.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            let page = link.dataset.page; 
+            Object.values(pages).forEach(p => p.classList.remove('active-page')); 
+            if(pages[page]) pages[page].classList.add('active-page'); 
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        }); 
+    });
     
     function openSidebar() { cartSidebar.classList.add('open'); }
     function closeSidebar() { cartSidebar.classList.remove('open'); }
-    cartIcon.addEventListener('click', openSidebar); closeCartBtn.addEventListener('click', closeSidebar);
+    cartIcon.addEventListener('click', openSidebar); 
+    closeCartBtn.addEventListener('click', closeSidebar);
     document.addEventListener('click', (e) => { if(cartSidebar.classList.contains('open') && !cartSidebar.contains(e.target) && !cartIcon.contains(e.target)) closeSidebar(); });
     checkoutBtn.addEventListener('click', () => { if(cart.length === 0) { showToast("سبد خالی!"); return; } alert(`سفارش شما ثبت نهایی شد!\nتماس بگیرید: +98 990 268 4303`); cart = []; renderCart(); closeSidebar(); showToast("سفارش ثبت نهایی شد!"); });
     
-    renderSingleCard(); loadCart();
-    document.querySelector('.sweet-contact')?.addEventListener('click', () => { alert("برای سفارش شیرینی با پشتیبانی تماس بگیرید: +989157711094"); });
+    renderSingleCard(); 
+    loadCart();
 </script>
 </body>
     </html>
