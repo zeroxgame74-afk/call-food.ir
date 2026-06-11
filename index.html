@@ -2,452 +2,715 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>call food.ir | یک تماس خوشمزه</title>
-    <!-- فونت وزیرمتن از CDN -->
-    <link rel="stylesheet" href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css">
-    <!-- Font Awesome برای آیکون‌های کاستوم -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>فودلند | عشق به طعم اصیل</title>
+    <!-- Font Awesome Icons (v6 free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Vazirmatn (شیک و خوانا) -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #fdf5e6;
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(145deg, #fef9f1 0%, #fff6ec 100%);
+            color: #2e241f;
+            scroll-behavior: smooth;
+        }
+
+        /* scroll bar زیبا */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f3e3d3;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d97a3c;
+            border-radius: 10px;
+        }
+
+        /* هدر و نویگیشن */
+        .navbar {
+            background: rgba(255, 248, 240, 0.96);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            min-height: 100vh;
-            font-family: 'Vazir', sans-serif;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(217, 122, 60, 0.2);
         }
 
-        /* هدر اصلی سایت */
-        .main-header {
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-            margin-bottom: 40px;
-            background: linear-gradient(135deg, #8B4513, #D2691E);
-            padding: 25px 15px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.4);
-            border-bottom: 5px solid #FFD700;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .site-title {
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: #FFD700;
-            text-shadow: 3px 3px 0 #5C2E0B;
-            letter-spacing: 2px;
-            margin: 0;
-            line-height: 1.2;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .site-subtitle {
-            font-size: 1.4rem;
-            color: #FFEFB0;
-            margin-top: 5px;
-            font-weight: 300;
-            font-style: italic;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .domain-badge {
-            display: inline-block;
-            background-color: #FFD700;
-            color: #5C2E0B;
-            padding: 5px 18px;
-            border-radius: 30px;
-            font-weight: bold;
-            margin-top: 10px;
-            font-size: 1rem;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .domain-badge i {
-            margin-left: 5px;
-            color: #8B4513;
-        }
-
-        /* کارت محصول */
-        .food-card {
-            width: 100%;
-            max-width: 400px;
-            background-color: #ffffff;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(139, 69, 19, 0.25);
-            transition: transform 0.3s ease;
-            border: 2px solid #D2B48C;
-            position: relative;
-            margin-bottom: 20px;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .food-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 35px rgba(139, 69, 19, 0.4);
-        }
-
-        /* بخش تصویر */
-        .image-container {
-            position: relative;
-            width: 100%;
-            height: 260px;
-            overflow: hidden;
-            background: linear-gradient(to bottom, #FFD700, #FFA500);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .image-container img {
-            width: 90%;
-            height: auto;
-            max-height: 220px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            border: 3px solid white;
-            transition: transform 0.5s;
-        }
-
-        .food-card:hover .image-container img {
-            transform: scale(1.05) rotate(-2deg);
-        }
-
-        /* نشان ویژه روی تصویر */
-        .special-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: #8B4513;
-            color: #FFD700;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .special-badge i {
-            color: #FFD700;
-        }
-
-        /* بدنه کارت */
-        .card-body {
-            padding: 20px 20px 15px;
-            background: #fffef7;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .food-name {
+        .logo {
             font-size: 1.9rem;
             font-weight: 800;
-            color: #5C2E0B;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-family: 'Vazir', sans-serif;
+            background: linear-gradient(135deg, #c55a2c, #e68a2e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
         }
 
-        .food-desc {
-            color: #8B7355;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            border-bottom: 1px dashed #D2B48C;
-            padding-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-family: 'Vazir', sans-serif;
+        .logo i {
+            background: none;
+            background-clip: unset;
+            -webkit-background-clip: unset;
+            color: #d97a3c;
+            font-size: 1.8rem;
+            margin-left: 6px;
         }
 
-        .food-desc i {
-            color: #D2691E;
-            font-size: 0.9rem;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
         }
 
-        /* باکس قیمت */
-        .price-box {
-            background: linear-gradient(120deg, #FFF8DC, #FFEFD5);
-            border: 2px solid #FFD700;
-            border-radius: 20px;
-            padding: 15px 20px;
-            margin: 18px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.3);
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #4b3b2f;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #d76f2c;
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
             position: relative;
-            font-family: 'Vazir', sans-serif;
+            font-size: 1.6rem;
+            color: #c25d2b;
+            cursor: pointer;
         }
 
-        .price-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #8B4513;
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #e67e22;
+            color: white;
+            font-size: 0.7rem;
             font-weight: bold;
-            font-size: 1.1rem;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .custom-price-icon {
-            background-color: #8B4513;
-            color: #FFD700;
-            width: 40px;
-            height: 40px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 10px rgba(139, 69, 19, 0.4);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .price-value {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #5C2E0B;
-            background: #FFD700;
-            padding: 5px 20px;
-            border-radius: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            letter-spacing: 1px;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .price-currency {
-            font-size: 1.2rem;
-            margin-right: 3px;
-            color: #5C2E0B;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        /* بخش توضیحات بیشتر با آیکون کاستوم */
-        .more-info-section {
-            margin: 20px 0 10px;
-            background: #f9f2e7;
-            border-radius: 16px;
-            padding: 16px;
-            border: 1px solid #E6C280;
+        /* hero section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&auto=format') center/cover no-repeat;
+            min-height: 65vh;
             position: relative;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .more-info-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-            font-weight: bold;
-            color: #5C3A1E;
-            font-size: 1.1rem;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .custom-more-icon {
-            background-color: #D2691E;
-            color: #FFE5B4;
-            width: 38px;
-            height: 38px;
-            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            transform: rotate(5deg);
-            box-shadow: 0 3px 8px rgba(210, 105, 30, 0.5);
+            border-radius: 0 0 48px 48px;
+            margin: 0 1rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
         }
-
-        .more-info-content {
-            color: #5C4033;
-            font-size: 0.9rem;
-            line-height: 1.7;
-            padding-right: 48px;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .more-info-content ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .more-info-content ul li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Vazir', sans-serif;
-        }
-
-        .more-info-content ul li i {
-            color: #FF8C00;
-            font-size: 0.8rem;
-        }
-
-        /* دکمه سفارش */
-        .order-btn {
+        .hero-overlay {
+            background: linear-gradient(120deg, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+            border-radius: 0 0 48px 48px;
             width: 100%;
-            background: linear-gradient(to right, #8B4513, #A0522D);
-            color: #FFD700;
-            border: none;
-            padding: 15px;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 15px;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.5);
-            border-bottom: 3px solid #FFD700;
-            font-family: 'Vazir', sans-serif;
+            text-align: center;
+            padding: 3rem 2rem;
         }
-
-        .order-btn i {
-            color: #FFD700;
-            font-size: 1.3rem;
-        }
-
-        .order-btn:hover {
-            background: linear-gradient(to right, #A0522D, #6B3410);
+        .hero-text {
             color: white;
-            box-shadow: 0 7px 20px rgba(139, 69, 19, 0.7);
+            text-shadow: 0 5px 18px rgba(0,0,0,0.4);
+        }
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .hero-text p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        .btn-order {
+            margin-top: 2rem;
+            background: #e67e22;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 40px;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 8px 14px rgba(230,126,34,0.3);
+        }
+        .btn-order:hover {
+            background: #cf711f;
             transform: scale(1.02);
         }
 
-        .order-btn:hover i {
-            color: white;
+        /* بخش منو محصولات */
+        .menu-section {
+            max-width: 1300px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        .section-title:after {
+            content: "";
+            width: 80px;
+            height: 4px;
+            background: #e67e22;
+            display: block;
+            margin: 12px auto 0;
+            border-radius: 4px;
         }
 
-        /* فوتر کوچک */
-        .footer-note {
-            margin-top: 30px;
-            color: #8B7355;
-            font-size: 0.9rem;
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 18px 30px -12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(230,126,34,0.1);
+        }
+        .food-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 35px -12px rgba(0,0,0,0.2);
+        }
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .badge-hot {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e67e22;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        .card-info {
+            padding: 1.2rem 1.2rem 1.5rem;
+        }
+        .card-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+        .desc {
+            color: #6b5b4e;
+            font-size: 0.85rem;
+            margin: 0.5rem 0 0.8rem;
+            line-height: 1.4;
+        }
+        .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #d2691a;
+            display: inline-block;
+        }
+        .add-to-cart {
+            background: #2e241f;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: #FFF3E0;
-            padding: 10px 25px;
+            gap: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        .add-to-cart:hover {
+            background: #e67e22;
+            transform: scale(0.96);
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        /* سبد خرید کناری */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            left: -380px;
+            width: 380px;
+            height: 100%;
+            background: #fffaf5;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            z-index: 2000;
+            transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            border-radius: 0 20px 20px 0;
+        }
+        .cart-sidebar.open {
+            left: 0;
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f0e2d4;
+            padding-bottom: 1rem;
+        }
+        .cart-header h2 {
+            font-size: 1.5rem;
+        }
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #af7f58;
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            margin: 1rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            background: white;
+            padding: 0.7rem;
+            border-radius: 20px;
+            align-items: center;
+        }
+        .cart-item-info h4 {
+            font-size: 1rem;
+        }
+        .cart-item-price {
+            color: #d97a3c;
+            font-weight: bold;
+        }
+        .cart-item-actions button {
+            background: #f0e2d4;
+            border: none;
+            width: 28px;
             border-radius: 30px;
-            border: 1px solid #FFD700;
-            font-family: 'Vazir', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .cart-total {
+            border-top: 2px dashed #e2cfbe;
+            padding-top: 1rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            display: flex;
+            justify-content: space-between;
+        }
+        .checkout-btn {
+            background: #e67e22;
+            width: 100%;
+            margin-top: 1.2rem;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .empty-cart {
+            text-align: center;
+            color: #ad8b70;
+            margin-top: 2rem;
         }
 
-        .footer-note i {
-            color: #D2691E;
+        /* فوتر */
+        .footer {
+            background: #2b211c;
+            color: #e5cfbd;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-radius: 40px 40px 0 0;
         }
 
-        @media (max-width: 480px) {
-            .site-title {
-                font-size: 2.2rem;
+        /* responsive */
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
             }
-            .price-value {
-                font-size: 1.8rem;
-                padding: 5px 15px;
+            .hero-text h1 {
+                font-size: 2rem;
             }
+            .cart-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+        }
+
+        button {
+            font-family: inherit;
+        }
+        .toast-msg {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #2e241f;
+            color: #ffefcf;
+            padding: 12px 20px;
+            border-radius: 60px;
+            font-weight: 500;
+            z-index: 2100;
+            box-shadow: 0 5px 12px black;
+            opacity: 0;
+            transition: 0.2s;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <!-- هدر سایت با اسم call food -->
-    <header class="main-header">
-        <h1 class="site-title">🍔 call food</h1>
-        <p class="site-subtitle">یک تماس خوشمزه</p>
-        <div class="domain-badge">
-            <i class="fas fa-globe"></i> call food.ir
-        </div>
-    </header>
 
-    <!-- کارت محصول غذا -->
-    <div class="food-card">
-        <!-- بخش تصویر محصول -->
-        <div class="image-container">
-            <!-- آیکون کاستوم برای نشان ویژه -->
-            <div class="special-badge">
-                <i class="fas fa-star"></i> ویژه
-            </div>
-            <!-- تصویر غذا -->
-            <img src="https://img.freepik.com/free-photo/front-view-tasty-meat-burger-with-cheese-salad-dark-background_140725-89597.jpg" 
-                 alt="برگر مخصوص call food" 
-                 onerror="this.onerror=null; this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22200%22%20viewBox%3D%220%200%20300%20200%22%3E%3Crect%20width%3D%22300%22%20height%3D%22200%22%20fill%3D%22%23D2691E%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%22110%22%20font-size%3D%2224%22%20fill%3D%22%23FFD700%22%3E%F0%9F%8D%94%20call%20food%3C%2Ftext%3E%3C%2Fsvg%3E';">
-        </div>
-
-        <!-- بدنه کارت -->
-        <div class="card-body">
-            <!-- نام غذا -->
-            <div class="food-name">
-                برگر مخصوص
-                <span style="font-size:1rem; color:#D2691E;"><i class="fas fa-utensils"></i></span>
-            </div>
-            <div class="food-desc">
-                <i class="fas fa-fire"></i> گوشت تازه، پنیر چدار، سس مخصوص
-            </div>
-
-            <!-- باکس قیمت با آیکون کاستوم -->
-            <div class="price-box">
-                <div class="price-label">
-                    <!-- آیکون کاستوم برای قیمت -->
-                    <div class="custom-price-icon">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    <span>قیمت:</span>
-                </div>
-                <div class="price-value">
-                    ۱۲۹,۰۰۰ <span class="price-currency">تومان</span>
-                </div>
-            </div>
-
-            <!-- قسمت توضیحات بیشتر با آیکون کاستوم -->
-            <div class="more-info-section">
-                <div class="more-info-header">
-                    <!-- آیکون کاستوم شده برای توضیحات بیشتر -->
-                    <div class="custom-more-icon">
-                        <i class="fas fa-info-circle"></i>
-                    </div>
-                    <span>توضیحات بیشتر</span>
-                </div>
-                <div class="more-info-content">
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> گوشت ۲۰۰ گرمی آنگوس</li>
-                        <li><i class="fas fa-check-circle"></i> نان بریوش تازه</li>
-                        <li><i class="fas fa-check-circle"></i> پنیر گودا و چدار</li>
-                        <li><i class="fas fa-check-circle"></i> سس مخصوص call food</li>
-                        <li><i class="fas fa-check-circle"></i> به همراه سیب‌زمینی سرخ‌کرده</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- دکمه سفارش -->
-            <button class="order-btn">
-                <i class="fas fa-phone-alt"></i> همین حالا سفارش بده
-            </button>
+<!-- نوار بالا -->
+<div class="navbar">
+    <div class="logo">
+        <i class="fas fa-utensils"></i> فودلند
+    </div>
+    <div class="nav-links">
+        <a href="#">خانه</a>
+        <a href="#menu">منوی غذای‌ها</a>
+        <a href="#">تماس با ما</a>
+        <div class="cart-icon" id="cartIcon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count" id="cartCount">0</span>
         </div>
     </div>
+</div>
 
-    <!-- فوتر -->
-    <div class="footer-note">
-        <i class="fas fa-phone"></i> call food.ir | یک تماس خوشمزه | تلفن: ۰۲۱-۱۲۳۴۵۶۷۸
+<!-- بخش هیرو -->
+<div class="hero">
+    <div class="hero-overlay">
+        <div class="hero-text">
+            <h1>عشق به طعم‌های بی‌نظیر</h1>
+            <p>غذای تازه، تحویل سریع، طعم خونه!</p>
+            <button class="btn-order" id="scrollToMenuBtn">سفارش آنلاین</button>
+        </div>
     </div>
+</div>
+
+<!-- منوی غذاها -->
+<div class="menu-section" id="menu">
+    <div class="section-title">منوی مخصوص فودلند</div>
+    <div class="food-grid" id="foodGrid"></div>
+</div>
+
+<!-- سبد خرید کناری -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+        <h2><i class="fas fa-shopping-basket"></i> سبد خرید</h2>
+        <button class="close-cart" id="closeCartBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItemsList">
+        <div class="empty-cart">سبد تو خالیه! یه غذای خوشمزه انتخاب کن 🍔</div>
+    </div>
+    <div class="cart-total">
+        <span>جمع کل:</span>
+        <span id="cartTotalPrice">۰ تومان</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn">پرداخت و ثبت سفارش</button>
+</div>
+
+<div class="toast-msg" id="toastMsg">غذا به سبد اضافه شد 🍽️</div>
+
+<footer class="footer">
+    <p>فودلند | طعم اصیل با عشق ❤️ | سفارش غذا به سادگی یک کلیک</p>
+    <p style="margin-top: 12px; font-size: 0.8rem;">© 2025 فودلند – بهترین طعم‌ها اینجا هستند</p>
+</footer>
+
+<script>
+    // لیست محصولات (دیتابیس فرضی)
+    const foodData = [
+        { id: 1, name: "برگر لذیذ مخصوص", desc: "گوشت گوساله + پنیر چدار + سس راز", price: 185000, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format", hot: true },
+        { id: 2, name: "پیتزا ایتالیایی", desc: "پپرونی، زیتون، قارچ و پنیر موزارلا", price: 245000, img: "https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?w=500&auto=format", hot: true },
+        { id: 3, name: "سالاد سزار با مرغ", desc: "مرغ گریل شده، کاهو، سس مخصوص", price: 125000, img: "https://images.unsplash.com/photo-1550304943-4f24f54dd8a9?w=500&auto=format", hot: false },
+        { id: 4, name: "قورمه سبزی مجلسی", desc: "خورشت اصیل با سبزی معطر و لوبیا", price: 195000, img: "https://images.unsplash.com/photo-1571863533956-01c88e79957e?w=500&auto=format", hot: true },
+        { id: 5, name: "سوشی رول کالیفرنیا", desc: "خرچنگ، آووکادو، خیار و سس مایونز", price: 299000, img: "https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=500&auto=format", hot: false },
+        { id: 6, name: "نودل تایلندی", desc: "نودل برنجی با بادام زمینی و توفو", price: 149000, img: "https://images.unsplash.com/photo-1552611052-69a5de54aad2?w=500&auto=format", hot: false }
+    ];
+
+    // سبد خرید: شامل اشیاء با id, name, price, quantity
+    let cart = [];
+
+    // DOM elements
+    const foodGrid = document.getElementById('foodGrid');
+    const cartSidebar = document.getElementById('cartSidebar');
+    const cartIcon = document.getElementById('cartIcon');
+    const closeCartBtn = document.getElementById('closeCartBtn');
+    const cartItemsList = document.getElementById('cartItemsList');
+    const cartTotalPriceSpan = document.getElementById('cartTotalPrice');
+    const cartCountSpan = document.getElementById('cartCount');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const toastMsgDiv = document.getElementById('toastMsg');
+
+    let toastTimeout;
+
+    function showToast(message) {
+        toastMsgDiv.innerText = message;
+        toastMsgDiv.style.opacity = '1';
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toastMsgDiv.style.opacity = '0';
+        }, 2000);
+    }
+
+    // ذخیره سبد در localStorage (پیشرفته تر)
+    function saveCartToLocal() {
+        localStorage.setItem('foodCart', JSON.stringify(cart));
+    }
+
+    function loadCartFromLocal() {
+        const saved = localStorage.getItem('foodCart');
+        if (saved) {
+            try {
+                cart = JSON.parse(saved);
+            } catch(e) { cart = []; }
+        } else {
+            cart = [];
+        }
+        renderCartUI();
+        updateCartBadge();
+    }
+
+    // به روزرسانی نشانگر سبد خرید
+    function updateCartBadge() {
+        const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+        cartCountSpan.innerText = totalItems;
+    }
+
+    // رندر کردن سبد خرید داخل سایدبار
+    function renderCartUI() {
+        if (!cartItemsList) return;
+        if (cart.length === 0) {
+            cartItemsList.innerHTML = `<div class="empty-cart"><i class="fas fa-shopping-cart"></i> سبد خرید خالی است! <br> غذاهای خوشمزه رو امتحان کن 😋</div>`;
+            cartTotalPriceSpan.innerText = `۰ تومان`;
+            updateCartBadge();
+            saveCartToLocal();
+            return;
+        }
+
+        let html = '';
+        let total = 0;
+        cart.forEach((item, idx) => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            html += `
+                <div class="cart-item" data-id="${item.id}">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <span class="cart-item-price">${item.price.toLocaleString()} تومان</span>
+                        <div style="font-size:0.75rem;">تعداد: ${item.quantity}</div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <button class="cart-inc" data-id="${item.id}">+</button>
+                        <button class="cart-dec" data-id="${item.id}">-</button>
+                        <button class="cart-remove" data-id="${item.id}" style="background: #f1cfb3;">🗑️</button>
+                    </div>
+                </div>
+            `;
+        });
+        cartItemsList.innerHTML = html;
+        cartTotalPriceSpan.innerText = `${total.toLocaleString()} تومان`;
+
+        // ادد ایونت به دکمه های افزایش/کاهش و حذف
+        document.querySelectorAll('.cart-inc').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(btn.getAttribute('data-id'));
+                changeQuantity(id, 1);
+            });
+        });
+        document.querySelectorAll('.cart-dec').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(btn.getAttribute('data-id'));
+                changeQuantity(id, -1);
+            });
+        });
+        document.querySelectorAll('.cart-remove').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(btn.getAttribute('data-id'));
+                removeItemCompletely(id);
+            });
+        });
+
+        updateCartBadge();
+        saveCartToLocal();
+    }
+
+    function changeQuantity(id, delta) {
+        const existing = cart.find(item => item.id === id);
+        if (existing) {
+            const newQty = existing.quantity + delta;
+            if (newQty <= 0) {
+                cart = cart.filter(item => item.id !== id);
+            } else {
+                existing.quantity = newQty;
+            }
+            renderCartUI();
+            if(newQty > 0) showToast(`تعداد "${existing.name}" تغییر کرد`);
+            else showToast(`"${existing.name}" از سبد حذف شد`);
+        }
+    }
+
+    function removeItemCompletely(id) {
+        const item = cart.find(i => i.id === id);
+        if(item) showToast(`"${item.name}" از سبد حذف شد`);
+        cart = cart.filter(item => item.id !== id);
+        renderCartUI();
+    }
+
+    // افزودن به سبد
+    function addToCart(product) {
+        const existing = cart.find(item => item.id === product.id);
+        if (existing) {
+            existing.quantity += 1;
+            showToast(`${product.name} +۱ شد (${existing.quantity} عدد)`);
+        } else {
+            cart.push({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                quantity: 1
+            });
+            showToast(`${product.name} به سبد اضافه شد 🍕`);
+        }
+        renderCartUI();
+        // optional: باز کردن سایدبار خودکار
+        // cartSidebar.classList.add('open');
+    }
+
+    // رندر کردن کارت های غذا
+    function renderFoodCards() {
+        foodGrid.innerHTML = '';
+        foodData.forEach(food => {
+            const card = document.createElement('div');
+            card.className = 'food-card';
+            card.innerHTML = `
+                <div class="card-img" style="background-image: url('${food.img}');">
+                    ${food.hot ? '<div class="badge-hot">🔥 داغ و جدید</div>' : ''}
+                </div>
+                <div class="card-info">
+                    <h3>${food.name}</h3>
+                    <div class="desc">${food.desc}</div>
+                    <div class="card-footer">
+                        <span class="price">${food.price.toLocaleString()} تومان</span>
+                        <button class="add-to-cart" data-id="${food.id}">
+                            <i class="fas fa-plus-circle"></i> سفارش
+                        </button>
+                    </div>
+                </div>
+            `;
+            foodGrid.appendChild(card);
+        });
+
+        // attach event after render
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(btn.getAttribute('data-id'));
+                const product = foodData.find(f => f.id === id);
+                if (product) addToCart(product);
+            });
+        });
+    }
+
+    // باز و بسته کردن سایدبار
+    function openCartSidebar() {
+        cartSidebar.classList.add('open');
+    }
+    function closeCartSidebar() {
+        cartSidebar.classList.remove('open');
+    }
+
+    // اسکرول به منو
+    document.getElementById('scrollToMenuBtn').addEventListener('click', () => {
+        const menuSection = document.getElementById('menu');
+        menuSection.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // پرداخت (دمو)
+    function checkout() {
+        if (cart.length === 0) {
+            showToast("سبد خرید خالی است! لطفا ابتدا غذا انتخاب کنید 🧺");
+            return;
+        }
+        const total = cart.reduce((acc, i) => acc + (i.price * i.quantity), 0);
+        alert(`🌮 سفارش شما با موفقیت ثبت شد! مبلغ نهایی: ${total.toLocaleString()} تومان\nتشکر از خرید شما، در اسرع وقت ارسال میشود 🚀`);
+        cart = [];
+        renderCartUI();
+        closeCartSidebar();
+        showToast("سفارش ثبت شد! ممنون از اعتماد شما ❤️");
+    }
+
+    // رویدادها
+    cartIcon.addEventListener('click', openCartSidebar);
+    closeCartBtn.addEventListener('click', closeCartSidebar);
+    checkoutBtn.addEventListener('click', checkout);
+
+    // بستن سایدبار با کلیک خارج از آن (پیشرفته ساده)
+    document.addEventListener('click', (e) => {
+        if (cartSidebar.classList.contains('open')) {
+            if (!cartSidebar.contains(e.target) && !cartIcon.contains(e.target)) {
+                closeCartSidebar();
+            }
+        }
+    });
+
+    // مقدار دهی اولیه
+    renderFoodCards();
+    loadCartFromLocal();
+
+    // اگر محلی نبود، یک دمو سبد خالی است ولی render قبلاً انجام شده
+    // اماده
+</script>
 </body>
-</html>
+    </html>
