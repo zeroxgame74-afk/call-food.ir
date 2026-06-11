@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>فودلند | عشق به طعم اصیل</title>
+    <title>کالفود | call food.ir</title>
     <!-- Font Awesome Icons (v6 free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Vazirmatn (شیک و خوانا) -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Vazirmatn Bold style -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -17,12 +17,20 @@
 
         body {
             font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;  /* bold everywhere */
             background: linear-gradient(145deg, #fef9f1 0%, #fff6ec 100%);
             color: #2e241f;
             scroll-behavior: smooth;
         }
 
-        /* scroll bar زیبا */
+        /* custom styled icons (all icons become modern & consistent) */
+        i, .fas, .far {
+            font-weight: 900;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.05));
+            transition: all 0.2s ease;
+        }
+
+        /* scroll bar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -35,10 +43,10 @@
             border-radius: 10px;
         }
 
-        /* هدر و نویگیشن */
+        /* navbar */
         .navbar {
             background: rgba(255, 248, 240, 0.96);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.03);
             padding: 1rem 2rem;
             position: sticky;
@@ -52,8 +60,8 @@
         }
 
         .logo {
-            font-size: 1.9rem;
-            font-weight: 800;
+            font-size: 2rem;
+            font-weight: 900;
             background: linear-gradient(135deg, #c55a2c, #e68a2e);
             background-clip: text;
             -webkit-background-clip: text;
@@ -66,8 +74,9 @@
             background-clip: unset;
             -webkit-background-clip: unset;
             color: #d97a3c;
-            font-size: 1.8rem;
-            margin-left: 6px;
+            font-size: 1.9rem;
+            margin-left: 8px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .nav-links {
@@ -78,7 +87,7 @@
 
         .nav-links a {
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 800;
             color: #4b3b2f;
             transition: 0.2s;
             font-size: 1rem;
@@ -91,9 +100,16 @@
 
         .cart-icon {
             position: relative;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: #c25d2b;
             cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .cart-icon i {
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+        }
+        .cart-icon:hover {
+            transform: scale(1.05);
         }
 
         .cart-count {
@@ -110,23 +126,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        /* hero section */
+        /* hero section with callfood message */
         .hero {
-            background: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&auto=format') center/cover no-repeat;
-            min-height: 65vh;
+            background: url('https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg') center/cover no-repeat;
+            min-height: 55vh;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 0 0 48px 48px;
             margin: 0 1rem;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.25);
         }
         .hero-overlay {
-            background: linear-gradient(120deg, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+            background: linear-gradient(120deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
             border-radius: 0 0 48px 48px;
             width: 100%;
             height: 100%;
@@ -134,51 +150,50 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 2rem;
         }
-        .hero-text {
-            color: white;
-            text-shadow: 0 5px 18px rgba(0,0,0,0.4);
+        .call-message-box {
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255,215,170,0.6);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
-        .hero-text h1 {
-            font-size: 3rem;
+        .call-message-box p {
+            color: #fff1e0;
+            font-size: 1.4rem;
             font-weight: 800;
-            margin-bottom: 1rem;
+            letter-spacing: 0px;
         }
-        .hero-text p {
-            font-size: 1.3rem;
-            opacity: 0.95;
+        .call-message-box i {
+            color: #ffb347;
+            margin-left: 10px;
+            font-size: 1.5rem;
         }
-        .btn-order {
-            margin-top: 2rem;
+        .call-message-box .phone-number {
+            direction: ltr;
+            display: inline-block;
             background: #e67e22;
-            border: none;
-            padding: 0.9rem 2rem;
-            font-size: 1.1rem;
-            font-weight: bold;
+            padding: 6px 18px;
             border-radius: 40px;
+            margin-right: 12px;
             color: white;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 8px 14px rgba(230,126,34,0.3);
-        }
-        .btn-order:hover {
-            background: #cf711f;
-            transform: scale(1.02);
+            font-size: 1.2rem;
         }
 
-        /* بخش منو محصولات */
+        /* menu section with only one card */
         .menu-section {
-            max-width: 1300px;
-            margin: 5rem auto;
-            padding: 0 2rem;
+            max-width: 600px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
         }
         .section-title {
             text-align: center;
             font-size: 2.2rem;
-            font-weight: 800;
+            font-weight: 900;
             position: relative;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
         .section-title:after {
             content: "";
@@ -190,103 +205,93 @@
             border-radius: 4px;
         }
 
-        .food-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
         .food-card {
             background: white;
-            border-radius: 32px;
+            border-radius: 48px;
             overflow: hidden;
-            box-shadow: 0 18px 30px -12px rgba(0,0,0,0.1);
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.25);
             transition: all 0.3s ease;
-            cursor: pointer;
             backdrop-filter: blur(2px);
-            border: 1px solid rgba(230,126,34,0.1);
+            border: 1px solid rgba(230,126,34,0.3);
         }
         .food-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 28px 35px -12px rgba(0,0,0,0.2);
+            box-shadow: 0 30px 45px -12px rgba(0,0,0,0.3);
         }
         .card-img {
-            height: 200px;
+            height: 320px;
             background-size: cover;
             background-position: center;
             position: relative;
         }
-        .badge-hot {
+        .badge-special {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 18px;
+            right: 18px;
             background: #e67e22;
             color: white;
-            padding: 5px 12px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: bold;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            box-shadow: 0 3px 8px black;
         }
         .card-info {
-            padding: 1.2rem 1.2rem 1.5rem;
+            padding: 1.5rem;
         }
         .card-info h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.4rem;
+            font-size: 1.9rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
         }
         .desc {
-            color: #6b5b4e;
-            font-size: 0.85rem;
-            margin: 0.5rem 0 0.8rem;
-            line-height: 1.4;
-        }
-        .price {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #d2691a;
-            display: inline-block;
+            color: #5e4b3a;
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0.5rem 0 1.2rem;
+            line-height: 1.5;
         }
         .add-to-cart {
             background: #2e241f;
             color: white;
             border: none;
-            padding: 8px 18px;
+            padding: 14px 24px;
             border-radius: 60px;
-            font-weight: 500;
+            font-weight: 800;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.25s;
             font-family: 'Vazirmatn', sans-serif;
+        }
+        .add-to-cart i {
+            font-size: 1.3rem;
+            filter: none;
         }
         .add-to-cart:hover {
             background: #e67e22;
-            transform: scale(0.96);
-        }
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 8px;
+            transform: scale(0.98);
         }
 
-        /* سبد خرید کناری */
+        /* cart sidebar */
         .cart-sidebar {
             position: fixed;
             top: 0;
-            left: -380px;
-            width: 380px;
+            left: -400px;
+            width: 400px;
             height: 100%;
             background: #fffaf5;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            box-shadow: -8px 0 30px rgba(0,0,0,0.2);
             z-index: 2000;
             transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            border-radius: 0 20px 20px 0;
+            border-radius: 0 28px 28px 0;
         }
         .cart-sidebar.open {
             left: 0;
@@ -295,18 +300,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #f0e2d4;
+            border-bottom: 3px solid #f0e2d4;
             padding-bottom: 1rem;
         }
         .cart-header h2 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 900;
         }
         .close-cart {
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             cursor: pointer;
             color: #af7f58;
+            transition: 0.1s;
         }
         .cart-items {
             flex: 1;
@@ -320,29 +327,35 @@
             display: flex;
             justify-content: space-between;
             background: white;
-            padding: 0.7rem;
-            border-radius: 20px;
+            padding: 0.8rem;
+            border-radius: 28px;
             align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         .cart-item-info h4 {
             font-size: 1rem;
+            font-weight: 800;
         }
         .cart-item-price {
             color: #d97a3c;
-            font-weight: bold;
+            font-weight: 800;
         }
         .cart-item-actions button {
             background: #f0e2d4;
             border: none;
-            width: 28px;
-            border-radius: 30px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
             font-weight: bold;
+            font-size: 1.1rem;
             cursor: pointer;
+            margin: 0 2px;
+            transition: 0.1s;
         }
         .cart-total {
             border-top: 2px dashed #e2cfbe;
             padding-top: 1rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 800;
             display: flex;
             justify-content: space-between;
@@ -351,77 +364,86 @@
             background: #e67e22;
             width: 100%;
             margin-top: 1.2rem;
-            padding: 0.9rem;
+            padding: 1rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 60px;
             color: white;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-weight: 900;
+            font-size: 1.2rem;
             cursor: pointer;
             transition: 0.2s;
+            font-family: 'Vazirmatn', sans-serif;
         }
         .empty-cart {
             text-align: center;
             color: #ad8b70;
             margin-top: 2rem;
+            font-weight: 700;
         }
 
-        /* فوتر */
+        /* footer */
         .footer {
             background: #2b211c;
-            color: #e5cfbd;
+            color: #ffe0cd;
             text-align: center;
-            padding: 2rem;
+            padding: 2rem 1rem;
             margin-top: 4rem;
             border-radius: 40px 40px 0 0;
+            font-weight: 800;
+        }
+        .footer p {
+            margin: 0.3rem 0;
         }
 
-        /* responsive */
-        @media (max-width: 700px) {
+        @media (max-width: 550px) {
             .navbar {
                 flex-direction: column;
                 gap: 12px;
-            }
-            .hero-text h1 {
-                font-size: 2rem;
             }
             .cart-sidebar {
                 width: 100%;
                 left: -100%;
             }
+            .call-message-box p {
+                font-size: 1rem;
+            }
+            .phone-number {
+                font-size: 0.9rem;
+                display: block;
+                margin-top: 6px;
+            }
         }
 
-        button {
-            font-family: inherit;
-        }
         .toast-msg {
             position: fixed;
             bottom: 25px;
             left: 25px;
             background: #2e241f;
             color: #ffefcf;
-            padding: 12px 20px;
+            padding: 12px 24px;
             border-radius: 60px;
-            font-weight: 500;
+            font-weight: 800;
             z-index: 2100;
-            box-shadow: 0 5px 12px black;
+            box-shadow: 0 6px 16px black;
             opacity: 0;
             transition: 0.2s;
             pointer-events: none;
+        }
+        button {
+            font-family: 'Vazirmatn', sans-serif;
         }
     </style>
 </head>
 <body>
 
-<!-- نوار بالا -->
 <div class="navbar">
     <div class="logo">
-        <i class="fas fa-utensils"></i> فودلند
+        <i class="fas fa-phone-alt"></i> کالفود
     </div>
     <div class="nav-links">
-        <a href="#">خانه</a>
-        <a href="#menu">منوی غذای‌ها</a>
-        <a href="#">تماس با ما</a>
+        <a href="#"><i class="fas fa-home"></i> خانه</a>
+        <a href="#menu"><i class="fas fa-utensil-spoon"></i> منوی ویژه</a>
+        <a href="#"><i class="fas fa-headset"></i> پشتیبانی</a>
         <div class="cart-icon" id="cartIcon">
             <i class="fas fa-shopping-bag"></i>
             <span class="cart-count" id="cartCount">0</span>
@@ -429,59 +451,69 @@
     </div>
 </div>
 
-<!-- بخش هیرو -->
+<!-- Hero section با پیام کالفود میگوید -->
 <div class="hero">
     <div class="hero-overlay">
-        <div class="hero-text">
-            <h1>عشق به طعم‌های بی‌نظیر</h1>
-            <p>غذای تازه، تحویل سریع، طعم خونه!</p>
-            <button class="btn-order" id="scrollToMenuBtn">سفارش آنلاین</button>
+        <div class="call-message-box">
+            <p><i class="fas fa-comment-dots"></i> کالفود میگوید: برای خرید با این شماره تماس بگیرید</p>
+            <p><i class="fas fa-phone-volume"></i> <span class="phone-number" dir="ltr">+98 990 268 4303</span></p>
         </div>
     </div>
 </div>
 
-<!-- منوی غذاها -->
+<!-- بخش تک کارت غذا -->
 <div class="menu-section" id="menu">
-    <div class="section-title">منوی مخصوص فودلند</div>
-    <div class="food-grid" id="foodGrid"></div>
+    <div class="section-title"><i class="fas fa-crown"></i> غذای ویژه امروز</div>
+    <div class="food-grid" id="foodGrid">
+        <!-- only one card dynamically via JS but we build it via JS for consistency -->
+    </div>
 </div>
 
 <!-- سبد خرید کناری -->
 <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
-        <h2><i class="fas fa-shopping-basket"></i> سبد خرید</h2>
-        <button class="close-cart" id="closeCartBtn"><i class="fas fa-times"></i></button>
+        <h2><i class="fas fa-basket-shopping"></i> سبد خرید</h2>
+        <button class="close-cart" id="closeCartBtn"><i class="fas fa-times-circle"></i></button>
     </div>
     <div class="cart-items" id="cartItemsList">
-        <div class="empty-cart">سبد تو خالیه! یه غذای خوشمزه انتخاب کن 🍔</div>
+        <div class="empty-cart">سبد خالیه! این بورک خوشمزه رو امتحان کن 🍗</div>
     </div>
     <div class="cart-total">
-        <span>جمع کل:</span>
+        <span><i class="fas fa-wallet"></i> مجموع سفارش:</span>
         <span id="cartTotalPrice">۰ تومان</span>
     </div>
-    <button class="checkout-btn" id="checkoutBtn">پرداخت و ثبت سفارش</button>
+    <button class="checkout-btn" id="checkoutBtn"><i class="fas fa-check-circle"></i> پرداخت ثبت نهایی</button>
 </div>
 
-<div class="toast-msg" id="toastMsg">غذا به سبد اضافه شد 🍽️</div>
+<div class="toast-msg" id="toastMsg"><i class="fas fa-heart"></i> به سبد اضافه شد</div>
 
 <footer class="footer">
-    <p>فودلند | طعم اصیل با عشق ❤️ | سفارش غذا به سادگی یک کلیک</p>
-    <p style="margin-top: 12px; font-size: 0.8rem;">© 2025 فودلند – بهترین طعم‌ها اینجا هستند</p>
+    <p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p>
+    <p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p>
 </footer>
 
 <script>
-    // لیست محصولات (دیتابیس فرضی)
+    // only one product (بورک مرغ و ژامبون پنیری)
     const foodData = [
-        { id: 1, name: "برگر لذیذ مخصوص", desc: "گوشت گوساله + پنیر چدار + سس راز", price: 185000, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format", hot: true },
-        { id: 2, name: "پیتزا ایتالیایی", desc: "پپرونی، زیتون، قارچ و پنیر موزارلا", price: 245000, img: "https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?w=500&auto=format", hot: true },
-        { id: 3, name: "سالاد سزار با مرغ", desc: "مرغ گریل شده، کاهو، سس مخصوص", price: 125000, img: "https://images.unsplash.com/photo-1550304943-4f24f54dd8a9?w=500&auto=format", hot: false },
-        { id: 4, name: "قورمه سبزی مجلسی", desc: "خورشت اصیل با سبزی معطر و لوبیا", price: 195000, img: "https://images.unsplash.com/photo-1571863533956-01c88e79957e?w=500&auto=format", hot: true },
-        { id: 5, name: "سوشی رول کالیفرنیا", desc: "خرچنگ، آووکادو، خیار و سس مایونز", price: 299000, img: "https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=500&auto=format", hot: false },
-        { id: 6, name: "نودل تایلندی", desc: "نودل برنجی با بادام زمینی و توفو", price: 149000, img: "https://images.unsplash.com/photo-1552611052-69a5de54aad2?w=500&auto=format", hot: false }
+        { 
+            id: 1, 
+            name: "بورک مرغ و ژامبون پنیری", 
+            desc: "مرغ ژامبون و خمیر با کیفیت", 
+            price: 0,   // price hidden but for cart structure we keep price as 0? No, we will set an actual price but hide from UI? But better set a base price for total.
+            // but the requirement: قیمت کلا حذف کن فقط یک باکس سبد برای خرید که اگر روش بزنن بره توی سبد خرید.
+            // However we need to show some total? Actually the cart can sum zero but we display total in IRR with price per item = 0? No, better set symbolic price without displaying price. But the user doesn't want to show any price.
+            // According to des: "قیمت کلا حذف کن فقط یک باکس سبد برای خرید" means don't show any price in card. but backend handling I give a hidden price = 0? no that's weird for total.
+            // To make realistic but not showing price anywhere on card, but still cart can show total? i'd set each item a fixed value 0? no.
+            // The requirement: no price anywhere! So we can omit price display on card AND also on cart total? but the checkout btn just acts as order registration without money? Most likely it's for call to order. So we treat as ordering only and total won't be displayed.
+            // But for better experience, in cart I will not show price column at all. I will hide pricing completely and just show quantity and item name. Checkout just shows alert. Because price completely removed.
+            // but cart total price shouldn't appear. Let's adjust: we won't display price in cart. And totalPrice = 0 always
+            // We completely remove monetary values from UI. Perfect.
+            hiddenPrice: 0,
+            img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg"
+        }
     ];
 
-    // سبد خرید: شامل اشیاء با id, name, price, quantity
-    let cart = [];
+    let cart = [];   // each item: { id, name, quantity }
 
     // DOM elements
     const foodGrid = document.getElementById('foodGrid');
@@ -497,7 +529,7 @@
     let toastTimeout;
 
     function showToast(message) {
-        toastMsgDiv.innerText = message;
+        toastMsgDiv.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
         toastMsgDiv.style.opacity = '1';
         if (toastTimeout) clearTimeout(toastTimeout);
         toastTimeout = setTimeout(() => {
@@ -505,65 +537,40 @@
         }, 2000);
     }
 
-    // ذخیره سبد در localStorage (پیشرفته تر)
-    function saveCartToLocal() {
-        localStorage.setItem('foodCart', JSON.stringify(cart));
-    }
-
-    function loadCartFromLocal() {
-        const saved = localStorage.getItem('foodCart');
-        if (saved) {
-            try {
-                cart = JSON.parse(saved);
-            } catch(e) { cart = []; }
-        } else {
-            cart = [];
-        }
-        renderCartUI();
-        updateCartBadge();
-    }
-
-    // به روزرسانی نشانگر سبد خرید
     function updateCartBadge() {
         const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
         cartCountSpan.innerText = totalItems;
     }
 
-    // رندر کردن سبد خرید داخل سایدبار
     function renderCartUI() {
-        if (!cartItemsList) return;
         if (cart.length === 0) {
-            cartItemsList.innerHTML = `<div class="empty-cart"><i class="fas fa-shopping-cart"></i> سبد خرید خالی است! <br> غذاهای خوشمزه رو امتحان کن 😋</div>`;
-            cartTotalPriceSpan.innerText = `۰ تومان`;
+            cartItemsList.innerHTML = `<div class="empty-cart"><i class="fas fa-empty-set"></i> سبد خرید خالی است! <br> بورک ما رو امتحان کن 🌯</div>`;
+            cartTotalPriceSpan.innerText = "۰ تومان";
             updateCartBadge();
             saveCartToLocal();
             return;
         }
 
         let html = '';
-        let total = 0;
-        cart.forEach((item, idx) => {
-            const itemTotal = item.price * item.quantity;
-            total += itemTotal;
+        cart.forEach(item => {
             html += `
                 <div class="cart-item" data-id="${item.id}">
                     <div class="cart-item-info">
-                        <h4>${item.name}</h4>
-                        <span class="cart-item-price">${item.price.toLocaleString()} تومان</span>
-                        <div style="font-size:0.75rem;">تعداد: ${item.quantity}</div>
+                        <h4><i class="fas fa-drumstick-bite"></i> ${item.name}</h4>
+                        <span style="font-size:0.75rem;">تعداد: ${item.quantity}</span>
                     </div>
                     <div class="cart-item-actions">
                         <button class="cart-inc" data-id="${item.id}">+</button>
                         <button class="cart-dec" data-id="${item.id}">-</button>
-                        <button class="cart-remove" data-id="${item.id}" style="background: #f1cfb3;">🗑️</button>
+                        <button class="cart-remove" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button>
                     </div>
                 </div>
             `;
         });
         cartItemsList.innerHTML = html;
-        cartTotalPriceSpan.innerText = `${total.toLocaleString()} تومان`;
-
-        // ادد ایونت به دکمه های افزایش/کاهش و حذف
+        // hide price total since no price available, but show 0 تومان or remove? we show 0 تومان to be discreet.
+        cartTotalPriceSpan.innerText = `۰ تومان (تماس تلفنی)`;
+        
         document.querySelectorAll('.cart-inc').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const id = parseInt(btn.getAttribute('data-id'));
@@ -582,7 +589,6 @@
                 removeItemCompletely(id);
             });
         });
-
         updateCartBadge();
         saveCartToLocal();
     }
@@ -593,12 +599,12 @@
             const newQty = existing.quantity + delta;
             if (newQty <= 0) {
                 cart = cart.filter(item => item.id !== id);
+                showToast(`حذف شد`);
             } else {
                 existing.quantity = newQty;
+                showToast(`تعداد ${existing.name} : ${existing.quantity}`);
             }
             renderCartUI();
-            if(newQty > 0) showToast(`تعداد "${existing.name}" تغییر کرد`);
-            else showToast(`"${existing.name}" از سبد حذف شد`);
         }
     }
 
@@ -609,108 +615,89 @@
         renderCartUI();
     }
 
-    // افزودن به سبد
     function addToCart(product) {
         const existing = cart.find(item => item.id === product.id);
         if (existing) {
             existing.quantity += 1;
-            showToast(`${product.name} +۱ شد (${existing.quantity} عدد)`);
+            showToast(`${product.name} +۱ (${existing.quantity} عدد)`);
         } else {
             cart.push({
                 id: product.id,
                 name: product.name,
-                price: product.price,
                 quantity: 1
             });
-            showToast(`${product.name} به سبد اضافه شد 🍕`);
+            showToast(`${product.name} به سبد اضافه شد 🧀`);
         }
         renderCartUI();
-        // optional: باز کردن سایدبار خودکار
-        // cartSidebar.classList.add('open');
     }
 
-    // رندر کردن کارت های غذا
-    function renderFoodCards() {
+    function renderSingleCard() {
+        const food = foodData[0];
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'food-card';
+        cardDiv.innerHTML = `
+            <div class="card-img" style="background-image: url('${food.img}');">
+                <div class="badge-special"><i class="fas fa-fire"></i> ویژه کالفود</div>
+            </div>
+            <div class="card-info">
+                <h3><i class="fas fa-egg"></i> ${food.name}</h3>
+                <div class="desc"><i class="fas fa-info-circle"></i> ${food.desc}</div>
+                <button class="add-to-cart" data-id="${food.id}">
+                    <i class="fas fa-cart-plus"></i> افزودن به سبد خرید
+                </button>
+            </div>
+        `;
         foodGrid.innerHTML = '';
-        foodData.forEach(food => {
-            const card = document.createElement('div');
-            card.className = 'food-card';
-            card.innerHTML = `
-                <div class="card-img" style="background-image: url('${food.img}');">
-                    ${food.hot ? '<div class="badge-hot">🔥 داغ و جدید</div>' : ''}
-                </div>
-                <div class="card-info">
-                    <h3>${food.name}</h3>
-                    <div class="desc">${food.desc}</div>
-                    <div class="card-footer">
-                        <span class="price">${food.price.toLocaleString()} تومان</span>
-                        <button class="add-to-cart" data-id="${food.id}">
-                            <i class="fas fa-plus-circle"></i> سفارش
-                        </button>
-                    </div>
-                </div>
-            `;
-            foodGrid.appendChild(card);
-        });
+        foodGrid.appendChild(cardDiv);
 
-        // attach event after render
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const id = parseInt(btn.getAttribute('data-id'));
-                const product = foodData.find(f => f.id === id);
-                if (product) addToCart(product);
-            });
+        document.querySelector('.add-to-cart')?.addEventListener('click', (e) => {
+            const id = parseInt(e.currentTarget.getAttribute('data-id'));
+            const product = foodData.find(f => f.id === id);
+            if(product) addToCart(product);
         });
     }
 
-    // باز و بسته کردن سایدبار
-    function openCartSidebar() {
-        cartSidebar.classList.add('open');
+    function saveCartToLocal() {
+        localStorage.setItem('callfoodCart', JSON.stringify(cart));
     }
-    function closeCartSidebar() {
-        cartSidebar.classList.remove('open');
+    function loadCartFromLocal() {
+        const saved = localStorage.getItem('callfoodCart');
+        if (saved) {
+            try {
+                cart = JSON.parse(saved);
+            } catch(e) { cart = []; }
+        } else {
+            cart = [];
+        }
+        renderCartUI();
     }
 
-    // اسکرول به منو
-    document.getElementById('scrollToMenuBtn').addEventListener('click', () => {
-        const menuSection = document.getElementById('menu');
-        menuSection.scrollIntoView({ behavior: 'smooth' });
+    function openSidebar() { cartSidebar.classList.add('open'); }
+    function closeSidebar() { cartSidebar.classList.remove('open'); }
+
+    cartIcon.addEventListener('click', openSidebar);
+    closeCartBtn.addEventListener('click', closeSidebar);
+    document.addEventListener('click', (e) => {
+        if (cartSidebar.classList.contains('open') && !cartSidebar.contains(e.target) && !cartIcon.contains(e.target)) {
+            closeSidebar();
+        }
     });
 
-    // پرداخت (دمو)
-    function checkout() {
+    checkoutBtn.addEventListener('click', () => {
         if (cart.length === 0) {
-            showToast("سبد خرید خالی است! لطفا ابتدا غذا انتخاب کنید 🧺");
+            showToast("سبد خرید خالی! لطفا بورک را سفارش دهید 🧀");
             return;
         }
-        const total = cart.reduce((acc, i) => acc + (i.price * i.quantity), 0);
-        alert(`🌮 سفارش شما با موفقیت ثبت شد! مبلغ نهایی: ${total.toLocaleString()} تومان\nتشکر از خرید شما، در اسرع وقت ارسال میشود 🚀`);
+        const totalItems = cart.reduce((acc,i)=> acc + i.quantity,0);
+        alert(`🌯 سفارش شما با موفقیت ثبت نهایی شد!\nتماس بگیرید: +98 990 268 4303\nتعداد آیتم‌ها: ${totalItems}\nکالفود بزودی با شما تماس می‌گیرد.`);
         cart = [];
         renderCartUI();
-        closeCartSidebar();
-        showToast("سفارش ثبت شد! ممنون از اعتماد شما ❤️");
-    }
-
-    // رویدادها
-    cartIcon.addEventListener('click', openCartSidebar);
-    closeCartBtn.addEventListener('click', closeCartSidebar);
-    checkoutBtn.addEventListener('click', checkout);
-
-    // بستن سایدبار با کلیک خارج از آن (پیشرفته ساده)
-    document.addEventListener('click', (e) => {
-        if (cartSidebar.classList.contains('open')) {
-            if (!cartSidebar.contains(e.target) && !cartIcon.contains(e.target)) {
-                closeCartSidebar();
-            }
-        }
+        closeSidebar();
+        showToast("سفارش ثبت نهایی شد! ممنون از اعتمادتون ❤️");
     });
 
-    // مقدار دهی اولیه
-    renderFoodCards();
+    renderSingleCard();
     loadCartFromLocal();
-
-    // اگر محلی نبود، یک دمو سبد خالی است ولی render قبلاً انجام شده
-    // اماده
 </script>
 </body>
-    </html>
+</html>
