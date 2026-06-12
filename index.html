@@ -276,14 +276,16 @@
         }
         .btn-group {
             display: flex;
-            gap: 12px;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
             margin-top: 10px;
         }
         .add-to-cart {
             background: #2e241f;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 12px 0;
             border-radius: 60px;
             font-weight: 800;
             font-size: 1rem;
@@ -291,7 +293,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            flex: 2;
+            width: 100%;
             cursor: pointer;
             font-family: 'Vazirmatn', sans-serif;
             transition: 0.2s;
@@ -304,14 +306,15 @@
             background: #f0e2d4;
             color: #4b3b2f;
             border: none;
-            padding: 12px 18px;
+            padding: 12px 0;
             border-radius: 60px;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            flex: 1;
+            width: 100%;
             cursor: pointer;
             transition: 0.2s;
             font-family: 'Vazirmatn', sans-serif;
