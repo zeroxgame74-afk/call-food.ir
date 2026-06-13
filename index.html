@@ -705,6 +705,15 @@
 
 <script>
     const foods = [
+        // غذای جدید 1 - کیک مرغ
+        { id: 14, name: "کیک مرغ", desc: "گردو با عطر جعفری و پیازچه تازه", longDesc: "کیک مرغ؛ یک ابتکار خوشمزه و متفاوت از کالفود! لایه‌های لطیف مرغ تازه ترکیب شده با گردوی خرد شده، جعفری معطر و پیازچه تازه. بافتی نرم و طعمی بی‌نظیر که هم برای مهمانی‌ها مناسبه و هم یک وعده سریع و مقوی.", img: "https://cdn.imgurl.ir/uploads/d943046_IMG_20260613_152928.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 13, 15, 30) },
+        // غذای جدید 2 - جوجه چینی ترد
+        { id: 15, name: "جوجه چینی ترد", desc: "جوجه چینی ترد و پفکی با پوشش طلایی", longDesc: "جوجه چینی ترد؛ ترد و پفکی مثل هیچ جای دیگه! تکه‌های جوجه با پوششی مخصوص و ادویه‌های چینی، در روغن داغ سرخ می‌شن تا حسابی برشته و طلایی بشن. ظاهر پفکی و طعم فوق‌العاده تردش، یه تجربه جدید از فست فود رو بهت هدیه میده.", img: "https://cdn.imgurl.ir/uploads/i24874_IMG_20260613_153322.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: false, createdAt: new Date(2026, 5, 13, 14, 30) },
+        // غذای جدید 3 - مرغ شکم پر شمالی
+        { id: 16, name: "مرغ شکم پر شمالی", desc: "مرغ شکم پر شمالی با سس انار و آلو", longDesc: "مرغ شکم پر شمالی؛ یه غذای سنتی با طعم شمال! مرغ آبدار رو با ترکیبی از سبزیجات معطر، برنج، آلوچه و گردو پر می‌کنیم، بعد آروم آروم توی سس انار و آلو شمالی می‌پزه. نتیجه یه غذای مجلسی و به‌یادماندنی که هم عطر خاک شمال رو داره، هم طعم ترش و شیرین فوق‌العاده.", img: "https://cdn.imgurl.ir/uploads/j1545_IMG_20260613_153404.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: true, createdAt: new Date(2026, 5, 13, 13, 30) },
+        // غذای جدید 4 - حلوای زعفرانی
+        { id: 17, name: "حلوای زعفرانی", desc: "حلوای زعفرانی با عطر بی‌نظیر هل و گلاب", longDesc: "حلوای زعفرانی؛ یه دسر سنتی و عطرآگین که دل هر کسی رو می‌بره! حلوا با زعفران ناب، هل تازه و گلاب اصیل، بافت نرم و لطیفی داره که توی دهان آب می‌شه. این حلوا رو به روش مخصوص کالفود تهیه می‌کنیم که نه زیادی شیرینه، نه زیادی سنگین. همراه چای عصر، بهشت رو تجربه کن!", img: "https://cdn.imgurl.ir/uploads/x569079_IMG_20260613_153732.jpg", tag: "شیرینی‌جات", tagIcon: "fa-cake-candles", isSpecial: false, createdAt: new Date(2026, 5, 13, 12, 30) },
+        // غذاهای قبلی - با تاریخ‌های قدیمی‌تر
         { id: 13, name: "کاپ کیک", desc: "کاپ کیک با خمیر با کیفیت، خامه و اشکال تزئینی", longDesc: "کاپ کیک؛ دسری زیبا و خوشمزه برای لحظات خاص. این کاپ کیک با خمیر نرم و لطیف، خامه‌ی تازه و اشکال تزئینی دوست‌داشتنی تهیه شده است. مناسب برای جشن تولد، مهمانی‌های دوستانه یا هر زمان که هوس یک شیرینی خاص کردید. زیبایی و طعم را با هم تجربه کنید.", img: "https://cdn.imgurl.ir/uploads/o0654_IMG_20260612_144324.jpg", tag: "کیک", tagIcon: "fa-birthday-cake", isSpecial: true, createdAt: new Date(2025, 5, 18) },
         { id: 12, name: "کماچ لقمه", desc: "کماچ لقمه؛ غذای سنتی و اصیل خراسان جنوبی", longDesc: "کماچ لقمه؛ غذای سنتی و اصیل خراسان جنوبی. این خوراکی خوشمزه با خمیر مخصوص و روش‌های قدیمی تهیه می‌شود. کماچ لقمه انتخابی عالی برای عاشقان غذاهای محلی و سنتی است. بافت ترد و طعم بی‌نظیر این لقمه‌ها شما را به سفره‌های رنگین خراسان می‌برد. بدون هیچ افزودنی مصنوعی، فقط لذت خالص.", img: "https://uploadkon.ir/uploads/7ae012_26IMG-20260612-151323.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: true, createdAt: new Date(2025, 5, 17) },
         { id: 11, name: "اشترودل مرغ و قارچ پنیری", desc: "خمیر هزارلایه ترد، همراه با مرغ تازه، قارچ و پنیر", longDesc: "اشترودل مرغ و قارچ پنیری؛ ترد و لذیذ. خمیر هزارلایه ترد، همراه با مرغ تازه، قارچ عطرآگین و پنیر آب شده. ترکیبی بی‌نظیر از طعم و بافت که یک فینگر فود مجلسی و خوشمزه را برای شما به ارمغان می‌آورد. مناسب برای مهمانی‌ها، دورهمی‌ها و هر لحظه‌ای که هوس یک غذای خاص کردید.", img: "https://cdn.imgurl.ir/uploads/d405294_IMG_20260612_142842.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2025, 5, 16) },
@@ -725,7 +734,7 @@
     let cart = [];
     let processing = false;
     const cartSidebar = document.getElementById('cartSidebar');
-    const cartIcon = document.getElementById('cartIcon');
+    const cartIconElem = document.getElementById('cartIcon');
     const closeCartBtn = document.getElementById('closeCartBtn');
     const cartItemsList = document.getElementById('cartItemsList');
     const cartCountSpan = document.getElementById('cartCount');
@@ -836,7 +845,7 @@
         card.innerHTML = `
             <div class="card-img" style="background-image: url('${food.img}');">
                 <div class="food-tag"><i class="fas ${food.tagIcon}"></i> ${food.tag}</div>
-                <div class="badge-special"><i class="fas fa-star"></i> ویژه</div>
+                ${food.isSpecial ? '<div class="badge-special"><i class="fas fa-star"></i> ویژه خفن</div>' : ''}
             </div>
             <div class="card-info">
                 <h3><i class="fas fa-egg"></i> ${food.name}</h3>
@@ -918,9 +927,9 @@
 
     function openSidebar() { cartSidebar.classList.add('open'); }
     function closeSidebar() { cartSidebar.classList.remove('open'); }
-    cartIcon.addEventListener('click', openSidebar);
+    cartIconElem.addEventListener('click', openSidebar);
     closeCartBtn.addEventListener('click', closeSidebar);
-    document.addEventListener('click', (e) => { if(cartSidebar.classList.contains('open') && !cartSidebar.contains(e.target) && !cartIcon.contains(e.target)) closeSidebar(); });
+    document.addEventListener('click', (e) => { if(cartSidebar.classList.contains('open') && !cartSidebar.contains(e.target) && !cartIconElem.contains(e.target)) closeSidebar(); });
     
     checkoutBtn.addEventListener('click', () => {
         if(cart.length === 0) { showToast("سبد خالیه! اول غذا انتخاب کن 😋", false); return; }
@@ -934,4 +943,4 @@
     loadCart();
 </script>
 </body>
-    </html>
+                                                                                                                                </html>
