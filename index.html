@@ -654,6 +654,7 @@
         <a href="#" data-page="finger"><i class="fas fa-hand-peace"></i> فینگر فود</a>
         <a href="#" data-page="traditional"><i class="fas fa-mosque"></i> غذای سنتی</a>
         <a href="#" data-page="sweet"><i class="fas fa-cake-candles"></i> شیرینی‌جات</a>
+        <a href="#" data-page="dessert"><i class="fas fa-ice-cream"></i> دسر</a>
         <a href="#" data-page="support"><i class="fas fa-headset"></i> پشتیبانی</a>
         <div class="cart-icon" id="cartIcon">
             <i class="fas fa-shopping-bag"></i>
@@ -693,6 +694,7 @@
 <div id="cakePage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-birthday-cake"></i> کیک</div><div id="cakeGrid" class="foods-grid"></div></div></div>
 <div id="traditionalPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-mosque"></i> غذای سنتی</div><div id="traditionalGrid" class="foods-grid"></div></div></div>
 <div id="sweetPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌جات</div><div id="sweetGrid" class="foods-grid"></div></div></div>
+<div id="dessertPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-ice-cream"></i> دسر</div><div id="dessertGrid" class="foods-grid"></div></div></div>
 <div id="supportPage" class="page-content"><div class="support-section"><div class="support-box"><h3><i class="fas fa-headset"></i> پشتیبانی کالفود</h3><div class="support-item"><i class="fas fa-headset"></i> <span>پشتیبانی : <strong>09902684303</strong></span></div><div class="support-item"><i class="fas fa-laptop-code"></i> <span>سازنده سایت : محمد حسین صنعتی</span></div></div></div></div>
 
 <div class="cart-sidebar" id="cartSidebar">
@@ -721,6 +723,11 @@
 
 <script>
     const foods = [
+        // غذاهای جدید (با تاریخ امروز برای نمایش در اولویت)
+        { id: 18, name: "ژله بستنی کالفود!", desc: "ژله بستنی کالفود با طعم پرتغال و آلوئه‌ورا", longDesc: "ژله بستنی کالفود؛ ترکیبی بی‌نظیر از ژله نرم و بستنی خامه‌ای با طعم پرتقال تازه و آلوئه‌ورا. یک دسر تابستونی و سرحال که هم خنکته، هم خوشمزه. مناسب برای بعد از غذا یا یک عصرانه خاص. ظاهر رنگی و طعم دلپذیرش، مهمونی شما رو به یاد موندنی می‌کنه.", img: "https://uploadkon.ir/uploads/456213_26IMG-20260613-230203.jpg", tag: "دسر", tagIcon: "fa-ice-cream", isSpecial: true, createdAt: new Date(2026, 5, 13, 23, 0) },
+        { id: 19, name: "مرغ کاراملی با شوید باقالی پلو", desc: "مرغ کاراملی با شوید باقالی پلو، یک غذای کامل و سنتی", longDesc: "مرغ کاراملی با شوید باقالی پلو؛ یه غذای سنتی مجلسی و پرطرفدار! تکه‌های مرغ آبدار با سس کاراملی مخصوص، کنار باقالی پلو معطر با شوید تازه. ترکیب شیرینی ملایم کارامل با عطر سبزیجات شمالی، طعمی بی‌نظیر خلق کرده که همه ذائقه‌ها رو راضی می‌کنه. مناسب برای مهمونی‌های خاص.", img: "https://uploadkon.ir/uploads/8f7e13_26IMG-20260613-185831.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 13, 22, 0) },
+        { id: 20, name: "پیتزا اسنکی", desc: "پیتزا اسنکی، بمب انرژی و خوشمزه", longDesc: "پیتزا اسنکی؛ بمب انرژی و خوشمزه برای لحظات فوری! پیتزاهای کوچک و ترد با سس پنیری مخصوص و ترکیب دلخواه از ژامبون، قارچ و فلفل دلمه. یه گزینه عالی برای مهمونی‌های دوستانه، فیلم دیدن یا هر وقت که هوس پیتزا کردی ولی وقت نداری. سایز اسنکی اما طعمی درشت!", img: "https://uploadkon.ir/uploads/cd0b13_26IMG-20260613-230747.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 13, 21, 0) },
+        // غذاهای قبلی (همه سر جای خودشون)
         { id: 14, name: "کیک مرغ", desc: "گردو با عطر جعفری و پیازچه تازه", longDesc: "کیک مرغ؛ یک ابتکار خوشمزه و متفاوت از کالفود! لایه‌های لطیف مرغ تازه ترکیب شده با گردوی خرد شده، جعفری معطر و پیازچه تازه. بافتی نرم و طعمی بی‌نظیر که هم برای مهمانی‌ها مناسبه و هم یک وعده سریع و مقوی.", img: "https://cdn.imgurl.ir/uploads/d943046_IMG_20260613_152928.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 13, 15, 30) },
         { id: 15, name: "جوجه چینی ترد", desc: "جوجه چینی ترد و پفکی با پوشش طلایی", longDesc: "جوجه چینی ترد؛ ترد و پفکی مثل هیچ جای دیگه! تکه‌های جوجه با پوششی مخصوص و ادویه‌های چینی، در روغن داغ سرخ می‌شن تا حسابی برشته و طلایی بشن. ظاهر پفکی و طعم فوق‌العاده تردش، یه تجربه جدید از فست فود رو بهت هدیه میده.", img: "https://cdn.imgurl.ir/uploads/i24874_IMG_20260613_153322.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: false, createdAt: new Date(2026, 5, 13, 14, 30) },
         { id: 16, name: "مرغ شکم پر شمالی", desc: "مرغ شکم پر شمالی با سس انار و آلو", longDesc: "مرغ شکم پر شمالی؛ یه غذای سنتی با طعم شمال! مرغ آبدار رو با ترکیبی از سبزیجات معطر، برنج، آلوچه و گردو پر می‌کنیم، بعد آروم آروم توی سس انار و آلو شمالی می‌پزه. نتیجه یه غذای مجلسی و به‌یادماندنی که هم عطر خاک شمال رو داره، هم طعم ترش و شیرین فوق‌العاده.", img: "https://cdn.imgurl.ir/uploads/j1545_IMG_20260613_153404.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: true, createdAt: new Date(2026, 5, 13, 13, 30) },
@@ -882,6 +889,7 @@
         const cakeGrid = document.getElementById('cakeGrid');
         const sweetGrid = document.getElementById('sweetGrid');
         const traditionalGrid = document.getElementById('traditionalGrid');
+        const dessertGrid = document.getElementById('dessertGrid');
         
         if(featuredGrid) featuredGrid.innerHTML = '';
         if(persianHomeGrid) persianHomeGrid.innerHTML = '';
@@ -892,6 +900,7 @@
         if(cakeGrid) cakeGrid.innerHTML = '';
         if(sweetGrid) sweetGrid.innerHTML = '';
         if(traditionalGrid) traditionalGrid.innerHTML = '';
+        if(dessertGrid) dessertGrid.innerHTML = '';
         
         const specials = foods.filter(f => f.isSpecial).sort((a,b) => b.createdAt - a.createdAt);
         
@@ -915,6 +924,8 @@
                 if(sweetGrid) sweetGrid.appendChild(createFoodCard(food));
             } else if(food.tag === 'غذای سنتی') {
                 if(traditionalGrid) traditionalGrid.appendChild(createFoodCard(food));
+            } else if(food.tag === 'دسر') {
+                if(dessertGrid) dessertGrid.appendChild(createFoodCard(food));
             }
         });
     }
@@ -924,7 +935,7 @@
         fastfood: document.getElementById('fastfoodPage'), finger: document.getElementById('fingerPage'),
         persian: document.getElementById('persianPage'), cake: document.getElementById('cakePage'),
         traditional: document.getElementById('traditionalPage'), sweet: document.getElementById('sweetPage'),
-        support: document.getElementById('supportPage')
+        dessert: document.getElementById('dessertPage'), support: document.getElementById('supportPage')
     };
     document.querySelectorAll('[data-page]').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -954,4 +965,4 @@
     loadCart();
 </script>
 </body>
-                                                                                                                                                                                                      </html>
+</html>
