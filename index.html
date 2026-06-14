@@ -360,7 +360,6 @@
             color: #e67e22;
         }
 
-        /* تایمر کوچیک و جمع و جور */
         .timer-small {
             background: #fff0e0;
             border-radius: 50px;
@@ -396,7 +395,6 @@
             margin-top: 4px;
         }
 
-        /* باکس مشکی برای توضیحات ویژه */
         .black-notice-box {
             background: #2e241f;
             border-radius: 28px;
@@ -433,6 +431,28 @@
         .order-link-btn:hover {
             background: #c55a2c;
             transform: scale(0.98);
+        }
+
+        .disabled-btn {
+            background: #9e9e9e;
+            color: #e0e0e0;
+            border: none;
+            padding: 12px 0;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            cursor: not-allowed;
+            font-family: 'Vazirmatn', sans-serif;
+            text-decoration: none;
+        }
+        .disabled-btn:hover {
+            transform: none;
+            background: #9e9e9e;
         }
 
         .support-section {
@@ -762,7 +782,7 @@
 <div id="sweetPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌جات</div><div id="sweetGrid" class="foods-grid"></div></div></div>
 <div id="dessertPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-ice-cream"></i> دسر</div><div id="dessertGrid" class="foods-grid"></div></div></div>
 
-<!-- صفحه تا فردا با کارت مخصوص + تایمر جمع و جور + باکس مشکی -->
+<!-- صفحه تا فردا با تایمر ۸ ساعته -->
 <div id="tafardaPage" class="page-content">
     <div class="menu-section">
         <div class="section-title"><i class="fas fa-calendar-day"></i> تا فردا</div>
@@ -775,7 +795,6 @@
                 <h3><i class="fas fa-egg"></i> دلمه تا فردا موجوده!</h3>
                 <div class="desc">دلمه اصیل و خوشمزه با برگ مو تازه، آماده برای فردا! فقط امشب ثبت‌نام کن.</div>
                 
-                <!-- تایمر جمع و جور مثل باکس‌های دیگه -->
                 <div class="timer-small">
                     <div class="timer-small-content">
                         <i class="fas fa-hourglass-half"></i>
@@ -784,14 +803,12 @@
                     <div class="timer-small-text"><i class="fas fa-clock"></i> زمان باقی‌مانده تا بسته شدن سفارشات</div>
                 </div>
                 
-                <!-- باکس مشکی توضیحات -->
                 <div class="black-notice-box">
                     <i class="fas fa-heart"></i> دوستان عزیز دلمه فردا موجود است ثبت سفارش امشب!
                 </div>
                 
-                <!-- دکمه سفارش با لینک مستقیم -->
-                <div class="btn-group">
-                    <a href="https://ble.ir/@bir_callfood" target="_blank" class="order-link-btn">
+                <div class="btn-group" id="tomorrowBtnGroup">
+                    <a href="https://ble.ir/@bir_callfood" target="_blank" id="orderLinkBtn" class="order-link-btn">
                         <i class="fas fa-external-link-alt"></i> ثبت سفارش (ارسال به ادمین)
                     </a>
                     <button class="detail-btn" id="tomorrowDetailBtn"><i class="fas fa-info-circle"></i> توضیحات بیشتر</button>
@@ -831,7 +848,7 @@
 <footer class="footer"><p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p><p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p></footer>
 
 <script>
-    // ========== دیتای غذاها (کاملاً مثل قبل) ==========
+    // ========== دیتای غذاها ==========
     const foods = [
         { id: 18, name: "ژله بستنی کالفود!", desc: "ژله بستنی کالفود با طعم پرتغال و آلوئه‌ورا", longDesc: "ژله بستنی کالفود؛ ترکیبی بی‌نظیر از ژله نرم و بستنی خامه‌ای با طعم پرتقال تازه و آلوئه‌ورا. یک دسر تابستونی و سرحال که هم خنکته، هم خوشمزه.", img: "https://uploadkon.ir/uploads/456213_26IMG-20260613-230203.jpg", tag: "دسر", tagIcon: "fa-ice-cream", isSpecial: true, createdAt: new Date(2026, 5, 13, 23, 0) },
         { id: 19, name: "مرغ کاراملی با شوید باقالی پلو", desc: "مرغ کاراملی با شوید باقالی پلو، یک غذای کامل و سنتی", longDesc: "مرغ کاراملی با شوید باقالی پلو؛ یه غذای سنتی مجلسی و پرطرفدار! تکه‌های مرغ آبدار با سس کاراملی مخصوص، کنار باقالی پلو معطر.", img: "https://uploadkon.ir/uploads/8f7e13_26IMG-20260613-185831.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 13, 22, 0) },
@@ -856,18 +873,32 @@
     ];
     foods.sort((a, b) => b.createdAt - a.createdAt);
 
-    // تایمر حافظه‌دار (حتی بعد بستن مرورگر)
+    // ========== تایمر ۸ ساعته با حافظه ==========
     let targetTime = localStorage.getItem('tafardaTimerTarget');
     const now = Date.now();
     if (!targetTime || parseInt(targetTime) < now) {
-        targetTime = now + (24 * 60 * 60 * 1000);
+        // 8 ساعت = 8 * 60 * 60 * 1000 میلی‌ثانیه
+        targetTime = now + (8 * 60 * 60 * 1000);
         localStorage.setItem('tafardaTimerTarget', targetTime);
     }
+    
+    function disableOrderButton() {
+        const btnGroup = document.getElementById('tomorrowBtnGroup');
+        const oldLink = document.getElementById('orderLinkBtn');
+        if (oldLink && btnGroup.contains(oldLink)) {
+            const disabledDiv = document.createElement('div');
+            disabledDiv.className = 'disabled-btn';
+            disabledDiv.innerHTML = '<i class="fas fa-hourglass-end"></i> ⏰ زمان ثبت سفارش به پایان رسیده است';
+            btnGroup.replaceChild(disabledDiv, oldLink);
+        }
+    }
+    
     function updateTimerDisplay() {
         const remaining = parseInt(localStorage.getItem('tafardaTimerTarget')) - Date.now();
         if (remaining <= 0) {
             document.getElementById('countdownDisplay').innerHTML = '۰۰:۰۰:۰۰';
             clearInterval(timerInterval);
+            disableOrderButton();
             return;
         }
         const hours = Math.floor(remaining / (1000 * 60 * 60));
@@ -876,10 +907,16 @@
         const formatted = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
         document.getElementById('countdownDisplay').innerHTML = formatted;
     }
+    
+    // بررسی اولیه اگر زمان تموم شده بود
+    if (parseInt(localStorage.getItem('tafardaTimerTarget')) <= Date.now()) {
+        disableOrderButton();
+    }
+    
     let timerInterval = setInterval(updateTimerDisplay, 1000);
     updateTimerDisplay();
 
-    // ========== بقیه کدهای سبد خرید و کارت‌ها (همون قبلی) ==========
+    // ========== بقیه کدهای سبد خرید و کارت‌ها ==========
     let cart = [];
     let processing = false;
     const cartSidebar = document.getElementById('cartSidebar');
@@ -1000,4 +1037,4 @@
     loadCart();
 </script>
 </body>
-                    </html>
+</html>
