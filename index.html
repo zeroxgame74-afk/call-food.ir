@@ -847,7 +847,7 @@
 <footer class="footer"><p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p><p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p></footer>
 
 <script>
-    // ========== دیتای غذاها (کاملاً مثل قبل، هیچ تغییری نکرده) ==========
+    // ========== دیتای غذاها (کاملاً مثل قبل) ==========
     const foods = [
         { id: 18, name: "ژله بستنی کالفود!", desc: "ژله بستنی کالفود با طعم پرتغال و آلوئه‌ورا", longDesc: "ژله بستنی کالفود؛ ترکیبی بی‌نظیر از ژله نرم و بستنی خامه‌ای با طعم پرتقال تازه و آلوئه‌ورا. یک دسر تابستونی و سرحال که هم خنکته، هم خوشمزه.", img: "https://uploadkon.ir/uploads/456213_26IMG-20260613-230203.jpg", tag: "دسر", tagIcon: "fa-ice-cream", isSpecial: true, createdAt: new Date(2026, 5, 13, 23, 0) },
         { id: 19, name: "مرغ کاراملی با شوید باقالی پلو", desc: "مرغ کاراملی با شوید باقالی پلو، یک غذای کامل و سنتی", longDesc: "مرغ کاراملی با شوید باقالی پلو؛ یه غذای سنتی مجلسی و پرطرفدار! تکه‌های مرغ آبدار با سس کاراملی مخصوص، کنار باقالی پلو معطر.", img: "https://uploadkon.ir/uploads/8f7e13_26IMG-20260613-185831.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 13, 22, 0) },
@@ -872,12 +872,15 @@
     ];
     foods.sort((a, b) => b.createdAt - a.createdAt);
 
-    // ========== تایمر ۸ ساعت اجباری (مقدار قبلی رو پاک میکنه و از الان ۸ ساعت حساب میکنه) ==========
-    // پاک کردن مقدار قبلی localStorage
-    localStorage.removeItem('tafardaTimerTarget');
-    // تنظیم ۸ ساعت از الان
-    const targetTime = Date.now() + (8 * 60 * 60 * 1000);
-    localStorage.setItem('tafardaTimerTarget', targetTime);
+    // ========== تایمر ۸ ساعت با ادامه از جایی که تموم نشده (حافظه‌دار) ==========
+    let targetTime = localStorage.getItem('tafardaTimerTarget');
+    const now = Date.now();
+    
+    // اگه تایمر قبلی وجود نداشت یا تموم شده بود، ۸ ساعت جدید تنظیم کن
+    if (!targetTime || parseInt(targetTime) <= now) {
+        targetTime = now + (8 * 60 * 60 * 1000);
+        localStorage.setItem('tafardaTimerTarget', targetTime);
+    }
     
     function disableOrderButton() {
         const btnGroup = document.getElementById('tomorrowBtnGroup');
@@ -905,10 +908,15 @@
         document.getElementById('countdownDisplay').innerHTML = formatted;
     }
     
+    // بررسی اولیه اگه زمان تموم شده بود
+    if (parseInt(localStorage.getItem('tafardaTimerTarget')) <= Date.now()) {
+        disableOrderButton();
+    }
+    
     let timerInterval = setInterval(updateTimerDisplay, 1000);
     updateTimerDisplay();
 
-    // ========== بقیه کدهای سبد خرید و کارت‌ها (همون قبلی، هیچ تغییری نکرده) ==========
+    // ========== بقیه کدهای سبد خرید و کارت‌ها ==========
     let cart = [];
     let processing = false;
     const cartSidebar = document.getElementById('cartSidebar');
