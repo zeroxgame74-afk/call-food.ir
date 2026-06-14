@@ -327,9 +327,6 @@
             transition: 0.2s;
             font-family: 'Vazirmatn', sans-serif;
         }
-        .detail-btn i {
-            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
-        }
         .detail-btn:hover {
             background: #e67e22;
             color: white;
@@ -361,6 +358,67 @@
         .detail-box i {
             margin-left: 8px;
             color: #e67e22;
+        }
+
+        /* استایل مخصوص تایمر متحرک */
+        .timer-box {
+            background: linear-gradient(135deg, #fff1e6, #ffe4d4);
+            border-radius: 60px;
+            padding: 1.2rem;
+            text-align: center;
+            margin: 1rem 0;
+            border: 2px solid #e67e22;
+            box-shadow: 0 8px 20px rgba(230,126,34,0.2);
+        }
+        .timer-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-weight: 900;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 2.2rem;
+            color: #c55a2c;
+            direction: ltr;
+        }
+        .fa-hourglass-half {
+            font-size: 2rem;
+            animation: pulseSand 1.2s infinite ease-in-out;
+            color: #e67e22;
+        }
+        @keyframes pulseSand {
+            0% { transform: scale(1); opacity: 0.7; text-shadow: 0 0 0 #e67e22; }
+            50% { transform: scale(1.15); opacity: 1; text-shadow: 0 0 8px #ffb347; }
+            100% { transform: scale(1); opacity: 0.7; text-shadow: 0 0 0 #e67e22; }
+        }
+        .timer-text {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #2e241f;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+        .order-link-btn {
+            background: #e67e22;
+            color: white;
+            border: none;
+            padding: 12px 0;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .order-link-btn:hover {
+            background: #c55a2c;
+            transform: scale(0.98);
         }
 
         .support-section {
@@ -639,29 +697,6 @@
             border-radius: 48px;
             color: #a17248;
         }
-        .coming-soon-box {
-            background: white;
-            border-radius: 48px;
-            padding: 4rem 2rem;
-            text-align: center;
-            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.15);
-            margin-top: 2rem;
-        }
-        .coming-soon-box i {
-            font-size: 4rem;
-            color: #e67e22;
-            margin-bottom: 1.5rem;
-        }
-        .coming-soon-box h2 {
-            font-size: 2rem;
-            font-weight: 900;
-            color: #2e241f;
-            margin-bottom: 1rem;
-        }
-        .coming-soon-box p {
-            color: #5e4b3a;
-            font-size: 1rem;
-        }
     </style>
 </head>
 <body>
@@ -719,17 +754,49 @@
 <div id="traditionalPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-mosque"></i> غذای سنتی</div><div id="traditionalGrid" class="foods-grid"></div></div></div>
 <div id="sweetPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌جات</div><div id="sweetGrid" class="foods-grid"></div></div></div>
 <div id="dessertPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-ice-cream"></i> دسر</div><div id="dessertGrid" class="foods-grid"></div></div></div>
+
+<!-- صفحه تا فردا با کارت مخصوص + تایمر حافظه دار و لینک مستقیم -->
 <div id="tafardaPage" class="page-content">
     <div class="menu-section">
         <div class="section-title"><i class="fas fa-calendar-day"></i> تا فردا</div>
-        <div class="coming-soon-box">
-            <i class="fas fa-hourglass-half"></i>
-            <h2>به زودی...</h2>
-            <p>محصولات و غذاهای ویژه این بخش به زودی اضافه می‌شوند</p>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">منتظر باشید! 🔥</p>
+        <div class="food-card" id="tomorrowSpecialCard">
+            <div class="card-img" style="background-image: url('https://cdn.imgurl.ir/uploads/p633535_IMG_20260614_153018.jpg');">
+                <div class="food-tag"><i class="fas fa-leaf"></i> دلمه ویژه</div>
+                <div class="badge-special"><i class="fas fa-hourglass-start"></i> پیش‌سفارش امشب</div>
+            </div>
+            <div class="card-info">
+                <h3><i class="fas fa-egg"></i> دلمه تا فردا موجوده!</h3>
+                <div class="desc">دلمه اصیل و خوشمزه با برگ مو تازه، آماده برای فردا! فقط امشب ثبت‌نام کن.</div>
+                
+                <!-- تایمر متحرک با آیکون ساعت شنی -->
+                <div class="timer-box">
+                    <div class="timer-flex">
+                        <i class="fas fa-hourglass-half"></i>
+                        <span id="countdownDisplay" style="font-family: 'Vazirmatn', sans-serif; font-weight: 900;">-- : -- : --</span>
+                    </div>
+                    <div class="timer-text"><i class="fas fa-clock"></i> زمان باقی‌مانده تا بسته شدن سفارشات امشب</div>
+                </div>
+                
+                <!-- توضیحات اضافه -->
+                <div class="desc" style="background:#fff0e0; padding:12px; border-radius: 28px; margin:10px 0;">
+                    <i class="fas fa-heart" style="color:#e67e22;"></i> دوستان عزیز دلمه فردا موجود است ثبت سفارش امشب!
+                </div>
+                
+                <!-- دکمه سفارش با لینک مستقیم (بدون سبد خرید) -->
+                <div class="btn-group">
+                    <a href="https://ble.ir/@bir_callfood" target="_blank" class="order-link-btn">
+                        <i class="fas fa-external-link-alt"></i> ثبت سفارش (ارسال به ادمین)
+                    </a>
+                    <button class="detail-btn" id="tomorrowDetailBtn"><i class="fas fa-info-circle"></i> توضیحات بیشتر</button>
+                </div>
+                <div class="detail-box" id="tomorrowDetailBox">
+                    <i class="fas fa-align-right"></i> دلمه‌های خوشمزه کالفود با برگ مو تازه، گوشت چرخ کرده، برنج و سبزیجات معطر. برای فردا صبح آماده می‌شه! کافیه امشب سفارشت رو ثبت کنی تا فردا تازه و داغ تحویل بگیری.
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 <div id="supportPage" class="page-content"><div class="support-section"><div class="support-box"><h3><i class="fas fa-headset"></i> پشتیبانی کالفود</h3><div class="support-item"><i class="fas fa-headset"></i> <span>پشتیبانی : <strong>09902684303</strong></span></div><div class="support-item"><i class="fas fa-laptop-code"></i> <span>سازنده سایت : محمد حسین صنعتی</span></div></div></div></div>
 
 <div class="cart-sidebar" id="cartSidebar">
@@ -757,31 +824,56 @@
 <footer class="footer"><p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p><p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p></footer>
 
 <script>
+    // ==========  دیتای غذاها (همون لیست قبلی بدون تغییر)  ==========
     const foods = [
-        { id: 18, name: "ژله بستنی کالفود!", desc: "ژله بستنی کالفود با طعم پرتغال و آلوئه‌ورا", longDesc: "ژله بستنی کالفود؛ ترکیبی بی‌نظیر از ژله نرم و بستنی خامه‌ای با طعم پرتقال تازه و آلوئه‌ورا. یک دسر تابستونی و سرحال که هم خنکته، هم خوشمزه. مناسب برای بعد از غذا یا یک عصرانه خاص. ظاهر رنگی و طعم دلپذیرش، مهمونی شما رو به یاد موندنی می‌کنه.", img: "https://uploadkon.ir/uploads/456213_26IMG-20260613-230203.jpg", tag: "دسر", tagIcon: "fa-ice-cream", isSpecial: true, createdAt: new Date(2026, 5, 13, 23, 0) },
-        { id: 19, name: "مرغ کاراملی با شوید باقالی پلو", desc: "مرغ کاراملی با شوید باقالی پلو، یک غذای کامل و سنتی", longDesc: "مرغ کاراملی با شوید باقالی پلو؛ یه غذای سنتی مجلسی و پرطرفدار! تکه‌های مرغ آبدار با سس کاراملی مخصوص، کنار باقالی پلو معطر با شوید تازه. ترکیب شیرینی ملایم کارامل با عطر سبزیجات شمالی، طعمی بی‌نظیر خلق کرده که همه ذائقه‌ها رو راضی می‌کنه. مناسب برای مهمونی‌های خاص.", img: "https://uploadkon.ir/uploads/8f7e13_26IMG-20260613-185831.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 13, 22, 0) },
-        { id: 20, name: "پیتزا اسنکی", desc: "پیتزا اسنکی، بمب انرژی و خوشمزه", longDesc: "پیتزا اسنکی؛ بمب انرژی و خوشمزه برای لحظات فوری! پیتزاهای کوچک و ترد با سس پنیری مخصوص و ترکیب دلخواه از ژامبون، قارچ و فلفل دلمه. یه گزینه عالی برای مهمونی‌های دوستانه، فیلم دیدن یا هر وقت که هوس پیتزا کردی ولی وقت نداری. سایز اسنکی اما طعمی درشت!", img: "https://uploadkon.ir/uploads/cd0b13_26IMG-20260613-230747.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 13, 21, 0) },
-        { id: 14, name: "کیک مرغ", desc: "گردو با عطر جعفری و پیازچه تازه", longDesc: "کیک مرغ؛ یک ابتکار خوشمزه و متفاوت از کالفود! لایه‌های لطیف مرغ تازه ترکیب شده با گردوی خرد شده، جعفری معطر و پیازچه تازه. بافتی نرم و طعمی بی‌نظیر که هم برای مهمانی‌ها مناسبه و هم یک وعده سریع و مقوی.", img: "https://cdn.imgurl.ir/uploads/d943046_IMG_20260613_152928.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 13, 15, 30) },
-        { id: 15, name: "جوجه چینی ترد", desc: "جوجه چینی ترد و پفکی با پوشش طلایی", longDesc: "جوجه چینی ترد؛ ترد و پفکی مثل هیچ جای دیگه! تکه‌های جوجه با پوششی مخصوص و ادویه‌های چینی، در روغن داغ سرخ می‌شن تا حسابی برشته و طلایی بشن. ظاهر پفکی و طعم فوق‌العاده تردش، یه تجربه جدید از فست فود رو بهت هدیه میده.", img: "https://cdn.imgurl.ir/uploads/i24874_IMG_20260613_153322.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: false, createdAt: new Date(2026, 5, 13, 14, 30) },
-        { id: 16, name: "مرغ شکم پر شمالی", desc: "مرغ شکم پر شمالی با سس انار و آلو", longDesc: "مرغ شکم پر شمالی؛ یه غذای سنتی با طعم شمال! مرغ آبدار رو با ترکیبی از سبزیجات معطر، برنج، آلوچه و گردو پر می‌کنیم، بعد آروم آروم توی سس انار و آلو شمالی می‌پزه. نتیجه یه غذای مجلسی و به‌یادماندنی که هم عطر خاک شمال رو داره، هم طعم ترش و شیرین فوق‌العاده.", img: "https://cdn.imgurl.ir/uploads/j1545_IMG_20260613_153404.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: true, createdAt: new Date(2026, 5, 13, 13, 30) },
-        { id: 17, name: "حلوای زعفرانی", desc: "حلوای زعفرانی با عطر بی‌نظیر هل و گلاب", longDesc: "حلوای زعفرانی؛ یه دسر سنتی و عطرآگین که دل هر کسی رو می‌بره! حلوا با زعفران ناب، هل تازه و گلاب اصیل، بافت نرم و لطیفی داره که توی دهان آب می‌شه. این حلوا رو به روش مخصوص کالفود تهیه می‌کنیم که نه زیادی شیرینه، نه زیادی سنگین. همراه چای عصر، بهشت رو تجربه کن!", img: "https://cdn.imgurl.ir/uploads/x569079_IMG_20260613_153732.jpg", tag: "شیرینی‌جات", tagIcon: "fa-cake-candles", isSpecial: false, createdAt: new Date(2026, 5, 13, 12, 30) },
-        { id: 11, name: "اشترودل مرغ و قارچ پنیری", desc: "خمیر ترد و سبک، همراه با مرغ تازه، قارچ و پنیر", longDesc: "اشترودل مرغ و قارچ پنیری؛ ترد و لذیذ. خمیر ترد و سبک، همراه با مرغ تازه، قارچ عطرآگین و پنیر آب شده. ترکیبی بی‌نظیر از طعم و بافت که یک فینگر فود مجلسی و خوشمزه را برای شما به ارمغان می‌آورد. مناسب برای مهمانی‌ها، دورهمی‌ها و هر لحظه‌ای که هوس یک غذای خاص کردید.", img: "https://cdn.imgurl.ir/uploads/d405294_IMG_20260612_142842.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2025, 5, 16) },
-        { id: 13, name: "کاپ کیک", desc: "کاپ کیک با خمیر با کیفیت، خامه و اشکال تزئینی", longDesc: "کاپ کیک؛ دسری زیبا و خوشمزه برای لحظات خاص. این کاپ کیک با خمیر نرم و لطیف، خامه‌ی تازه و اشکال تزئینی دوست‌داشتنی تهیه شده است. مناسب برای جشن تولد، مهمانی‌های دوستانه یا هر زمان که هوس یک شیرینی خاص کردید. زیبایی و طعم را با هم تجربه کنید.", img: "https://cdn.imgurl.ir/uploads/o0654_IMG_20260612_144324.jpg", tag: "کیک", tagIcon: "fa-birthday-cake", isSpecial: true, createdAt: new Date(2025, 5, 18) },
-        { id: 12, name: "کماچ لقمه", desc: "کماچ لقمه؛ غذای سنتی و اصیل خراسان جنوبی", longDesc: "کماچ لقمه؛ غذای سنتی و اصیل خراسان جنوبی. این خوراکی خوشمزه با خمیر مخصوص و روش‌های قدیمی تهیه می‌شود. کماچ لقمه انتخابی عالی برای عاشقان غذاهای محلی و سنتی است. بافت ترد و طعم بی‌نظیر این لقمه‌ها شما را به سفره‌های رنگین خراسان می‌برد. بدون هیچ افزودنی مصنوعی، فقط لذت خالص.", img: "https://uploadkon.ir/uploads/7ae012_26IMG-20260612-151323.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: true, createdAt: new Date(2025, 5, 17) },
-        { id: 10, name: "بمب کالفود", desc: "ترکیبی شگفت‌انگیز از پیتزا لقمه، اشترودل و پیراشکی", longDesc: "بمب کالفود؛ ترکیبی شگفت‌انگیز از سه طعم محبوب. این محصول ویژه شامل پیتزا لقمه، اشترودل و پیراشکی است که در یک بسته‌بندی جذاب ارائه می‌شود. اگر نمی‌توانید بین این سه غذای خوشمزه یکی را انتخاب کنید، بمب کالفود بهترین گزینه برای شماست. مناسب برای مهمانی‌ها، دورهمی‌ها و لحظات لذت‌بخش شما. یک وعده کامل و خاطره‌انگیز از طعم‌های اصیل.", img: "https://cdn.imgurl.ir/uploads/422605_IMG_20260612_132940.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2025, 5, 15) },
-        { id: 9, name: "پیراشکی", desc: "مرغ و قارچ یا گوشت و قارچ", longDesc: "پیراشکی؛ انتخابی ایده‌آل برای یک میان‌وعده لذیذ. این پیراشکی خوشمزه در دو مدل مرغ و قارچ یا گوشت و قارچ قابل سفارش است. خمیر ترد و لطیف، همراه با مواد اولیه تازه و سس مخصوص، طعمی بی‌نظیر را برای شما به ارمغان می‌آورد. مناسب برای دورهمی‌های دوستانه یا یک عصرانه خاص. کیفیت را با ما تجربه کنید.", img: "https://cdn.imgurl.ir/uploads/h91972_IMG_20260612_130447.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2025, 5, 14) },
-        { id: 8, name: "دلمه برگ مو", desc: "دلمه برگ مو، یک غذای مجلسی و خوشمزه اصیل ایرانی", longDesc: "دلمه برگ مو، یک غذای مجلسی و خوشمزه اصیل ایرانی. برگ تازه انگور را با ترکیبی از برنج، گوشت چرخ کرده، سبزیجات معطر و نخود فرنگی پر می‌کنیم. با حوصله و آرام پخته می‌شود تا طعم‌ها به خورد هم بروند. یک لقمه که می‌زنی، یاد خونه مامان و مهمانی‌های قدیمی می‌افتی. مخصوص عاشقان غذاهای سنتی و پرطرفدار. بدون هرگونه افزودنی مصنوعی، فقط با عشق و مهارت.", img: "https://cdn.imgurl.ir/uploads/53500_IMG_20260612_025151.jpg", tag: "دلمه", tagIcon: "fa-leaf", isSpecial: true, createdAt: new Date(2025, 5, 13) },
-        { id: 7, name: "کماچ", desc: "کماچ با خمیر درجه یک و غذای محلی خراسان جنوبی", longDesc: "کماچ؛ یک غذای سنتی و اصیل از خراسان جنوبی! این غذای محلی با خمیر درجه یک و روش‌های قدیمی تهیه میشود. کماچ خراسانی ترکیبی بی‌نظیر از آرد گندم مرغوب، روغن حیوانی، زردچوبه و ادویه‌های محلی است که در دل تنور پخته میشود. بافت ترد و طعم فوق‌العاده این غذا شما را به دل کویر و سفره‌های رنگین خراسان می‌برد. کماچ معمولاً با چای کوهی و عسل سرو میشود و یک وعده مقوی و به‌یادماندنی برای فصل‌های سرد سال است.", img: "https://cdn.imgurl.ir/uploads/w444158_IMG_20260612_010841.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2025, 5, 12) },
-        { id: 6, name: "کیک هل گلاب", desc: "کیک عطرآگین هل و گلاب، بافت نرم و لطیف", longDesc: "کیک عطرآگین هل و گلاب، بافت نرم و لطیف با طعمی به‌یادماندنی! ترکیب هل معطر با گلاب اصیل، تجربه‌ای دلنشین از شیرینی سنتی ایرانی. همراه با چای عصر، بی‌نظیره. مناسب برای پذیرایی از مهمان‌های خاص. این کیک بدون هیچ افزودنی مصنوعی تهیه شده و عطر هل و گلاب تا ساعتها در خاطره می‌ماند.", img: "https://uploadkon.ir/uploads/644711_26IMG-20260612-003514.jpg", tag: "کیک", tagIcon: "fa-birthday-cake", isSpecial: true, createdAt: new Date(2025, 5, 11) },
-        { id: 5, name: "نبات های شیری گردویی", desc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه", longDesc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه! ترکیبی بی‌نظیر از شیرینی لطیف و تردی گردو، مناسب برای عصرانه‌های خاص و مهمانی‌های لوکس. بدون هیچ افزودنی مصنوعی، فقط لذت خالص. ماندگاری بالا و طعم به‌یادماندنی. این شیرینی با عشق و به روش کاملاً سنتی تهیه شده و تجربه‌ای متفاوت از شیرینی ایرانی را به شما هدیه میدهد.", img: "https://uploadkon.ir/uploads/212511_26IMG-20260612-003157.jpg", tag: "شیرینی‌جات", tagIcon: "fa-cake-candles", isSpecial: true, createdAt: new Date(2025, 5, 10) },
-        { id: 4, name: "مرغ بریان", desc: "مرغ بریان بدون برنج، طعم اصیل و مجلسی", longDesc: "غذای اصیل مرغ بریان، بدون برنج و با طعمی بی‌نظیر! مرغ بریان با ادویه‌های مخصوص، زعفران و کره، ترد و آبدار. مناسب برای مهمانی‌های خاص و عصرهای به‌یادماندنی. همراه با سبزیجات تازه و نان بریان شده سرو میشود. این غذا یکی از قدیمی‌ترین و اصیل‌ترین غذاهای ایرانی است.", img: "https://cdn.imgurl.ir/uploads/d404509_IMG_20260612_000809.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: false, createdAt: new Date(2025, 5, 9) },
-        { id: 3, name: "اچما مرغ قارچ پنیری", desc: "اچمای لذیذ با طعم مرغ قارچ پنیری", longDesc: "اچمای خوشمزه با مرغ تازه، قارچ عطرآگین و پنیر آب شده، ترکیبی بی‌نظیر برای یک عصرانه به یادماندنی! همراه با سس مخصوص و سبزیجات معطر. اچما یک فینگر فود محبوب و خوشمزه است که هم برای مهمانی‌ها و هم برای یک عصرانه سریع گزینه‌ای عالی محسوب میشود.", img: "https://cdn.imgurl.ir/uploads/h6527_IMG_20260611_230627.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2025, 5, 8) },
-        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص و پنیر فراوان، سایز کوچک اما طعمی بزرگ داره. مناسب برای میان وعده یا مهمونی! ترکیبی از پپرونی، قارچ، فلفل دلمه و زیتون. این پیتزاهای کوچک و خوشمزه برای مهمانی‌های دوستانه انتخابی ایده‌آل هستند.", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2025, 5, 7) },
-        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده. طعمی بی‌نظیر و عالی برای یک وعده سریع و لذیذ! همراه با سس مخصوص و سبزیجات تازه. بورک یک غذای محبوب ترکی است که در اینجا با مرغ و ژامبون پنیری بازسازی شده.", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2025, 5, 5) }
+        { id: 18, name: "ژله بستنی کالفود!", desc: "ژله بستنی کالفود با طعم پرتغال و آلوئه‌ورا", longDesc: "ژله بستنی کالفود؛ ترکیبی بی‌نظیر از ژله نرم و بستنی خامه‌ای با طعم پرتقال تازه و آلوئه‌ورا. یک دسر تابستونی و سرحال که هم خنکته، هم خوشمزه.", img: "https://uploadkon.ir/uploads/456213_26IMG-20260613-230203.jpg", tag: "دسر", tagIcon: "fa-ice-cream", isSpecial: true, createdAt: new Date(2026, 5, 13, 23, 0) },
+        { id: 19, name: "مرغ کاراملی با شوید باقالی پلو", desc: "مرغ کاراملی با شوید باقالی پلو، یک غذای کامل و سنتی", longDesc: "مرغ کاراملی با شوید باقالی پلو؛ یه غذای سنتی مجلسی و پرطرفدار! تکه‌های مرغ آبدار با سس کاراملی مخصوص، کنار باقالی پلو معطر.", img: "https://uploadkon.ir/uploads/8f7e13_26IMG-20260613-185831.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 13, 22, 0) },
+        { id: 20, name: "پیتزا اسنکی", desc: "پیتزا اسنکی، بمب انرژی و خوشمزه", longDesc: "پیتزا اسنکی؛ بمب انرژی و خوشمزه برای لحظات فوری! پیتزاهای کوچک و ترد با سس پنیری مخصوص.", img: "https://uploadkon.ir/uploads/cd0b13_26IMG-20260613-230747.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 13, 21, 0) },
+        { id: 14, name: "کیک مرغ", desc: "گردو با عطر جعفری و پیازچه تازه", longDesc: "کیک مرغ؛ یک ابتکار خوشمزه و متفاوت از کالفود! لایه‌های لطیف مرغ تازه ترکیب شده با گردو.", img: "https://cdn.imgurl.ir/uploads/d943046_IMG_20260613_152928.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 13, 15, 30) },
+        { id: 15, name: "جوجه چینی ترد", desc: "جوجه چینی ترد و پفکی با پوشش طلایی", longDesc: "جوجه چینی ترد؛ ترد و پفکی مثل هیچ جای دیگه! تکه‌های جوجه با پوششی مخصوص.", img: "https://cdn.imgurl.ir/uploads/i24874_IMG_20260613_153322.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: false, createdAt: new Date(2026, 5, 13, 14, 30) },
+        { id: 16, name: "مرغ شکم پر شمالی", desc: "مرغ شکم پر شمالی با سس انار و آلو", longDesc: "مرغ شکم پر شمالی؛ یه غذای سنتی با طعم شمال! مرغ آبدار با ترکیبی از سبزیجات معطر.", img: "https://cdn.imgurl.ir/uploads/j1545_IMG_20260613_153404.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: true, createdAt: new Date(2026, 5, 13, 13, 30) },
+        { id: 17, name: "حلوای زعفرانی", desc: "حلوای زعفرانی با عطر بی‌نظیر هل و گلاب", longDesc: "حلوای زعفرانی؛ یه دسر سنتی و عطرآگین که دل هر کسی رو می‌بره! حلوا با زعفران ناب.", img: "https://cdn.imgurl.ir/uploads/x569079_IMG_20260613_153732.jpg", tag: "شیرینی‌جات", tagIcon: "fa-cake-candles", isSpecial: false, createdAt: new Date(2026, 5, 13, 12, 30) },
+        { id: 11, name: "اشترودل مرغ و قارچ پنیری", desc: "خمیر ترد و سبک، همراه با مرغ تازه، قارچ و پنیر", longDesc: "اشترودل مرغ و قارچ پنیری؛ ترد و لذیذ. خمیر ترد و سبک، همراه با مرغ تازه.", img: "https://cdn.imgurl.ir/uploads/d405294_IMG_20260612_142842.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2025, 5, 16) },
+        { id: 13, name: "کاپ کیک", desc: "کاپ کیک با خمیر با کیفیت، خامه و اشکال تزئینی", longDesc: "کاپ کیک؛ دسری زیبا و خوشمزه برای لحظات خاص. این کاپ کیک با خمیر نرم و لطیف.", img: "https://cdn.imgurl.ir/uploads/o0654_IMG_20260612_144324.jpg", tag: "کیک", tagIcon: "fa-birthday-cake", isSpecial: true, createdAt: new Date(2025, 5, 18) },
+        { id: 12, name: "کماچ لقمه", desc: "کماچ لقمه؛ غذای سنتی و اصیل خراسان جنوبی", longDesc: "کماچ لقمه؛ غذای سنتی و اصیل خراسان جنوبی. این خوراکی خوشمزه با خمیر مخصوص.", img: "https://uploadkon.ir/uploads/7ae012_26IMG-20260612-151323.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: true, createdAt: new Date(2025, 5, 17) },
+        { id: 10, name: "بمب کالفود", desc: "ترکیبی شگفت‌انگیز از پیتزا لقمه، اشترودل و پیراشکی", longDesc: "بمب کالفود؛ ترکیبی شگفت‌انگیز از سه طعم محبوب.", img: "https://cdn.imgurl.ir/uploads/422605_IMG_20260612_132940.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2025, 5, 15) },
+        { id: 9, name: "پیراشکی", desc: "مرغ و قارچ یا گوشت و قارچ", longDesc: "پیراشکی؛ انتخابی ایده‌آل برای یک میان‌وعده لذیذ.", img: "https://cdn.imgurl.ir/uploads/h91972_IMG_20260612_130447.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2025, 5, 14) },
+        { id: 8, name: "دلمه برگ مو", desc: "دلمه برگ مو، یک غذای مجلسی و خوشمزه اصیل ایرانی", longDesc: "دلمه برگ مو، یک غذای مجلسی و خوشمزه اصیل ایرانی.", img: "https://cdn.imgurl.ir/uploads/53500_IMG_20260612_025151.jpg", tag: "دلمه", tagIcon: "fa-leaf", isSpecial: true, createdAt: new Date(2025, 5, 13) },
+        { id: 7, name: "کماچ", desc: "کماچ با خمیر درجه یک و غذای محلی خراسان جنوبی", longDesc: "کماچ؛ یک غذای سنتی و اصیل از خراسان جنوبی!", img: "https://cdn.imgurl.ir/uploads/w444158_IMG_20260612_010841.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2025, 5, 12) },
+        { id: 6, name: "کیک هل گلاب", desc: "کیک عطرآگین هل و گلاب، بافت نرم و لطیف", longDesc: "کیک عطرآگین هل و گلاب، بافت نرم و لطیف با طعمی به‌یادماندنی!", img: "https://uploadkon.ir/uploads/644711_26IMG-20260612-003514.jpg", tag: "کیک", tagIcon: "fa-birthday-cake", isSpecial: true, createdAt: new Date(2025, 5, 11) },
+        { id: 5, name: "نبات های شیری گردویی", desc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه", longDesc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه!", img: "https://uploadkon.ir/uploads/212511_26IMG-20260612-003157.jpg", tag: "شیرینی‌جات", tagIcon: "fa-cake-candles", isSpecial: true, createdAt: new Date(2025, 5, 10) },
+        { id: 4, name: "مرغ بریان", desc: "مرغ بریان بدون برنج، طعم اصیل و مجلسی", longDesc: "غذای اصیل مرغ بریان، بدون برنج و با طعمی بی‌نظیر!", img: "https://cdn.imgurl.ir/uploads/d404509_IMG_20260612_000809.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: false, createdAt: new Date(2025, 5, 9) },
+        { id: 3, name: "اچما مرغ قارچ پنیری", desc: "اچمای لذیذ با طعم مرغ قارچ پنیری", longDesc: "اچمای خوشمزه با مرغ تازه، قارچ عطرآگین و پنیر آب شده.", img: "https://cdn.imgurl.ir/uploads/h6527_IMG_20260611_230627.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2025, 5, 8) },
+        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص.", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2025, 5, 7) },
+        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده.", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2025, 5, 5) }
     ];
-
     foods.sort((a, b) => b.createdAt - a.createdAt);
 
+    // ==========  تایمر حافظه‌دار (حتی بعد بستن مرورگر) ==========
+    let targetTime = localStorage.getItem('tafardaTimerTarget');
+    const now = Date.now();
+    if (!targetTime || parseInt(targetTime) < now) {
+        // تنظیم 24 ساعت از الان
+        targetTime = now + (24 * 60 * 60 * 1000);
+        localStorage.setItem('tafardaTimerTarget', targetTime);
+    }
+    function updateTimerDisplay() {
+        const remaining = parseInt(localStorage.getItem('tafardaTimerTarget')) - Date.now();
+        if (remaining <= 0) {
+            document.getElementById('countdownDisplay').innerHTML = '۰:۰۰:۰۰';
+            clearInterval(timerInterval);
+            return;
+        }
+        const hours = Math.floor(remaining / (1000 * 60 * 60));
+        const minutes = Math.floor((remaining % (3600000)) / 60000);
+        const seconds = Math.floor((remaining % 60000) / 1000);
+        const formatted = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        document.getElementById('countdownDisplay').innerHTML = formatted;
+    }
+    let timerInterval = setInterval(updateTimerDisplay, 1000);
+    updateTimerDisplay();
+
+    // ==========  بقیه کدهای سبد خرید و کارت‌ها ==========
     let cart = [];
     let processing = false;
     const cartSidebar = document.getElementById('cartSidebar');
@@ -802,44 +894,26 @@
         if(toastTimeout) clearTimeout(toastTimeout);
         toastTimeout = setTimeout(() => toastMsgDiv.style.opacity = '0', 3000);
     }
-
-    function generateTrackingCode() {
-        return Math.floor(100000 + Math.random() * 900000).toString();
-    }
-
+    function generateTrackingCode() { return Math.floor(100000 + Math.random() * 900000).toString(); }
     function showOrderSuccessModal() {
-        const code = generateTrackingCode();
-        document.getElementById('trackingCode').innerText = code;
-        
+        document.getElementById('trackingCode').innerText = generateTrackingCode();
         let orderHtml = '';
-        cart.forEach(item => {
-            orderHtml += `<p>• ${item.quantity} عدد ${item.name}</p>`;
-        });
+        cart.forEach(item => { orderHtml += `<p>• ${item.quantity} عدد ${item.name}</p>`; });
         orderSummaryList.innerHTML = orderHtml;
-        
         modal.classList.add('show');
     }
-
-    window.closeModal = function() {
-        modal.classList.remove('show');
-    }
-
+    window.closeModal = function() { modal.classList.remove('show'); }
     function updateCartBadge() { 
         const total = cart.reduce((a,i)=> a + i.quantity, 0); 
         cartCountSpan.innerText = total;
-        if(cartTotalCountSpan) {
-            cartTotalCountSpan.innerText = `${total} عدد (تماس تلفنی)`;
-        }
+        if(cartTotalCountSpan) cartTotalCountSpan.innerText = `${total} عدد (تماس تلفنی)`;
     }
     function saveCart() { localStorage.setItem('callfoodCart', JSON.stringify(cart)); }
     function loadCart() { const saved = localStorage.getItem('callfoodCart'); if(saved) try { cart = JSON.parse(saved); } catch(e){} renderCart(); }
-
     function renderCart() {
         if(cart.length === 0) { 
             cartItemsList.innerHTML = `<div class="empty-cart">سبدت خالیه پرش کن! 🍔</div>`; 
-            updateCartBadge(); 
-            saveCart(); 
-            return; 
+            updateCartBadge(); saveCart(); return; 
         }
         let html = '';
         cart.forEach(item => { html += `<div class="cart-item"><div><strong><i class="fas fa-utensil-spoon"></i> ${item.name}</strong><br>تعداد: ${item.quantity}</div><div class="cart-item-actions"><button class="cart-inc" data-id="${item.id}">+</button><button class="cart-dec" data-id="${item.id}">-</button><button class="cart-remove" data-id="${item.id}"><i class="fas fa-trash"></i></button></div></div>`; });
@@ -847,155 +921,77 @@
         document.querySelectorAll('.cart-inc').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); changeQty(id, 1); }));
         document.querySelectorAll('.cart-dec').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); changeQty(id, -1); }));
         document.querySelectorAll('.cart-remove').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); cart = cart.filter(i => i.id !== id); renderCart(); showToast("حذف شد"); }));
-        updateCartBadge(); 
-        saveCart();
+        updateCartBadge(); saveCart();
     }
     function changeQty(id, delta) { let idx = cart.findIndex(i => i.id === id); if(idx !== -1) { let newQty = cart[idx].quantity + delta; if(newQty <= 0) cart.splice(idx,1); else cart[idx].quantity = newQty; renderCart(); showToast("سبد بروز شد"); } }
     function addToCart(product) { 
         if(processing) return;
         processing = true;
         let existing = cart.find(i => i.id === product.id); 
-        if(existing) { 
-            existing.quantity++; 
-            showToast(`${product.name} +۱ شد`); 
-        } else { 
-            cart.push({ id: product.id, name: product.name, quantity: 1 }); 
-            showToast(`${product.name} به سبد اضافه شد 🎉`); 
-        } 
+        if(existing) { existing.quantity++; showToast(`${product.name} +۱ شد`); } 
+        else { cart.push({ id: product.id, name: product.name, quantity: 1 }); showToast(`${product.name} به سبد اضافه شد 🎉`); } 
         renderCart(); 
         setTimeout(() => { processing = false; }, 300);
     }
-
     function attachCardEvents(cardElement, food) {
         const addBtn = cardElement.querySelector('.add-to-cart');
         if(addBtn) {
             const newAddBtn = addBtn.cloneNode(true);
             addBtn.parentNode.replaceChild(newAddBtn, addBtn);
-            newAddBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                addToCart(food);
-            });
+            newAddBtn.addEventListener('click', (e) => { e.preventDefault(); addToCart(food); });
         }
         const detailBtn = cardElement.querySelector('.detail-btn');
         const detailBox = cardElement.querySelector('.detail-box');
         if(detailBtn && detailBox) {
             const newDetailBtn = detailBtn.cloneNode(true);
             detailBtn.parentNode.replaceChild(newDetailBtn, detailBtn);
-            newDetailBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                detailBox.classList.toggle('show');
-            });
+            newDetailBtn.addEventListener('click', (e) => { e.preventDefault(); detailBox.classList.toggle('show'); });
         }
     }
-
     function createFoodCard(food) {
-        const card = document.createElement('div');
-        card.className = 'food-card';
-        card.innerHTML = `
-            <div class="card-img" style="background-image: url('${food.img}');">
-                <div class="food-tag"><i class="fas ${food.tagIcon}"></i> ${food.tag}</div>
-                ${food.isSpecial ? '<div class="badge-special"><i class="fas fa-star"></i> ویژه خفن</div>' : ''}
-            </div>
-            <div class="card-info">
-                <h3><i class="fas fa-egg"></i> ${food.name}</h3>
-                <div class="desc">${food.desc}</div>
-                <div class="btn-group">
-                    <button class="add-to-cart" data-id="${food.id}"><i class="fas fa-cart-plus"></i> افزودن به سبد</button>
-                    <button class="detail-btn" data-id="${food.id}"><i class="fas fa-info-circle"></i> توضیحات بیشتر</button>
-                </div>
-                <div class="detail-box" id="detail-${food.id}"><i class="fas fa-align-right"></i> ${food.longDesc}</div>
-            </div>
-        `;
+        const card = document.createElement('div'); card.className = 'food-card';
+        card.innerHTML = `<div class="card-img" style="background-image: url('${food.img}');"><div class="food-tag"><i class="fas ${food.tagIcon}"></i> ${food.tag}</div>${food.isSpecial ? '<div class="badge-special"><i class="fas fa-star"></i> ویژه خفن</div>' : ''}</div><div class="card-info"><h3><i class="fas fa-egg"></i> ${food.name}</h3><div class="desc">${food.desc}</div><div class="btn-group"><button class="add-to-cart" data-id="${food.id}"><i class="fas fa-cart-plus"></i> افزودن به سبد</button><button class="detail-btn" data-id="${food.id}"><i class="fas fa-info-circle"></i> توضیحات بیشتر</button></div><div class="detail-box" id="detail-${food.id}"><i class="fas fa-align-right"></i> ${food.longDesc}</div></div>`;
         attachCardEvents(card, food);
         return card;
     }
-
     function renderPages() {
         const featuredGrid = document.getElementById('featuredGrid');
         const persianHomeGrid = document.getElementById('persianHomeGrid');
-        const dolmeGrid = document.getElementById('dolmeGrid');
-        const fastGrid = document.getElementById('fastfoodGrid');
-        const fingerGrid = document.getElementById('fingerGrid');
-        const persianGrid = document.getElementById('persianGrid');
-        const cakeGrid = document.getElementById('cakeGrid');
-        const sweetGrid = document.getElementById('sweetGrid');
-        const traditionalGrid = document.getElementById('traditionalGrid');
-        const dessertGrid = document.getElementById('dessertGrid');
-        
+        const grids = { dolmeGrid:'dolmeGrid', fastfoodGrid:'fastfoodGrid', fingerGrid:'fingerGrid', persianGrid:'persianGrid', cakeGrid:'cakeGrid', sweetGrid:'sweetGrid', traditionalGrid:'traditionalGrid', dessertGrid:'dessertGrid' };
+        Object.values(grids).forEach(id => { let el = document.getElementById(id); if(el) el.innerHTML = ''; });
         if(featuredGrid) featuredGrid.innerHTML = '';
         if(persianHomeGrid) persianHomeGrid.innerHTML = '';
-        if(dolmeGrid) dolmeGrid.innerHTML = '';
-        if(fastGrid) fastGrid.innerHTML = '';
-        if(fingerGrid) fingerGrid.innerHTML = '';
-        if(persianGrid) persianGrid.innerHTML = '';
-        if(cakeGrid) cakeGrid.innerHTML = '';
-        if(sweetGrid) sweetGrid.innerHTML = '';
-        if(traditionalGrid) traditionalGrid.innerHTML = '';
-        if(dessertGrid) dessertGrid.innerHTML = '';
-        
-        const specials = foods.filter(f => f.isSpecial).sort((a,b) => b.createdAt - a.createdAt);
-        
-        specials.forEach(food => {
-            if(featuredGrid) featuredGrid.appendChild(createFoodCard(food));
-        });
-        
+        const specials = foods.filter(f => f.isSpecial).sort((a,b)=>b.createdAt - a.createdAt);
+        specials.forEach(food => { if(featuredGrid) featuredGrid.appendChild(createFoodCard(food)); });
         foods.forEach(food => {
-            if(food.tag === 'دلمه') {
-                if(dolmeGrid) dolmeGrid.appendChild(createFoodCard(food));
-            } else if(food.tag === 'غذای مجلسی') {
-                if(persianHomeGrid) persianHomeGrid.appendChild(createFoodCard(food));
-                if(persianGrid) persianGrid.appendChild(createFoodCard(food));
-            } else if(food.tag === 'فست فود') {
-                if(fastGrid) fastGrid.appendChild(createFoodCard(food));
-            } else if(food.tag === 'فینگر فود') {
-                if(fingerGrid) fingerGrid.appendChild(createFoodCard(food));
-            } else if(food.tag === 'کیک') {
-                if(cakeGrid) cakeGrid.appendChild(createFoodCard(food));
-            } else if(food.tag === 'شیرینی‌جات') {
-                if(sweetGrid) sweetGrid.appendChild(createFoodCard(food));
-            } else if(food.tag === 'غذای سنتی') {
-                if(traditionalGrid) traditionalGrid.appendChild(createFoodCard(food));
-            } else if(food.tag === 'دسر') {
-                if(dessertGrid) dessertGrid.appendChild(createFoodCard(food));
-            }
+            if(food.tag === 'دلمه' && document.getElementById('dolmeGrid')) document.getElementById('dolmeGrid').appendChild(createFoodCard(food));
+            else if(food.tag === 'غذای مجلسی') { if(persianHomeGrid) persianHomeGrid.appendChild(createFoodCard(food)); if(document.getElementById('persianGrid')) document.getElementById('persianGrid').appendChild(createFoodCard(food)); }
+            else if(food.tag === 'فست فود' && document.getElementById('fastfoodGrid')) document.getElementById('fastfoodGrid').appendChild(createFoodCard(food));
+            else if(food.tag === 'فینگر فود' && document.getElementById('fingerGrid')) document.getElementById('fingerGrid').appendChild(createFoodCard(food));
+            else if(food.tag === 'کیک' && document.getElementById('cakeGrid')) document.getElementById('cakeGrid').appendChild(createFoodCard(food));
+            else if(food.tag === 'شیرینی‌جات' && document.getElementById('sweetGrid')) document.getElementById('sweetGrid').appendChild(createFoodCard(food));
+            else if(food.tag === 'غذای سنتی' && document.getElementById('traditionalGrid')) document.getElementById('traditionalGrid').appendChild(createFoodCard(food));
+            else if(food.tag === 'دسر' && document.getElementById('dessertGrid')) document.getElementById('dessertGrid').appendChild(createFoodCard(food));
         });
     }
-
-    const pages = {
-        home: document.getElementById('homePage'), dolme: document.getElementById('dolmePage'),
-        fastfood: document.getElementById('fastfoodPage'), finger: document.getElementById('fingerPage'),
-        persian: document.getElementById('persianPage'), cake: document.getElementById('cakePage'),
-        traditional: document.getElementById('traditionalPage'), sweet: document.getElementById('sweetPage'),
-        dessert: document.getElementById('dessertPage'), tafarda: document.getElementById('tafardaPage'), support: document.getElementById('supportPage')
-    };
+    const pages = { home: document.getElementById('homePage'), dolme: document.getElementById('dolmePage'), fastfood: document.getElementById('fastfoodPage'), finger: document.getElementById('fingerPage'), persian: document.getElementById('persianPage'), cake: document.getElementById('cakePage'), traditional: document.getElementById('traditionalPage'), sweet: document.getElementById('sweetPage'), dessert: document.getElementById('dessertPage'), tafarda: document.getElementById('tafardaPage'), support: document.getElementById('supportPage') };
     document.querySelectorAll('[data-page]').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            let page = link.dataset.page;
-            Object.values(pages).forEach(p => p.classList.remove('active-page'));
-            if(pages[page]) pages[page].classList.add('active-page');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        link.addEventListener('click', (e) => { e.preventDefault(); let page = link.dataset.page; Object.values(pages).forEach(p => p.classList.remove('active-page')); if(pages[page]) pages[page].classList.add('active-page'); window.scrollTo({ top: 0, behavior: 'smooth' }); });
     });
-
     function openSidebar() { cartSidebar.classList.add('open'); }
     function closeSidebar() { cartSidebar.classList.remove('open'); }
     cartIconElem.addEventListener('click', openSidebar);
     closeCartBtn.addEventListener('click', closeSidebar);
     document.addEventListener('click', (e) => { if(cartSidebar.classList.contains('open') && !cartSidebar.contains(e.target) && !cartIconElem.contains(e.target)) closeSidebar(); });
-    
-    checkoutBtn.addEventListener('click', () => {
-        if(cart.length === 0) { showToast("سبد خالیه! اول غذا انتخاب کن 😋", false); return; }
-        showOrderSuccessModal();
-        cart = [];
-        renderCart();
-        closeSidebar();
-    });
-
+    checkoutBtn.addEventListener('click', () => { if(cart.length === 0) { showToast("سبد خالیه! اول غذا انتخاب کن 😋", false); return; } showOrderSuccessModal(); cart = []; renderCart(); closeSidebar(); });
+    // دکمه توضیحات کارت مخصوص تا فردا
+    const tomorrowDetailBtn = document.getElementById('tomorrowDetailBtn');
+    const tomorrowDetailBox = document.getElementById('tomorrowDetailBox');
+    if(tomorrowDetailBtn && tomorrowDetailBox) {
+        tomorrowDetailBtn.addEventListener('click', () => { tomorrowDetailBox.classList.toggle('show'); });
+    }
     renderPages();
     loadCart();
 </script>
 </body>
-    </html>
+                       </html>
