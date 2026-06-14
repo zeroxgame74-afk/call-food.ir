@@ -847,8 +847,15 @@
 <footer class="footer"><p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p><p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p></footer>
 
 <script>
-    // ========== دیتای غذاها (کاملاً مثل قبل) ==========
+    // ========== لیست غذاها (غذاهای قبلی + ۴ غذای جدید) ==========
     const foods = [
+        // ===== غذاهای جدید (با بالاترین آیدی و جدیدترین تاریخ) =====
+        { id: 24, name: "کماچ سیب زمینی", desc: "یک میان وعده سنتی و مقوی با سیب زمینی تازه و ادویه‌های معطر", longDesc: "کماچ سیب زمینی؛ یک غذای سنتی و خوشمزه از خراسان جنوبی که با سیب زمینی تازه، آرد مرغوب، پیاز و ادویه‌های معطر تهیه می‌شود. بافتی نرم و طعمی دلچسب دارد که هم به عنوان میان وعده و هم برای عصرانه‌های خاص مناسب است. ترکیبی از اصالت و طعم بی‌نظیر.", img: "https://cdn.imgurl.ir/uploads/k596094_IMG_20260614_202950.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 14, 20, 50) },
+        { id: 23, name: "لازانیا با سس بشامل", desc: "لازانیا با سس بشامل طعمی عالی و عطری دلچسب", longDesc: "لازانیا با سس بشامل؛ یک غذای مجلسی و بی‌نظیر با لایه‌های نازک پاستا، گوشت چرخ کرده تازه، سس گوجه و سس بشامل خامه‌ای. پنیر فراوان روی آن طلایی شده و عطری دلچسب در تمام فضا می‌پیچد. مناسب برای مهمانی‌های خاص و شام‌های لوکس. یک تجربه فراموش‌نشدنی از طعم ایتالیایی اصیل.", img: "https://cdn.imgurl.ir/uploads/d763805_IMG_20260614_202632.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: true, createdAt: new Date(2026, 5, 14, 20, 35) },
+        { id: 22, name: "لازانیا رولی", desc: "لازانیای رول شده با گوشت و سس مخصوص، یک نوآوری خوشمزه", longDesc: "لازانیا رولی؛ یک ابتکار جذاب و خوشمزه از کالفود! ورق‌های لازانیا با مواد پرکننده شامل گوشت چرخ کرده، قارچ، پنیر ریکوتا و سس مخصوص رول شده و سپس با سس گوجه و پنیر پیتزا پخته می‌شوند. هر لقمه طعمی متفاوت و لذیذ دارد. مناسب برای دورهمی‌های دوستانه یا یک شام خاص و به‌یادماندنی.", img: "https://cdn.imgurl.ir/uploads/n341993_IMG_20260614_202326.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: true, createdAt: new Date(2026, 5, 14, 20, 20) },
+        { id: 21, name: "کیک مرغ لقمه ای", desc: "کیک مرغ مقوی خوشمزه!", longDesc: "کیک مرغ لقمه‌ای؛ یک میان وعده مقوی و پرطرفدار! تکه‌های مرغ آبدار با سیب زمینی، هویج، نخود فرنگی و ادویه‌های مخصوص در قالبی شبیه کیک قالبی پخته می‌شود. بافتی نرم و طعمی بی‌نظیر دارد که هم بزرگسالان و هم کودکان عاشق آن می‌شوند. مناسب برای مهمانی‌ها، عصرانه یا یک وعده سریع و مقوی.", img: "https://cdn.imgurl.ir/uploads/o131922_IMG_20260614_201845.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 14, 20, 5) },
+        
+        // ===== غذاهای قبلی =====
         { id: 18, name: "ژله بستنی کالفود!", desc: "ژله بستنی کالفود با طعم پرتغال و آلوئه‌ورا", longDesc: "ژله بستنی کالفود؛ ترکیبی بی‌نظیر از ژله نرم و بستنی خامه‌ای با طعم پرتقال تازه و آلوئه‌ورا. یک دسر تابستونی و سرحال که هم خنکته، هم خوشمزه.", img: "https://uploadkon.ir/uploads/456213_26IMG-20260613-230203.jpg", tag: "دسر", tagIcon: "fa-ice-cream", isSpecial: true, createdAt: new Date(2026, 5, 13, 23, 0) },
         { id: 19, name: "مرغ کاراملی با شوید باقالی پلو", desc: "مرغ کاراملی با شوید باقالی پلو، یک غذای کامل و سنتی", longDesc: "مرغ کاراملی با شوید باقالی پلو؛ یه غذای سنتی مجلسی و پرطرفدار! تکه‌های مرغ آبدار با سس کاراملی مخصوص، کنار باقالی پلو معطر.", img: "https://uploadkon.ir/uploads/8f7e13_26IMG-20260613-185831.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 13, 22, 0) },
         { id: 20, name: "پیتزا اسنکی", desc: "پیتزا اسنکی، بمب انرژی و خوشمزه", longDesc: "پیتزا اسنکی؛ بمب انرژی و خوشمزه برای لحظات فوری! پیتزاهای کوچک و ترد با سس پنیری مخصوص.", img: "https://uploadkon.ir/uploads/cd0b13_26IMG-20260613-230747.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 13, 21, 0) },
@@ -872,11 +879,9 @@
     ];
     foods.sort((a, b) => b.createdAt - a.createdAt);
 
-    // ========== تایمر ۸ ساعت با ادامه از جایی که تموم نشده (حافظه‌دار) ==========
+    // ========== تایمر ۸ ساعت حافظه‌دار ==========
     let targetTime = localStorage.getItem('tafardaTimerTarget');
     const now = Date.now();
-    
-    // اگه تایمر قبلی وجود نداشت یا تموم شده بود، ۸ ساعت جدید تنظیم کن
     if (!targetTime || parseInt(targetTime) <= now) {
         targetTime = now + (8 * 60 * 60 * 1000);
         localStorage.setItem('tafardaTimerTarget', targetTime);
@@ -908,7 +913,6 @@
         document.getElementById('countdownDisplay').innerHTML = formatted;
     }
     
-    // بررسی اولیه اگه زمان تموم شده بود
     if (parseInt(localStorage.getItem('tafardaTimerTarget')) <= Date.now()) {
         disableOrderButton();
     }
@@ -916,7 +920,7 @@
     let timerInterval = setInterval(updateTimerDisplay, 1000);
     updateTimerDisplay();
 
-    // ========== بقیه کدهای سبد خرید و کارت‌ها ==========
+    // ========== بقیه کدهای سبد خرید و کارت‌ها (بدون تغییر) ==========
     let cart = [];
     let processing = false;
     const cartSidebar = document.getElementById('cartSidebar');
@@ -1000,21 +1004,41 @@
     function renderPages() {
         const featuredGrid = document.getElementById('featuredGrid');
         const persianHomeGrid = document.getElementById('persianHomeGrid');
-        const grids = { dolmeGrid:'dolmeGrid', fastfoodGrid:'fastfoodGrid', fingerGrid:'fingerGrid', persianGrid:'persianGrid', cakeGrid:'cakeGrid', sweetGrid:'sweetGrid', traditionalGrid:'traditionalGrid', dessertGrid:'dessertGrid' };
-        Object.values(grids).forEach(id => { let el = document.getElementById(id); if(el) el.innerHTML = ''; });
+        const dolmeGrid = document.getElementById('dolmeGrid');
+        const fastGrid = document.getElementById('fastfoodGrid');
+        const fingerGrid = document.getElementById('fingerGrid');
+        const persianGrid = document.getElementById('persianGrid');
+        const cakeGrid = document.getElementById('cakeGrid');
+        const sweetGrid = document.getElementById('sweetGrid');
+        const traditionalGrid = document.getElementById('traditionalGrid');
+        const dessertGrid = document.getElementById('dessertGrid');
+        
         if(featuredGrid) featuredGrid.innerHTML = '';
         if(persianHomeGrid) persianHomeGrid.innerHTML = '';
-        const specials = foods.filter(f => f.isSpecial).sort((a,b)=>b.createdAt - a.createdAt);
+        if(dolmeGrid) dolmeGrid.innerHTML = '';
+        if(fastGrid) fastGrid.innerHTML = '';
+        if(fingerGrid) fingerGrid.innerHTML = '';
+        if(persianGrid) persianGrid.innerHTML = '';
+        if(cakeGrid) cakeGrid.innerHTML = '';
+        if(sweetGrid) sweetGrid.innerHTML = '';
+        if(traditionalGrid) traditionalGrid.innerHTML = '';
+        if(dessertGrid) dessertGrid.innerHTML = '';
+        
+        const specials = foods.filter(f => f.isSpecial).sort((a,b) => b.createdAt - a.createdAt);
         specials.forEach(food => { if(featuredGrid) featuredGrid.appendChild(createFoodCard(food)); });
+        
         foods.forEach(food => {
-            if(food.tag === 'دلمه' && document.getElementById('dolmeGrid')) document.getElementById('dolmeGrid').appendChild(createFoodCard(food));
-            else if(food.tag === 'غذای مجلسی') { if(persianHomeGrid) persianHomeGrid.appendChild(createFoodCard(food)); if(document.getElementById('persianGrid')) document.getElementById('persianGrid').appendChild(createFoodCard(food)); }
-            else if(food.tag === 'فست فود' && document.getElementById('fastfoodGrid')) document.getElementById('fastfoodGrid').appendChild(createFoodCard(food));
-            else if(food.tag === 'فینگر فود' && document.getElementById('fingerGrid')) document.getElementById('fingerGrid').appendChild(createFoodCard(food));
-            else if(food.tag === 'کیک' && document.getElementById('cakeGrid')) document.getElementById('cakeGrid').appendChild(createFoodCard(food));
-            else if(food.tag === 'شیرینی‌جات' && document.getElementById('sweetGrid')) document.getElementById('sweetGrid').appendChild(createFoodCard(food));
-            else if(food.tag === 'غذای سنتی' && document.getElementById('traditionalGrid')) document.getElementById('traditionalGrid').appendChild(createFoodCard(food));
-            else if(food.tag === 'دسر' && document.getElementById('dessertGrid')) document.getElementById('dessertGrid').appendChild(createFoodCard(food));
+            if(food.tag === 'دلمه' && dolmeGrid) dolmeGrid.appendChild(createFoodCard(food));
+            else if(food.tag === 'غذای مجلسی') { 
+                if(persianHomeGrid) persianHomeGrid.appendChild(createFoodCard(food)); 
+                if(persianGrid) persianGrid.appendChild(createFoodCard(food)); 
+            }
+            else if(food.tag === 'فست فود' && fastGrid) fastGrid.appendChild(createFoodCard(food));
+            else if(food.tag === 'فینگر فود' && fingerGrid) fingerGrid.appendChild(createFoodCard(food));
+            else if(food.tag === 'کیک' && cakeGrid) cakeGrid.appendChild(createFoodCard(food));
+            else if(food.tag === 'شیرینی‌جات' && sweetGrid) sweetGrid.appendChild(createFoodCard(food));
+            else if(food.tag === 'غذای سنتی' && traditionalGrid) traditionalGrid.appendChild(createFoodCard(food));
+            else if(food.tag === 'دسر' && dessertGrid) dessertGrid.appendChild(createFoodCard(food));
         });
     }
     const pages = { home: document.getElementById('homePage'), dolme: document.getElementById('dolmePage'), fastfood: document.getElementById('fastfoodPage'), finger: document.getElementById('fingerPage'), persian: document.getElementById('persianPage'), cake: document.getElementById('cakePage'), traditional: document.getElementById('traditionalPage'), sweet: document.getElementById('sweetPage'), dessert: document.getElementById('dessertPage'), tafarda: document.getElementById('tafardaPage'), support: document.getElementById('supportPage') };
@@ -1037,4 +1061,4 @@
     loadCart();
 </script>
 </body>
-    </html>
+                    </html>
