@@ -360,93 +360,35 @@
             color: #e67e22;
         }
 
-        .timer-small {
+        /* باکس تایمر پایان یافته */
+        .timer-expired {
             background: #fff0e0;
             border-radius: 50px;
-            padding: 8px 16px;
+            padding: 12px 16px;
             margin: 12px 0;
             text-align: center;
             border: 1px solid #e67e22;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        .timer-small-content {
+        .timer-expired-content {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #c55a2c;
-            direction: ltr;
         }
-        .timer-small-content i {
-            font-size: 1.1rem;
+        .timer-expired-content i {
+            font-size: 1.3rem;
+            color: #e67e22;
         }
-        .timer-small-text {
+        .timer-expired-text {
             font-size: 0.7rem;
             font-weight: 700;
             color: #a17248;
             margin-top: 4px;
-        }
-
-        .black-notice-box {
-            background: #2e241f;
-            border-radius: 28px;
-            padding: 12px 16px;
-            margin: 12px 0;
-            text-align: center;
-            color: #ffefcf;
-            font-weight: 800;
-            font-size: 0.9rem;
-        }
-        .black-notice-box i {
-            color: #e67e22;
-            margin-left: 8px;
-        }
-
-        .order-link-btn {
-            background: #e67e22;
-            color: white;
-            border: none;
-            padding: 12px 0;
-            border-radius: 60px;
-            font-weight: 800;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
-            transition: 0.2s;
-            text-decoration: none;
-        }
-        .order-link-btn:hover {
-            background: #c55a2c;
-            transform: scale(0.98);
-        }
-
-        .disabled-btn {
-            background: #9e9e9e;
-            color: #e0e0e0;
-            border: none;
-            padding: 12px 0;
-            border-radius: 60px;
-            font-weight: 800;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            cursor: not-allowed;
-            font-family: 'Vazirmatn', sans-serif;
-            text-decoration: none;
-        }
-        .disabled-btn:hover {
-            transform: none;
-            background: #9e9e9e;
         }
 
         .support-section {
@@ -788,24 +730,17 @@
                 <h3><i class="fas fa-egg"></i> دلمه تا فردا موجوده!</h3>
                 <div class="desc">دلمه اصیل و خوشمزه با برگ مو تازه، آماده برای فردا! فقط امشب ثبت‌نام کن.</div>
                 
-                <!-- باکس تایمر تمام شده با آیکون ساعت شنی -->
-                <div class="timer-small">
-                    <div class="timer-small-content">
+                <!-- باکس تایمر پایان یافته (نارنجی شیک) -->
+                <div class="timer-expired">
+                    <div class="timer-expired-content">
                         <i class="fas fa-hourglass-end"></i>
-                        <span style="font-family: 'Vazirmatn', sans-serif; font-weight: 800;">زمان ثبت سفارش به پایان رسیده است!</span>
+                        <span>زمان ثبت سفارش به پایان رسیده است!</span>
                     </div>
-                    <div class="timer-small-text"><i class="fas fa-clock"></i> سفارشات این بخش بسته شد</div>
+                    <div class="timer-expired-text"><i class="fas fa-clock"></i> سفارشات این بخش بسته شد</div>
                 </div>
                 
-                <div class="black-notice-box">
-                    <i class="fas fa-heart"></i> دوستان عزیز دلمه فردا موجود است ثبت سفارش امشب!
-                </div>
-                
-                <div class="btn-group" id="tomorrowBtnGroup">
-                    <div class="disabled-btn">
-                        <i class="fas fa-hourglass-end"></i> ⏰ زمان ثبت سفارش به پایان رسیده است
-                    </div>
-                    <button class="detail-btn" id="tomorrowDetailBtn"><i class="fas fa-info-circle"></i> توضیحات بیشتر</button>
+                <div class="btn-group">
+                    <div class="detail-btn" id="tomorrowDetailBtn" style="cursor: pointer;"><i class="fas fa-info-circle"></i> توضیحات بیشتر</div>
                 </div>
                 <div class="detail-box" id="tomorrowDetailBox">
                     <i class="fas fa-align-right"></i> دلمه‌های خوشمزه کالفود با برگ مو تازه، گوشت چرخ کرده، برنج و سبزیجات معطر. برای فردا صبح آماده می‌شه! کافیه امشب سفارشت رو ثبت کنی تا فردا تازه و داغ تحویل بگیری.
@@ -844,13 +779,10 @@
 <script>
     // ========== لیست غذاها (کاملاً مثل قبل، هیچ تغییری نکرده) ==========
     const foods = [
-        // غذاهای جدید
         { id: 24, name: "کماچ سیب زمینی", desc: "یک میان وعده سنتی و مقوی با سیب زمینی تازه و ادویه‌های معطر", longDesc: "کماچ سیب زمینی؛ یک غذای سنتی و خوشمزه از خراسان جنوبی که با سیب زمینی تازه، آرد مرغوب، پیاز و ادویه‌های معطر تهیه می‌شود. بافتی نرم و طعمی دلچسب دارد که هم به عنوان میان وعده و هم برای عصرانه‌های خاص مناسب است. ترکیبی از اصالت و طعم بی‌نظیر.", img: "https://cdn.imgurl.ir/uploads/k596094_IMG_20260614_202950.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 14, 20, 50) },
         { id: 23, name: "لازانیا با سس بشامل", desc: "لازانیا با سس بشامل طعمی عالی و عطری دلچسب", longDesc: "لازانیا با سس بشامل؛ یک غذای مجلسی و بی‌نظیر با لایه‌های نازک پاستا، گوشت چرخ کرده تازه، سس گوجه و سس بشامل خامه‌ای. پنیر فراوان روی آن طلایی شده و عطری دلچسب در تمام فضا می‌پیچد. مناسب برای مهمانی‌های خاص و شام‌های لوکس. یک تجربه فراموش‌نشدنی از طعم ایتالیایی اصیل.", img: "https://cdn.imgurl.ir/uploads/d763805_IMG_20260614_202632.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: true, createdAt: new Date(2026, 5, 14, 20, 35) },
         { id: 22, name: "لازانیا رولی", desc: "لازانیای رول شده با گوشت و سس مخصوص، یک نوآوری خوشمزه", longDesc: "لازانیا رولی؛ یک ابتکار جذاب و خوشمزه از کالفود! ورق‌های لازانیا با مواد پرکننده شامل گوشت چرخ کرده، قارچ، پنیر ریکوتا و سس مخصوص رول شده و سپس با سس گوجه و پنیر پیتزا پخته می‌شوند. هر لقمه طعمی متفاوت و لذیذ دارد. مناسب برای دورهمی‌های دوستانه یا یک شام خاص و به‌یادماندنی.", img: "https://cdn.imgurl.ir/uploads/n341993_IMG_20260614_202326.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: true, createdAt: new Date(2026, 5, 14, 20, 20) },
         { id: 21, name: "کیک مرغ لقمه ای", desc: "کیک مرغ مقوی خوشمزه!", longDesc: "کیک مرغ لقمه‌ای؛ یک میان وعده مقوی و پرطرفدار! تکه‌های مرغ آبدار با سیب زمینی، هویج، نخود فرنگی و ادویه‌های مخصوص در قالبی شبیه کیک قالبی پخته می‌شود. بافتی نرم و طعمی بی‌نظیر دارد که هم بزرگسالان و هم کودکان عاشق آن می‌شوند. مناسب برای مهمانی‌ها، عصرانه یا یک وعده سریع و مقوی.", img: "https://cdn.imgurl.ir/uploads/o131922_IMG_20260614_201845.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 14, 20, 5) },
-        
-        // غذاهای قبلی
         { id: 18, name: "ژله بستنی کالفود!", desc: "ژله بستنی کالفود با طعم پرتغال و آلوئه‌ورا", longDesc: "ژله بستنی کالفود؛ ترکیبی بی‌نظیر از ژله نرم و بستنی خامه‌ای با طعم پرتقال تازه و آلوئه‌ورا. یک دسر تابستونی و سرحال که هم خنکته، هم خوشمزه.", img: "https://uploadkon.ir/uploads/456213_26IMG-20260613-230203.jpg", tag: "دسر", tagIcon: "fa-ice-cream", isSpecial: true, createdAt: new Date(2026, 5, 13, 23, 0) },
         { id: 19, name: "مرغ کاراملی با شوید باقالی پلو", desc: "مرغ کاراملی با شوید باقالی پلو، یک غذای کامل و سنتی", longDesc: "مرغ کاراملی با شوید باقالی پلو؛ یه غذای سنتی مجلسی و پرطرفدار! تکه‌های مرغ آبدار با سس کاراملی مخصوص، کنار باقالی پلو معطر.", img: "https://uploadkon.ir/uploads/8f7e13_26IMG-20260613-185831.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 13, 22, 0) },
         { id: 20, name: "پیتزا اسنکی", desc: "پیتزا اسنکی، بمب انرژی و خوشمزه", longDesc: "پیتزا اسنکی؛ بمب انرژی و خوشمزه برای لحظات فوری! پیتزاهای کوچک و ترد با سس پنیری مخصوص.", img: "https://uploadkon.ir/uploads/cd0b13_26IMG-20260613-230747.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 13, 21, 0) },
@@ -874,7 +806,7 @@
     ];
     foods.sort((a, b) => b.createdAt - a.createdAt);
 
-    // ========== بقیه کدهای سبد خرید و کارت‌ها (بدون تغییر) ==========
+    // ========== بقیه کدهای سبد خرید و کارت‌ها ==========
     let cart = [];
     let processing = false;
     const cartSidebar = document.getElementById('cartSidebar');
@@ -1015,4 +947,4 @@
     loadCart();
 </script>
 </body>
-    </html>
+            </html>
