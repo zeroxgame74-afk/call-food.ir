@@ -360,7 +360,7 @@
             color: #e67e22;
         }
 
-        /* باکس تایمر - دقیقاً مثل بقیه اجزای سایت */
+        /* باکس تایمر پایان یافته */
         .timer-expired {
             background: #fff0e0;
             border-radius: 50px;
@@ -618,6 +618,24 @@
             font-weight: 800;
             margin: 0.5rem 0;
         }
+        /* باکس کد تخفیف جدید - همون استایل باکس کد رهگیری */
+        .discount-code-box {
+            background: #2e241f;
+            border-radius: 60px;
+            padding: 10px;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            font-weight: 900;
+            display: inline-block;
+            width: auto;
+            text-align: center;
+            color: #ffd966;
+        }
+        .discount-code-wrapper {
+            text-align: center;
+            margin: 0.5rem 0;
+        }
         .custom-alert .order-code {
             background: #2e241f;
             color: #ffd966;
@@ -729,7 +747,6 @@
                 <h3><i class="fas fa-egg"></i> دلمه تا فردا موجوده!</h3>
                 <div class="desc">دلمه اصیل و خوشمزه با برگ مو تازه، آماده برای فردا! فقط امشب ثبت‌نام کن.</div>
                 
-                <!-- باکس تایمر پایان یافته - دقیقاً مثل بقیه استایل‌ها -->
                 <div class="timer-expired">
                     <div class="timer-expired-content">
                         <i class="fas fa-hourglass-end"></i>
@@ -765,6 +782,14 @@
     <i class="fas fa-check-circle"></i>
     <h3>سفارش شما با موفقیت ثبت شد!</h3>
     <div class="order-list" id="orderSummaryList"></div>
+    
+    <!-- باکس کد تخفیف جدید با آیکون بلیط -->
+    <div class="discount-code-wrapper">
+        <div class="discount-code-box">
+            <i class="fas fa-ticket-alt"></i> کد تخفیف: CALLFOOD10
+        </div>
+    </div>
+    
     <p><i class="fas fa-phone-alt"></i> برای خرید با این شماره تماس بگیرید:</p>
     <div class="phone-number-modal">09902684303</div>
     <div class="order-code" id="trackingCode">XXXXXX</div>
@@ -776,7 +801,7 @@
 <footer class="footer"><p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p><p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p></footer>
 
 <script>
-    // ========== لیست غذاها (کاملاً مثل قبل، هیچ تغییری نکرده) ==========
+    // ========== لیست غذاها (کاملاً مثل قبل) ==========
     const foods = [
         { id: 24, name: "کماچ سیب زمینی", desc: "یک میان وعده سنتی و مقوی با سیب زمینی تازه و ادویه‌های معطر", longDesc: "کماچ سیب زمینی؛ یک غذای سنتی و خوشمزه از خراسان جنوبی که با سیب زمینی تازه، آرد مرغوب، پیاز و ادویه‌های معطر تهیه می‌شود. بافتی نرم و طعمی دلچسب دارد که هم به عنوان میان وعده و هم برای عصرانه‌های خاص مناسب است. ترکیبی از اصالت و طعم بی‌نظیر.", img: "https://cdn.imgurl.ir/uploads/k596094_IMG_20260614_202950.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 14, 20, 50) },
         { id: 23, name: "لازانیا با سس بشامل", desc: "لازانیا با سس بشامل طعمی عالی و عطری دلچسب", longDesc: "لازانیا با سس بشامل؛ یک غذای مجلسی و بی‌نظیر با لایه‌های نازک پاستا، گوشت چرخ کرده تازه، سس گوجه و سس بشامل خامه‌ای. پنیر فراوان روی آن طلایی شده و عطری دلچسب در تمام فضا می‌پیچد. مناسب برای مهمانی‌های خاص و شام‌های لوکس. یک تجربه فراموش‌نشدنی از طعم ایتالیایی اصیل.", img: "https://cdn.imgurl.ir/uploads/d763805_IMG_20260614_202632.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: true, createdAt: new Date(2026, 5, 14, 20, 35) },
@@ -805,7 +830,7 @@
     ];
     foods.sort((a, b) => b.createdAt - a.createdAt);
 
-    // ========== بقیه کدهای سبد خرید و کارت‌ها ==========
+    // ========== بقیه کدهای سبد خرید و کارت‌ها (بدون تغییر) ==========
     let cart = [];
     let processing = false;
     const cartSidebar = document.getElementById('cartSidebar');
