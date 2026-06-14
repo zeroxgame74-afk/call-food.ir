@@ -565,7 +565,7 @@
             box-shadow: 0 40px 60px rgba(0,0,0,0.3);
             z-index: 3000;
             text-align: center;
-            max-width: 480px;
+            max-width: 520px;
             width: 90%;
             opacity: 0;
             visibility: hidden;
@@ -600,7 +600,7 @@
             font-weight: 700;
         }
         .custom-alert .order-list p {
-            margin: 0.5rem 0;
+            margin: 0.2rem 0;
         }
         .custom-alert p {
             margin: 0.5rem 0;
@@ -618,23 +618,69 @@
             font-weight: 800;
             margin: 0.5rem 0;
         }
-        /* باکس کد تخفیف جدید - همون استایل باکس کد رهگیری */
-        .discount-code-box {
-            background: #2e241f;
-            border-radius: 60px;
-            padding: 10px;
+        /* باکس کد تخفیف جدید با قابلیت تایپ */
+        .discount-input-box {
+            background: #fff5e8;
+            border-radius: 80px;
+            padding: 0.8rem 1.5rem;
             margin: 1rem 0;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            font-weight: 900;
-            display: inline-block;
-            width: auto;
-            text-align: center;
-            color: #ffd966;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            border: 1px solid #f0d5bc;
         }
-        .discount-code-wrapper {
+        .discount-input-box input {
+            flex: 2;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 60px;
+            background: white;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
             text-align: center;
-            margin: 0.5rem 0;
+            color: #2e241f;
+            outline: none;
+            border: 1px solid #eccfaf;
+        }
+        .discount-input-box input:focus {
+            border-color: #e67e22;
+        }
+        .apply-discount-btn {
+            background: #e67e22;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 800;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .apply-discount-btn:hover {
+            background: #c55a2c;
+        }
+        .discount-feedback {
+            font-size: 0.85rem;
+            margin-top: -5px;
+            margin-bottom: 5px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .discount-success {
+            color: #2b7a3b;
+        }
+        .discount-error {
+            color: #c0392b;
         }
         .custom-alert .order-code {
             background: #2e241f;
@@ -642,8 +688,8 @@
             padding: 10px;
             border-radius: 60px;
             margin: 1rem 0;
-            font-size: 1.6rem;
-            letter-spacing: 3px;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
             font-weight: 900;
             display: inline-block;
             width: auto;
@@ -746,7 +792,6 @@
             <div class="card-info">
                 <h3><i class="fas fa-egg"></i> دلمه تا فردا موجوده!</h3>
                 <div class="desc">دلمه اصیل و خوشمزه با برگ مو تازه، آماده برای فردا! فقط امشب ثبت‌نام کن.</div>
-                
                 <div class="timer-expired">
                     <div class="timer-expired-content">
                         <i class="fas fa-hourglass-end"></i>
@@ -754,7 +799,6 @@
                     </div>
                     <div class="timer-expired-text"><i class="fas fa-clock"></i> سفارشات این بخش بسته شد</div>
                 </div>
-                
                 <div class="btn-group">
                     <div class="detail-btn" id="tomorrowDetailBtn" style="cursor: pointer;"><i class="fas fa-info-circle"></i> توضیحات بیشتر</div>
                 </div>
@@ -783,16 +827,16 @@
     <h3>سفارش شما با موفقیت ثبت شد!</h3>
     <div class="order-list" id="orderSummaryList"></div>
     
-    <!-- باکس کد تخفیف جدید با آیکون بلیط -->
-    <div class="discount-code-wrapper">
-        <div class="discount-code-box">
-            <i class="fas fa-ticket-alt"></i> کد تخفیف: CALLFOOD10
-        </div>
+    <!-- باکس کد تخفیف با قابلیت تایپ -->
+    <div class="discount-input-box">
+        <input type="text" id="discountCodeInput" placeholder="کد تخفیف را وارد کنید..." autocomplete="off">
+        <button class="apply-discount-btn" id="applyDiscountBtn"><i class="fas fa-ticket-alt"></i> اعمال کد</button>
     </div>
+    <div id="discountFeedback" class="discount-feedback"></div>
     
     <p><i class="fas fa-phone-alt"></i> برای خرید با این شماره تماس بگیرید:</p>
     <div class="phone-number-modal">09902684303</div>
-    <div class="order-code" id="trackingCode">XXXXXX</div>
+    <div class="order-code" id="trackingCode">call food.ir</div>
     <p><i class="fas fa-info-circle"></i> این کد را به فروشنده بدهید</p>
     <button onclick="closeModal()"><i class="fas fa-check"></i> متوجه شدم</button>
 </div>
@@ -801,7 +845,7 @@
 <footer class="footer"><p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p><p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p></footer>
 
 <script>
-    // ========== لیست غذاها (کاملاً مثل قبل) ==========
+    // ========== لیست غذاها ==========
     const foods = [
         { id: 24, name: "کماچ سیب زمینی", desc: "یک میان وعده سنتی و مقوی با سیب زمینی تازه و ادویه‌های معطر", longDesc: "کماچ سیب زمینی؛ یک غذای سنتی و خوشمزه از خراسان جنوبی که با سیب زمینی تازه، آرد مرغوب، پیاز و ادویه‌های معطر تهیه می‌شود. بافتی نرم و طعمی دلچسب دارد که هم به عنوان میان وعده و هم برای عصرانه‌های خاص مناسب است. ترکیبی از اصالت و طعم بی‌نظیر.", img: "https://cdn.imgurl.ir/uploads/k596094_IMG_20260614_202950.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 14, 20, 50) },
         { id: 23, name: "لازانیا با سس بشامل", desc: "لازانیا با سس بشامل طعمی عالی و عطری دلچسب", longDesc: "لازانیا با سس بشامل؛ یک غذای مجلسی و بی‌نظیر با لایه‌های نازک پاستا، گوشت چرخ کرده تازه، سس گوجه و سس بشامل خامه‌ای. پنیر فراوان روی آن طلایی شده و عطری دلچسب در تمام فضا می‌پیچد. مناسب برای مهمانی‌های خاص و شام‌های لوکس. یک تجربه فراموش‌نشدنی از طعم ایتالیایی اصیل.", img: "https://cdn.imgurl.ir/uploads/d763805_IMG_20260614_202632.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: true, createdAt: new Date(2026, 5, 14, 20, 35) },
@@ -830,7 +874,6 @@
     ];
     foods.sort((a, b) => b.createdAt - a.createdAt);
 
-    // ========== بقیه کدهای سبد خرید و کارت‌ها (بدون تغییر) ==========
     let cart = [];
     let processing = false;
     const cartSidebar = document.getElementById('cartSidebar');
@@ -845,21 +888,69 @@
     const orderSummaryList = document.getElementById('orderSummaryList');
     let toastTimeout;
 
+    // کد تخفیف صحیح
+    const VALID_DISCOUNT_CODE = "call food 1395497554";
+
     function showToast(msg, isSuccess = true) {
         toastMsgDiv.innerHTML = `<i class="fas ${isSuccess ? 'fa-check-circle' : 'fa-info-circle'}"></i> ${msg}`;
         toastMsgDiv.style.opacity = '1';
         if(toastTimeout) clearTimeout(toastTimeout);
         toastTimeout = setTimeout(() => toastMsgDiv.style.opacity = '0', 3000);
     }
-    function generateTrackingCode() { return Math.floor(100000 + Math.random() * 900000).toString(); }
+    function generateTrackingCode() { return "call food.ir"; }
+    
+    function closeModal() { 
+        modal.classList.remove('show');
+        // ریست کردن فیلد کد تخفیف و بازخورد
+        const discountInput = document.getElementById('discountCodeInput');
+        const discountFeedback = document.getElementById('discountFeedback');
+        if(discountInput) discountInput.value = '';
+        if(discountFeedback) discountFeedback.innerHTML = '';
+    }
+    window.closeModal = closeModal;
+
+    // اعتبارسنجی کد تخفیف
+    function initDiscountFeature() {
+        const applyBtn = document.getElementById('applyDiscountBtn');
+        const discountInput = document.getElementById('discountCodeInput');
+        const discountFeedback = document.getElementById('discountFeedback');
+        
+        if(!applyBtn || !discountInput || !discountFeedback) return;
+        
+        applyBtn.addEventListener('click', () => {
+            const enteredCode = discountInput.value.trim();
+            if(enteredCode === VALID_DISCOUNT_CODE) {
+                discountFeedback.innerHTML = '<i class="fas fa-check-circle"></i> تبریک! کد تخفیف تایید شد 🎉';
+                discountFeedback.className = 'discount-feedback discount-success';
+                showToast("کد تخفیف با موفقیت اعمال شد!", true);
+            } else {
+                discountFeedback.innerHTML = '<i class="fas fa-times-circle"></i> متاسفانه کد صحیح نمی‌باشد';
+                discountFeedback.className = 'discount-feedback discount-error';
+                showToast("کد تخفیف اشتباه است!", false);
+            }
+            setTimeout(() => {
+                if(discountFeedback.innerHTML.includes("تبریک") || discountFeedback.innerHTML.includes("متاسفانه")) {
+                    setTimeout(() => {
+                        discountFeedback.innerHTML = '';
+                    }, 3000);
+                }
+            }, 3500);
+        });
+    }
+
     function showOrderSuccessModal() {
         document.getElementById('trackingCode').innerText = generateTrackingCode();
         let orderHtml = '';
         cart.forEach(item => { orderHtml += `<p>• ${item.quantity} عدد ${item.name}</p>`; });
         orderSummaryList.innerHTML = orderHtml;
         modal.classList.add('show');
+        // ریست کردن فیلد تخفیف هر بار که مودال باز میشه
+        const discountInput = document.getElementById('discountCodeInput');
+        const discountFeedback = document.getElementById('discountFeedback');
+        if(discountInput) discountInput.value = '';
+        if(discountFeedback) discountFeedback.innerHTML = '';
     }
-    window.closeModal = function() { modal.classList.remove('show'); }
+    
     function updateCartBadge() { 
         const total = cart.reduce((a,i)=> a + i.quantity, 0); 
         cartCountSpan.innerText = total;
@@ -969,6 +1060,7 @@
     }
     renderPages();
     loadCart();
+    initDiscountFeature();
 </script>
 </body>
     </html>
